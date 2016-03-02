@@ -21,6 +21,9 @@ An Arduino core for the ATmega64 and ATmega128, all running a [ported version of
 * ~~upload platforms.txt~~
 * ~~Create pins_arduino.h file~~
 * Add libraries
-* Upload core
+~~* Upload core~~
 * Heavy testing
+ 
+##Status
+I'm still waiting for my ATmega128 development board to arrive, but atleast sketches compile without any compiler warnings or errors. Feel free to try!
 
