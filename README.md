@@ -19,10 +19,8 @@ An Arduino core for the ATmega64 and ATmega128, all running a [ported version of
 * ~~Compile bootloaders~~
 * ~~create boards.txt file~~
 * ~~upload platforms.txt~~
-* Create pins_arduino.h file
+* ~~Create pins_arduino.h file~~
 * Add libraries
 * Upload core
 * Heavy testing
 
-## Pinout
-I haven't decided a pinout yet, but I'm thinking "as simple and logical as possible". Time will tell :)
