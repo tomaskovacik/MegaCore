@@ -1,13 +1,12 @@
 # MegaCore
 An Arduino core for the ATmega64 and ATmega128, all running a [ported version of Optiboot](https://github.com/vanbwodonk/optiboot128). <br/> <br/>
 
-<b>This core are still a work in progress, so don't expect it to work just yet. </b> <br/>
 
 ## Supported microcontrollers:
 * ATmega128*
 * ATmega64*
  
-(* All variants - A, L, V and so on)
+(* All variants - A, L and so on)
 
 #### Why add Arduino support for these microcontrollers?
 * They're dirt cheap (can be bought for less than a dollar at AliExpress and Ebay)
@@ -21,8 +20,9 @@ An Arduino core for the ATmega64 and ATmega128, all running a [ported version of
 * ~~upload platforms.txt~~
 * ~~Create pins_arduino.h file~~
 * Add libraries
-~~* Upload core~~
+* ~~ Upload core~~
 * Heavy testing
+* Create pinouts diagram like the MightyCore have
  
 ##Status
 I'm still waiting for my ATmega128 development board to arrive, but atleast sketches compile without any compiler warnings or errors. Feel free to try!
