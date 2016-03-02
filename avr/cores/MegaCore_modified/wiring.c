@@ -253,15 +253,15 @@ void init()
 #endif
 
 	// set timer 0 prescale factor to 64
-#if defined(__AVR_ATmega128__)
-	// CPU specific: different values for the ATmega128
+#if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
+	// CPU specific: different values for the ATmega64/128
 	sbi(TCCR0, CS02);
 #elif defined(TCCR0) && defined(CS01) && defined(CS00)
 	// this combination is for the standard atmega8
 	sbi(TCCR0, CS01);
 	sbi(TCCR0, CS00);
 #elif defined(TCCR0B) && defined(CS01) && defined(CS00)
-	// this combination is for the standard 168/328/1280/2560
+	// this combination is for the standard 168/328/1280/1281/2560/2561
 	sbi(TCCR0B, CS01);
 	sbi(TCCR0B, CS00);
 #elif defined(TCCR0A) && defined(CS01) && defined(CS00)

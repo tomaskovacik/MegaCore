@@ -39,7 +39,7 @@ Version Modified By Date     Comments
 #include "Arduino.h"
 #include "pins_arduino.h"
 
-#if defined(__AVR_ATmega8__) || defined(__AVR_ATmega128__)
+#if defined(__AVR_ATmega8__) || defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
 #define TCCR2A TCCR2
 #define TCCR2B TCCR2
 #define COM2A1 COM21
@@ -88,7 +88,7 @@ volatile uint8_t timer5_pin_mask;
 #endif
 
 
-#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
+#if defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
 
 #define AVAILABLE_TONE_PINS 1
 #define USE_TIMER2

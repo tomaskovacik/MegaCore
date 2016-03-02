@@ -25,6 +25,7 @@
 #include "wiring_private.h"
 #include "pins_arduino.h"
 
+#define DEFAULT 1
 uint8_t analog_reference = DEFAULT;
 
 void analogReference(uint8_t mode)
@@ -44,8 +45,8 @@ int analogRead(uint8_t pin)
 	if (pin >= 18) pin -= 18; // allow for channel or pin numbers
 #endif
 	pin = analogPinToChannel(pin);
-#elif defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
-	if (pin >= 54) pin -= 54; // allow for channel or pin numbers
+#elif defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__) || defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+	if (pin >= 45) pin -= 45; // allow for channel or pin numbers
 #elif defined(__AVR_ATmega32U4__)
 	if (pin >= 18) pin -= 18; // allow for channel or pin numbers
 #elif defined(__AVR_ATmega1284__) || defined(__AVR_ATmega1284P__) || defined(__AVR_ATmega644__) || defined(__AVR_ATmega644A__) || defined(__AVR_ATmega644P__) || defined(__AVR_ATmega644PA__)
@@ -117,11 +118,10 @@ void analogWrite(uint8_t pin, int val)
 	{
 		switch(digitalPinToTimer(pin))
 		{
-			// XXX fix needed for atmega8
-			#if defined(TCCR0) && defined(COM00) && !defined(__AVR_ATmega8__)
-			case TIMER0A:
+			#if defined(TCCR0) && defined(COM00)
+			case TIMER0:
 				// connect pwm to pin on timer 0
-				sbi(TCCR0, COM00);
+				sbi(TCCR0, COM01);
 				OCR0 = val; // set pwm duty
 				break;
 			#endif

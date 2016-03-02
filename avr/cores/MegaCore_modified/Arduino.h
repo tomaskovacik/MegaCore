@@ -61,12 +61,11 @@ void yield(void);
 #define FALLING 2
 #define RISING 3
 
-#if defined(__AVR_ATtiny24__) || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__) || defined(__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__)
-#define DEFAULT 0
+#if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
 #define EXTERNAL 1
 #define INTERNAL 2
 #else  
-#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega1284__) || defined(__AVR_ATmega1284P__) || defined(__AVR_ATmega644__) || defined(__AVR_ATmega644A__) || defined(__AVR_ATmega644P__) || defined(__AVR_ATmega644PA__)
+#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
 #define INTERNAL1V1 2
 #define INTERNAL2V56 3
 #else
@@ -194,6 +193,7 @@ extern const uint8_t PROGMEM digital_pin_to_timer_PGM[];
 #endif
 
 #define NOT_ON_TIMER 0
+#define TIMER0  1 //Needed for ATmega64/128
 #define TIMER0A 1
 #define TIMER0B 2
 #define TIMER1A 3
