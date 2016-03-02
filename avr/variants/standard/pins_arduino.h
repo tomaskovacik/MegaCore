@@ -2,12 +2,12 @@
 // Created by MCUdude
 // https://github.com/MCUdude/MegaCore
 //
-// ARD.  AVR
-// PINS  PINS
-//  |>  	  |  		       	A0   A1   A2   A3   A4   A5   A6   A7 
-//  |>	  	  |		        D45  D46  D47  D48  D49  D50  D51  D52		  D44  D43  D42
-//  |		  | >	 AVC  GND  ARE  PF0  PF1  PF2  PF3  PF4  PF5  PF6  PF7  GND  VCC  PA0  PA1  PA2
-//  V		  V	  -    -    -    -    -    -    -    -    -    -    -    -    -    -    -    -
+// 	ARD.  	 AVR
+// 	PINS  	 PINS
+//  	|>        |  		       	A0   A1   A2   A3   A4   A5   A6   A7 
+//  	|>	  |		        D45  D46  D47  D48  D49  D50  D51  D52		  D44  D43  D42
+//  	|	  | >	 AVC  GND  ARE  PF0  PF1  PF2  PF3  PF4  PF5  PF6  PF7  GND  VCC  PA0  PA1  PA2
+//  	V	  V	  -    -    -    -    -    -    -    -    -    -    -    -    -    -    -    -
 //		 PEN	|									       | PA3	D41
 //	D0	 PE0	|									       | PA4	D40
 //	D1	 PE1	|									       | PA5	D39
