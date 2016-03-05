@@ -1,6 +1,5 @@
 
 ** SD - a slightly more friendly wrapper for sdfatlib **
-- Modified to work with the MegaCore (changes to Sd2PinMap.h)
 
 This library aims to expose a subset of SD card functionality in the
 form of a higher level "wrapper" object.
