@@ -1,0 +1,45 @@
+{
+  "packages": [
+    {
+      "name": "MegaCore",
+      "maintainer": "MCUdude",
+      "websiteURL": "https://github.com/MCUdude/MegaCore",
+      "email": "",
+      "help": {
+        "online": ""
+      },
+      "platforms": [
+        {
+          "name": "MegaCore",
+          "architecture": "avr",
+          "version": "1.0.0",
+          "category": "Contributed",
+          "help": {
+            "online": ""
+          },
+          "url": "https://MCUdude.github.io/MegaCore/MegaCore-1.0.0.tar.gz",
+          "archiveFileName": "MegaCore-1.0.0.tar.gz",
+          "checksum": "SHA-256:86f7d7368dea82e109f6efe9b1b34f1f59f661644c36380d2e54e84f02497fbe",
+          "size": "234485",
+          "boards": [
+            {"name": "ATmega128"},
+            {"name": "ATmega64"}
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "arduino",
+              "name": "avr-gcc",
+              "version": "4.8.1-arduino5"
+            },
+            {
+              "packager": "arduino",
+              "name": "avrdude",
+              "version": "6.0.1-arduino5"
+            }
+          ]
+        }
+      ],
+      "tools": []
+    }
+  ]
+}
