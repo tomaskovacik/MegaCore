@@ -1,5 +1,6 @@
 # MegaCore
-An Arduino core for the ATmega64 and ATmega128, all running a [ported version of Optiboot](https://github.com/vanbwodonk/optiboot128). <br/> <br/>
+An Arduino core for the ATmega64 and ATmega128, all running a [ported version of Optiboot](https://github.com/vanbwodonk/optiboot128). Major libraries such as SD, Servo, SPI and Wire are modified to work with this core. Still, a large amount of third-party libraries often works without any modifications. <br/>
+This core requires at least Arduino IDE v1.6, where v1.6.5+ is recommended. <br/> <br/>
 
 
 ## Supported microcontrollers:
@@ -8,22 +9,36 @@ An Arduino core for the ATmega64 and ATmega128, all running a [ported version of
  
 (* All variants - A, L and so on)
 
-#### Why add Arduino support for these microcontrollers?
+
+##Supported clock frequencies
+* 20 MHz external oscillator
+* 16 MHz external oscillator (default)
+* 8 MHz external oscillator
+* 8 MHz internal oscillator
+* 1 MHz internal oscillator
+ 
+Select your microcontroller in the boards menu, then select the clock frequency. You'll have to hit "Burn bootloader" in order to set the correct fuses and upload the correct bootloader. <br/>
+Make sure you connect an ISP programmer, and select the correct one in the "Programmers" menu. For time critical operations an external oscillator is recommended.
+
+## Why add Arduino support for these microcontrollers?
 * They're dirt cheap (can be bought for less than a dollar at AliExpress and Ebay)
 * They're still hand solderable (The TQFP variant have 0.8mm pin pitch)
 * They're been around for more than a decade, and can be found in a lot of different equipment
 * They got 53 IO pins (vs 32 for the [MightyCore](https://github.com/MCUdude/MightyCore) compatible ones and 86 for the ATmega1280/2560)
 
-##TODO
-* ~~Compile bootloaders~~
-* ~~create boards.txt file~~
-* ~~upload platforms.txt~~
-* ~~Create pins_arduino.h file~~
-* Add libraries
-* ~~ Upload core~~
-* Heavy testing
-* Create pinouts diagram like the MightyCore have
- 
-##Status
-I'm still waiting for my ATmega128 development board to arrive, but atleast sketches compile without any compiler warnings or errors. Feel free to try!
+##Pinout
+Since there are no standarized Arduino pinout for the ATmega64/128, I decided to create my own. I've tried to make it as simple and logical as possible. This pinout makes great sense if you're buying this [cheap breakout boards](http://www.ebay.com/itm/381547311629) at Ebay or AliExpress.
+<b>Click to enlarge:</b> 
+</br> </br>
+<img src="http://i.imgur.com/rSg9odB.jpg" width="800">
+
+
+##Programmers
+MegaCore does not adds its own copies of all the standard programmers to the "Programmer" menu. Just select one of the stock programmers in the "Programmers" menu, and you're ready to "Burn Bootloader" or "Upload Using Programmer".
+
+
+##How to install
+#### Manual Installation
+Click on the "Download ZIP" button in the upper right corner. Exctract the ZIP file, and move the extracted folder to the location "**~/Documents/Arduino/hardware**". Create the "hardware" folder if it doesn't exist.
+Open Arduino IDE, and a new category in the boards menu called "MegaCore" will show up.
 
