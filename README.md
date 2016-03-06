@@ -30,7 +30,7 @@ Make sure you connect an ISP programmer, and select the correct one in the "Prog
 Since there are no standarized Arduino pinout for the ATmega64/128, I decided to create my own. I've tried to make it as simple and logical as possible. This pinout makes great sense if you're buying this [cheap breakout boards](http://www.ebay.com/itm/381547311629) at Ebay or AliExpress.
 <b>Click to enlarge:</b> 
 </br> </br>
-<img src="http://i.imgur.com/rSg9odB.jpg" width="800">
+<img src="http://i.imgur.com/uF5g1Nu.jpg" width="800">
 
 
 ##Programmers
@@ -38,6 +38,18 @@ MegaCore does not adds its own copies of all the standard programmers to the "Pr
 
 
 ##How to install
+#### Boards Manager Installation
+This installation method requires Arduino IDE version 1.6.4 or greater.
+* Open the Arduino IDE.
+* Open the **File > Preferences** menu item.
+* Enter the following URL in **Additional Boards Manager URLs**: `https://mcudude.github.io/MegaCore/package_MCUdude_MegaCore_index.json`
+* Open the **Tools > Board > Boards Manager...** menu item.
+* Wait for the platform indexes to finish downloading.
+* Scroll down until you see the **MegaCore** entry and click on it.
+  * **Note**: If you are using Arduino IDE 1.6.6 then you may need to close **Boards Manager** and then reopen it before the **MegaCore** entry will appear.
+* Click **Install**.
+* After installation is complete close the **Boards Manager** window.
+
 #### Manual Installation
 Click on the "Download ZIP" button in the upper right corner. Exctract the ZIP file, and move the extracted folder to the location "**~/Documents/Arduino/hardware**". Create the "hardware" folder if it doesn't exist.
 Open Arduino IDE, and a new category in the boards menu called "MegaCore" will show up.
