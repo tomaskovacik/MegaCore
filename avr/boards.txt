@@ -12,7 +12,7 @@ menu.clock=Clock
 128.bootloader.lock_bits=0x0f
 
 128.build.variant=standard
-128.build.core=MegaCore_modified
+128.build.core=MegaCore
 128.build.mcu=atmega128
 
 #make atmega128 AVR_FREQ=16000000L BAUD_RATE=115200 UART=0 LED=B5 LED_START_FLASHES=2 -BIGBOOT
@@ -75,7 +75,7 @@ menu.clock=Clock
 64.bootloader.lock_bits=0x0f
 
 64.build.variant=standard
-64.build.core=MegaCore_modified
+64.build.core=MegaCore
 64.build.mcu=atmega64
 
 #make atmega64 AVR_FREQ=16000000L BAUD_RATE=115200 UART=0 LED=B5 LED_START_FLASHES=2 -BIGBOOT
