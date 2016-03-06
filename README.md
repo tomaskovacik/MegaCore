@@ -26,12 +26,6 @@ Make sure you connect an ISP programmer, and select the correct one in the "Prog
 * They're been around for more than a decade, and can be found in a lot of different equipment
 * They got 53 IO pins (vs 32 for the [MightyCore](https://github.com/MCUdude/MightyCore) compatible ones and 86 for the ATmega1280/2560)
 
-##Pinout
-Since there are no standarized Arduino pinout for the ATmega64/128, I decided to create my own. I've tried to make it as simple and logical as possible. This pinout makes great sense if you're buying this [cheap breakout boards](http://www.ebay.com/itm/381547311629) at Ebay or AliExpress.
-<b>Click to enlarge:</b> 
-</br> </br>
-<img src="http://i.imgur.com/uF5g1Nu.jpg" width="800">
-
 
 ##Programmers
 MegaCore does not adds its own copies of all the standard programmers to the "Programmer" menu. Just select one of the stock programmers in the "Programmers" menu, and you're ready to "Burn Bootloader" or "Upload Using Programmer".
@@ -50,7 +44,15 @@ This installation method requires Arduino IDE version 1.6.4 or greater.
 * Click **Install**.
 * After installation is complete close the **Boards Manager** window.
 
+
 #### Manual Installation
 Click on the "Download ZIP" button in the upper right corner. Exctract the ZIP file, and move the extracted folder to the location "**~/Documents/Arduino/hardware**". Create the "hardware" folder if it doesn't exist.
 Open Arduino IDE, and a new category in the boards menu called "MegaCore" will show up.
+
+
+##Pinout
+Since there are no standarized Arduino pinout for the ATmega64/128, I decided to create my own. I've tried to make it as simple and logical as possible. This pinout makes great sense if you're buying this [cheap breakout boards](http://www.ebay.com/itm/381547311629) at Ebay or AliExpress.
+<b>Click to enlarge:</b> 
+</br> </br>
+<img src="http://i.imgur.com/uF5g1Nu.jpg" width="800">
 
