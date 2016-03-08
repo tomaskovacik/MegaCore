@@ -80,7 +80,6 @@ menu.clock=Clock
 64.build.mcu=atmega64
 64.build.board=AVR_ATmega64
 
-
 #make atmega64 AVR_FREQ=16000000L BAUD_RATE=115200 UART=0 LED=B5 LED_START_FLASHES=2 -BIGBOOT
 64.menu.clock.16MHz_external=16MHz external (BOD 2.7v)
 64.menu.clock.16MHz_external.upload.speed=115200
