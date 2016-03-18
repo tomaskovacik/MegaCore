@@ -118,7 +118,7 @@ void analogWrite(uint8_t pin, int val)
 	{
 		switch(digitalPinToTimer(pin))
 		{
-			#if defined(TCCR0) && defined(COM00)
+			#if defined(TCCR0) && defined(COM01)
 			case TIMER0:
 				// connect pwm to pin on timer 0
 				sbi(TCCR0, COM01);
