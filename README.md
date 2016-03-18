@@ -58,8 +58,13 @@ Open Arduino IDE, and a new category in the boards menu called "MegaCore" will s
 
 
 ##Pinout
-Since there are no standarized Arduino pinout for the ATmega64/128, I decided to create my own. I've tried to make it as simple and logical as possible. This pinout makes great sense if you're buying this [cheap breakout boards](http://www.ebay.com/itm/381547311629) at Ebay or AliExpress. The standard LED pin is assigned to Arduino pin 13 (PB4), and will blink twice if you hit the reset button.
+Since there are no standarized Arduino pinout for the ATmega64/128, I decided to create my own. I've tried to make it as simple and logical as possible. This pinout makes great sense if you're buying this [cheap breakout boards](http://www.ebay.com/itm/381547311629) at Ebay or AliExpress (just make sure to remove C3 in order to get auto reset working). The standard LED pin is assigned to Arduino pin 13 (PB5), and will blink twice if you hit the reset button. 
 <b>Click to enlarge:</b> 
 </br> </br>
 <img src="http://i.imgur.com/uF5g1Nu.jpg" width="800">
+
+
+##Minimal setup
+Here is a simple schematic showing a minimal setup using an external crystal. Skip the crystal and the two 22pF capacitors if you're using the internal oscillator. <br/>
+<img src="http://i.imgur.com/U2FGgGg.png" width="750">
 
