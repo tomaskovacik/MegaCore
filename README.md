@@ -3,6 +3,18 @@ An Arduino core for the ATmega64 and ATmega128, all running a [ported version of
 This core requires at least Arduino IDE v1.6, where v1.6.5+ is recommended. <br/>
 If you're into "pure" AVR programming, I'm happy to tell you that all relevant keywords are being highlighted by the IDE through a separate keywords file. Make sure to test the [example files](https://github.com/MCUdude/MegaCore/tree/master/avr/libraries/AVR_examples/examples) (File > Examples > AVR C code examples).
 
+# Table of contents
+* [Supported microcontrollers](#supported-microcontrollers)
+* [Supported clock frequencies](#supported-clock-frequencies)
+* [BOD option](#bod-option)
+* [Programmers](#programmers)
+* [Why add Arduino support for these microcontrollers?](#why-add-arduino-support-for-these-microcontrollers)
+* [How to install](#how-to-install)
+	- [Boards Manager Installation](#boards-manager-installation)
+	- [Manual Installation](#manual-installation)
+* [Pinout](#pinout)
+* [Minimal setup](#minimal-setup)
+
 
 ## Supported microcontrollers:
 * ATmega128*
@@ -34,8 +46,6 @@ Make sure you connect an ISP programmer, and select the correct one in the "Prog
 * They're still hand solderable (The TQFP variant have 0.8mm pin pitch)
 * They're been around for more than a decade, and can be found in a lot of different equipment
 * They got 53 IO pins (vs 32 for the [MightyCore](https://github.com/MCUdude/MightyCore) compatible ones and 86 for the ATmega1280/2560)
-
-
 
 
 ##How to install
