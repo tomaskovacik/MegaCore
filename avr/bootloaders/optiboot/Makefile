@@ -235,7 +235,7 @@ endif
 #
 
 
-#Atmega1280
+#ATmega1280
 atmega1280: MCU_TARGET = atmega1280
 atmega1280: CFLAGS += $(COMMON_OPTIONS) -DBIGBOOT $(UART_CMD)
 atmega1280: AVR_FREQ ?= 16000000L
@@ -243,7 +243,7 @@ atmega1280: LDSECTIONS  = -Wl,--section-start=.text=0x1fc00  -Wl,--section-start
 atmega1280: $(PROGRAM)_atmega1280.hex
 atmega1280: $(PROGRAM)_atmega1280.lst
 
-#Atmega128
+#ATmega128
 atmega128: MCU_TARGET = atmega128
 atmega128: CFLAGS += $(COMMON_OPTIONS) -DBIGBOOT $(UART_CMD)
 atmega128: AVR_FREQ ?= 16000000L
@@ -251,11 +251,11 @@ atmega128: LDSECTIONS = -Wl,--section-start=.text=0x1fc00 -Wl,--section-start=.v
 atmega128: $(PROGRAM)_atmega128.hex
 atmega128: $(PROGRAM)_atmega128.lst
 
-#Atmega64
+#ATmega64
 atmega64: MCU_TARGET = atmega64
 atmega64: CFLAGS += $(COMMON_OPTIONS) -DBIGBOOT $(UART_CMD)
 atmega64: AVR_FREQ ?= 16000000L
-atmega64: LDSECTIONS = -Wl,--section-start=.text=0xfc00 -Wl,--section-start=.version=0x1fffe
+atmega64: LDSECTIONS = -Wl,--section-start=.text=0xfc00 -Wl,--section-start=.version=0xfffe
 atmega64: $(PROGRAM)_atmega64.hex
 atmega64: $(PROGRAM)_atmega64.lst
 
