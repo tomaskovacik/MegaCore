@@ -93,5 +93,5 @@ Since there are no standarized Arduino pinout for the ATmega64/128, I decided to
 
 ##Minimal setup
 Here is a simple schematic showing a minimal setup using an external crystal. Skip the crystal and the two 22pF capacitors if you're using the internal oscillator. <br/>
-<img src="http://i.imgur.com/SKL6MrR.png" width="750">
+<img src="http://i.imgur.com/UIino8I.png" width="750">
 
