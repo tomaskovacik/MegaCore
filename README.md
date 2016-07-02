@@ -1,5 +1,5 @@
 # MegaCore
-An Arduino core for the ATmega64 and ATmega128, all running a [ported version of Optiboot](https://github.com/vanbwodonk/optiboot128). Major libraries such as SD, Servo, SPI and Wire are modified to work with this core. Still, a large amount of third-party libraries often works without any modifications. <br/>
+An Arduino core for the ATmega64 and ATmega128, all running a [modified version of Optiboot](#write-to-own-flash). Major libraries such as SD, Servo, SPI and Wire are modified to work with this core. Still, a large amount of third-party libraries often works without any modifications. <br/>
 This core requires at least Arduino IDE v1.6, where v1.6.5+ is recommended. <br/>
 If you're into "pure" AVR programming, I'm happy to tell you that all relevant keywords are being highlighted by the IDE through a separate keywords file. Make sure to test the [example files](https://github.com/MCUdude/MegaCore/tree/master/avr/libraries/AVR_examples/examples) (File > Examples > AVR C code examples).
 
@@ -88,7 +88,7 @@ Open Arduino IDE, and a new category in the boards menu called "MegaCore" will s
 Since there are no standarized Arduino pinout for the ATmega64/128, I decided to create my own. I've tried to make it as simple and logical as possible. This pinout makes great sense if you're buying this [cheap breakout boards](http://www.ebay.com/itm/381547311629) at Ebay or AliExpress (just make sure to remove C3 in order to get auto reset working). The standard LED pin is assigned to Arduino pin 13 (PB5), and will blink twice if you hit the reset button. 
 <b>Click to enlarge:</b> 
 </br> </br>
-<img src="http://i.imgur.com/5ThEB8o.jpg" width="800">
+<img src="http://i.imgur.com/dEnj88B.jpg" width="800">
 
 
 ##Minimal setup
