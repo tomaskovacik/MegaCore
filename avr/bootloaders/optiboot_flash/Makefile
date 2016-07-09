@@ -42,7 +42,7 @@
 #----------------------------------------------------------------------
 #
 # program name should not be changed...
-PROGRAM    = optiboot
+PROGRAM    = optiboot_flash
 
 # The default behavior is to build using tools that are in the users
 # current path variables, but we can also build using an installed
@@ -240,45 +240,24 @@ atmega1280: MCU_TARGET = atmega1280
 atmega1280: CFLAGS += $(COMMON_OPTIONS) -DBIGBOOT $(UART_CMD)
 atmega1280: AVR_FREQ ?= 16000000L
 atmega1280: LDSECTIONS  = -Wl,--section-start=.text=0x1fc00  -Wl,--section-start=.version=0x1fffe
-atmega1280: $(PROGRAM)_atmega1280.hex
-atmega1280: $(PROGRAM)_atmega1280.lst
+atmega1280: atmega1280/$(PROGRAM)_atmega1280_$(BAUD_RATE)_$(AVR_FREQ).hex
+atmega1280: atmega1280/$(PROGRAM)_atmega1280_$(BAUD_RATE)_$(AVR_FREQ).lst
 
 #ATmega128
 atmega128: MCU_TARGET = atmega128
 atmega128: CFLAGS += $(COMMON_OPTIONS) -DBIGBOOT $(UART_CMD)
 atmega128: AVR_FREQ ?= 16000000L
 atmega128: LDSECTIONS = -Wl,--section-start=.text=0x1fc00 -Wl,--section-start=.version=0x1fffe
-atmega128: $(PROGRAM)_atmega128.hex
-atmega128: $(PROGRAM)_atmega128.lst
+atmega128: atmega128/$(PROGRAM)_atmega128_$(BAUD_RATE)_$(AVR_FREQ).hex
+atmega128: atmega128/$(PROGRAM)_atmega128_$(BAUD_RATE)_$(AVR_FREQ).lst
 
 #ATmega64
 atmega64: MCU_TARGET = atmega64
 atmega64: CFLAGS += $(COMMON_OPTIONS) -DBIGBOOT $(UART_CMD)
 atmega64: AVR_FREQ ?= 16000000L
 atmega64: LDSECTIONS = -Wl,--section-start=.text=0xfc00 -Wl,--section-start=.version=0xfffe
-atmega64: $(PROGRAM)_atmega64.hex
-atmega64: $(PROGRAM)_atmega64.lst
-
-
-
-
-# MEGA1280 Board (this is different from the atmega1280 chip platform)
-# Mega has a minimum boot size of 1024 bytes, so enable extra functions
-# Note that optiboot does not (can not) work on the MEGA2560
-#mega: TARGET = atmega1280
-mega1280: atmega1280
-
-mega1280_isp: mega1280
-mega1280_isp: TARGET = atmega1280
-mega1280_isp: MCU_TARGET = atmega1280
-# 1024 byte boot
-mega1280_isp: HFUSE ?= DE
-# Low power xtal (16MHz) 16KCK/14CK+65ms
-mega1280_isp: LFUSE ?= FF
-# 2.7V brownout; wants F5 for some reason...
-mega1280_isp: EFUSE ?= F5
-mega1280_isp: isp
-
+atmega64: atmega64/$(PROGRAM)_atmega64_$(BAUD_RATE)_$(AVR_FREQ).hex
+atmega64: atmega64/$(PROGRAM)_atmega64_$(BAUD_RATE)_$(AVR_FREQ).lst
 
 
 #---------------------------------------------------------------------------
@@ -306,6 +285,14 @@ isp-stk500: $(PROGRAM)_$(TARGET).hex
 
 clean:
 	rm -rf *.o *.elf *.lst *.map *.sym *.lss *.eep *.srec *.bin *.hex *.tmp.sh
+	rm -rf atmega64/*.hex atmega64/*.lst
+	rm -rf atmega128/*.hex atmega128/*.lst
+	rm -rf atmega1281/*.hex atmega1281/*.lst
+
+clean_asm:
+	rm -rf atmega64/*.lst
+	rm -rf atmega128/*.lst
+	rm -rf atmega1281/*.lst
 
 %.lst: %.elf
 	$(OBJDUMP) -h -S $< > $@
