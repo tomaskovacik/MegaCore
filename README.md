@@ -34,15 +34,16 @@ If you're into "pure" AVR programming, I'm happy to tell you that all relevant k
 ##Supported clock frequencies
 * 20 MHz external oscillator
 * 16 MHz external oscillator (default)
+* 12 MHz external oscillator
 * 8 MHz external oscillator
-* 8 MHz internal oscillator*
+* 8 MHz internal oscillator <b>*</b>
 * 1 MHz internal oscillator
 
 Select your microcontroller in the boards menu, then select the clock frequency. You'll have to hit "Burn bootloader" in order to set the correct fuses and upload the correct bootloader. <br/>
 Make sure you connect an ISP programmer, and select the correct one in the "Programmers" menu. For time critical operations an external oscillator is recommended. 
 </br></br>
-*There might be some issues related to the internal oscillator. It's factory calibrated, but may be a little "off" depending on the calibration, ambient temperature and operating voltage. If uploading failes while using the 8 MHz internal oscillator you have three options:
-* Edit the [boards.txt](https://github.com/MCUdude/MegaCore/blob/9793029aea382b41fc5dd81aa8af909fbf244026/avr/boards.txt#L48-L52) file and choose a precompiled bootloader with a higher or lower baudrate (115200, 57600 or 38400 baud)
+<b>*</b> There might be some issues related to the internal oscillator. It's factory calibrated, but may be a little "off" depending on the calibration, ambient temperature and operating voltage. If uploading failes while using the 8 MHz internal oscillator you have three options:
+* Edit the baudrate line in the [boards.txt](https://github.com/MCUdude/MegaCore/blob/11fd19fd0a5dcc808f4e8fc0b627c4477df515c8/avr/boards.txt#L59) file, and choose either 115200, 57600, 38400 or 19200 baud.
 * Upload the code using a programmer (USBasp, USBtinyISP etc.) or skip the bootloader
 * Use the 1 MHz option instead 
 
