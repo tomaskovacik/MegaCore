@@ -25,18 +25,7 @@
             {"name": "ATmega128"},
             {"name": "ATmega64"}
           ],
-          "toolsDependencies": [
-            {
-              "packager": "arduino",
-              "name": "avr-gcc",
-              "version": "4.8.1-arduino5"
-            },
-            {
-              "packager": "arduino",
-              "name": "avrdude",
-              "version": "6.0.1-arduino5"
-            }
-          ]
+          "toolsDependencies": []
         },
         {
           "name": "MegaCore",
@@ -54,18 +43,7 @@
             {"name": "ATmega128"},
             {"name": "ATmega64"}
           ],
-          "toolsDependencies": [
-            {
-              "packager": "arduino",
-              "name": "avr-gcc",
-              "version": "4.8.1-arduino5"
-            },
-            {
-              "packager": "arduino",
-              "name": "avrdude",
-              "version": "6.0.1-arduino5"
-            }
-          ]
+          "toolsDependencies": []
         },
         {
           "name": "MegaCore",
@@ -83,18 +61,7 @@
             {"name": "ATmega128"},
             {"name": "ATmega64"}
           ],
-          "toolsDependencies": [
-            {
-              "packager": "arduino",
-              "name": "avr-gcc",
-              "version": "4.8.1-arduino5"
-            },
-            {
-              "packager": "arduino",
-              "name": "avrdude",
-              "version": "6.0.1-arduino5"
-            }
-          ]
+          "toolsDependencies": []
         },
         {
           "name": "MegaCore",
@@ -112,18 +79,7 @@
             {"name": "ATmega128"},
             {"name": "ATmega64"}
           ],
-          "toolsDependencies": [
-            {
-              "packager": "arduino",
-              "name": "avr-gcc",
-              "version": "4.8.1-arduino5"
-            },
-            {
-              "packager": "arduino",
-              "name": "avrdude",
-              "version": "6.0.1-arduino5"
-            }
-          ]
+          "toolsDependencies": []
         }
       ],
       "tools": []
