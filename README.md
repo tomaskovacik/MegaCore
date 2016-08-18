@@ -14,6 +14,7 @@ If you're into "pure" AVR programming, I'm happy to tell you that all relevant k
 	- [Boards Manager Installation](#boards-manager-installation)
 	- [Manual Installation](#manual-installation)
 	- [Eclipse](#eclipse)
+* [Wiring reference](#wiring-reference)	
 * [Pinout](#pinout)
 * [Minimal setup](#minimal-setup)
 
@@ -86,7 +87,7 @@ Click on the "Download ZIP" button in the upper right corner. Exctract the ZIP f
 Open Arduino IDE, and a new category in the boards menu called "MegaCore" will show up.
 
 
-#### Eclipse
+#### ~Eclipse~ broken
 MegaCore works perfectly with Eclipse using the [Arduino Eclipse plugin](http://eclipse.baeyens.it) (formally Sloeber). If you're tired of Arduino IDEs limits but still want to stick with open source software; this is the way to go!
 * Download and install the latest version of Arduino Eclipse (Download the nighty build if you want support for aditional programmers)
 * Open **Preferences** (<i>Windows</i>: Window -> Preferences, <i>Mac</i>: [App name] -> Preferences)
@@ -96,6 +97,23 @@ MegaCore works perfectly with Eclipse using the [Arduino Eclipse plugin](http://
 * Click the **OK** button. MiniCore is now installed! 
 <br/> <br/>
 Make sure to select the MegaCore boards.txt file when you create a new sketch.
+
+
+##Wiring reference
+To extend this core's functionality a bit futher, I've added a few missing Wiring functions. As many of you know Arduino is based on Wiring, but that doesn't mean the Wiring development isnt active. These functions is used as "regular" Arduino functions, and there's no need to include an external library.<br/>
+I hope you find this useful, because they really are!
+
+###Function list
+* portMode()
+* portRead()
+* portWrite()
+* sleepMode()
+* sleep()
+* noSleep()
+* enablePower()	
+* disablePower()
+
+###For further information please view the [Wiring reference page](https://github.com/MCUdude/MegaCore/blob/master/Wiring_reference.md)!
 
 
 ##Pinout
