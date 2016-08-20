@@ -22,7 +22,7 @@ menu.clock=Clock
 128.menu.clock.16MHz_external.bootloader.low_fuses=0xbf
 128.menu.clock.16MHz_external.bootloader.high_fuses=0xc6
 128.menu.clock.16MHz_external.bootloader.extended_fuses=0xff
-128.menu.clock.16MHz_external.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_16MHz.hex
+128.menu.clock.16MHz_external.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_{build.f_cpu}.hex
 128.menu.clock.16MHz_external.build.f_cpu=16000000L
 
 #make atmega128 AVR_FREQ=20000000L BAUD_RATE=115200 UART=0 LED=B5 LED_START_FLASHES=2 -BIGBOOT
@@ -31,7 +31,7 @@ menu.clock=Clock
 128.menu.clock.20MHz_external.bootloader.low_fuses=0x3f
 128.menu.clock.20MHz_external.bootloader.high_fuses=0xc6
 128.menu.clock.20MHz_external.bootloader.extended_fuses=0xff
-128.menu.clock.20MHz_external.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_20MHz.hex
+128.menu.clock.20MHz_external.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_{build.f_cpu}.hex
 128.menu.clock.20MHz_external.build.f_cpu=20000000L
 
 #make atmega128 AVR_FREQ=12000000L BAUD_RATE=57600 UART=0 LED=B5 LED_START_FLASHES=2 -BIGBOOT
@@ -40,7 +40,7 @@ menu.clock=Clock
 128.menu.clock.12MHz_external.bootloader.low_fuses=0xbf
 128.menu.clock.12MHz_external.bootloader.high_fuses=0xc6
 128.menu.clock.12MHz_external.bootloader.extended_fuses=0xff
-128.menu.clock.12MHz_external.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_12MHz.hex
+128.menu.clock.12MHz_external.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_{build.f_cpu}.hex
 128.menu.clock.12MHz_external.build.f_cpu=12000000L
 
 #make atmega128 AVR_FREQ=8000000L BAUD_RATE=115200 UART=0 LED=B5 LED_START_FLASHES=2 -BIGBOOT
@@ -50,7 +50,7 @@ menu.clock=Clock
 128.menu.clock.8MHz_external.bootloader.low_fuses=0xbf
 128.menu.clock.8MHz_external.bootloader.high_fuses=0xc6
 128.menu.clock.8MHz_external.bootloader.extended_fuses=0xff
-128.menu.clock.8MHz_external.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_8MHz.hex
+128.menu.clock.8MHz_external.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_{build.f_cpu}.hex
 128.menu.clock.8MHz_external.build.f_cpu=8000000L
 
 #make atmega128 AVR_FREQ=8000000L BAUD_RATE=38400 UART=0 LED=B5 LED_START_FLASHES=2 -BIGBOOT
@@ -60,7 +60,7 @@ menu.clock=Clock
 128.menu.clock.8MHz_internal.bootloader.low_fuses=0xa4
 128.menu.clock.8MHz_internal.bootloader.high_fuses=0xd6
 128.menu.clock.8MHz_internal.bootloader.extended_fuses=0xff
-128.menu.clock.8MHz_internal.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_8MHz.hex
+128.menu.clock.8MHz_internal.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_{build.f_cpu}.hex
 128.menu.clock.8MHz_internal.build.f_cpu=8000000L
 
 #make atmega128 AVR_FREQ=1000000L BAUD_RATE=9600 UART=0 LED=B5 LED_START_FLASHES=2 -BIGBOOT
@@ -69,7 +69,7 @@ menu.clock=Clock
 128.menu.clock.1MHz_internal.bootloader.low_fuses=0xa1
 128.menu.clock.1MHz_internal.bootloader.high_fuses=0xd6
 128.menu.clock.1MHz_internal.bootloader.extended_fuses=0xff
-128.menu.clock.1MHz_internal.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_1MHz.hex
+128.menu.clock.1MHz_internal.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_{build.f_cpu}.hex
 128.menu.clock.1MHz_internal.build.f_cpu=1000000L
 
 
@@ -97,7 +97,7 @@ menu.clock=Clock
 64.menu.clock.16MHz_external.bootloader.low_fuses=0xbf
 64.menu.clock.16MHz_external.bootloader.high_fuses=0xc6
 64.menu.clock.16MHz_external.bootloader.extended_fuses=0xff
-64.menu.clock.16MHz_external.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_16MHz.hex
+64.menu.clock.16MHz_external.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_{build.f_cpu}.hex
 64.menu.clock.16MHz_external.build.f_cpu=16000000L
 
 #make atmega64 AVR_FREQ=20000000L BAUD_RATE=115200 UART=0 LED=B5 LED_START_FLASHES=2 -BIGBOOT
@@ -106,7 +106,7 @@ menu.clock=Clock
 64.menu.clock.20MHz_external.bootloader.low_fuses=0x3f
 64.menu.clock.20MHz_external.bootloader.high_fuses=0xc6
 64.menu.clock.20MHz_external.bootloader.extended_fuses=0xff
-64.menu.clock.20MHz_external.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_20MHz.hex
+64.menu.clock.20MHz_external.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_{build.f_cpu}.hex
 64.menu.clock.20MHz_external.build.f_cpu=20000000L
 
 #make atmega64 AVR_FREQ=12000000L BAUD_RATE=57600 UART=0 LED=B5 LED_START_FLASHES=2 -BIGBOOT
@@ -115,7 +115,7 @@ menu.clock=Clock
 64.menu.clock.12MHz_external.bootloader.low_fuses=0xbf
 64.menu.clock.12MHz_external.bootloader.high_fuses=0xc6
 64.menu.clock.12MHz_external.bootloader.extended_fuses=0xff
-64.menu.clock.12MHz_external.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_12MHz.hex
+64.menu.clock.12MHz_external.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_{build.f_cpu}.hex
 64.menu.clock.12MHz_external.build.f_cpu=12000000L
 
 #make atmega64 AVR_FREQ=8000000L BAUD_RATE=115200 UART=0 LED=B5 LED_START_FLASHES=2 -BIGBOOT
@@ -125,7 +125,7 @@ menu.clock=Clock
 64.menu.clock.8MHz_external.bootloader.low_fuses=0xbf
 64.menu.clock.8MHz_external.bootloader.high_fuses=0xc6
 64.menu.clock.8MHz_external.bootloader.extended_fuses=0xff
-64.menu.clock.8MHz_external.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_8MHz.hex
+64.menu.clock.8MHz_external.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_{build.f_cpu}.hex
 64.menu.clock.8MHz_external.build.f_cpu=8000000L
 
 #make atmega64 AVR_FREQ=8000000L BAUD_RATE=38400 UART=0 LED=B5 LED_START_FLASHES=2 -BIGBOOT
@@ -135,7 +135,7 @@ menu.clock=Clock
 64.menu.clock.8MHz_internal.bootloader.low_fuses=0xa4
 64.menu.clock.8MHz_internal.bootloader.high_fuses=0xd6
 64.menu.clock.8MHz_internal.bootloader.extended_fuses=0xff
-64.menu.clock.8MHz_internal.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_8MHz.hex
+64.menu.clock.8MHz_internal.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_{build.f_cpu}.hex
 64.menu.clock.8MHz_internal.build.f_cpu=8000000L
 
 #make atmega64 AVR_FREQ=1000000L BAUD_RATE=9600 UART=0 LED=B5 LED_START_FLASHES=2 -BIGBOOT
@@ -144,5 +144,5 @@ menu.clock=Clock
 64.menu.clock.1MHz_internal.bootloader.low_fuses=0xa1
 64.menu.clock.1MHz_internal.bootloader.high_fuses=0xd6
 64.menu.clock.1MHz_internal.bootloader.extended_fuses=0xff
-64.menu.clock.1MHz_internal.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_1MHz.hex
+64.menu.clock.1MHz_internal.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.speed}_{build.f_cpu}.hex
 64.menu.clock.1MHz_internal.build.f_cpu=1000000L
