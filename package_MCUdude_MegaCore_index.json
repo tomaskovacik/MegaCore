@@ -6,7 +6,7 @@
       "websiteURL": "https://github.com/MCUdude/MegaCore",
       "email": "",
       "help": {
-        "online": ""
+        "online": "https://forum.arduino.cc/index.php?topic=386733"
       },
       "platforms": [
         {
@@ -14,9 +14,6 @@
           "architecture": "avr",
           "version": "1.0.0",
           "category": "Contributed",
-          "help": {
-            "online": ""
-          },
           "url": "https://MCUdude.github.io/MegaCore/MegaCore-1.0.0.tar.gz",
           "archiveFileName": "MegaCore-1.0.0.tar.gz",
           "checksum": "SHA-256:86f7d7368dea82e109f6efe9b1b34f1f59f661644c36380d2e54e84f02497fbe",
@@ -32,9 +29,6 @@
           "architecture": "avr",
           "version": "1.0.1",
           "category": "Contributed",
-          "help": {
-            "online": ""
-          },
           "url": "https://MCUdude.github.io/MegaCore/MegaCore-1.0.1.tar.gz",
           "archiveFileName": "MegaCore-1.0.1.tar.gz",
           "checksum": "SHA-256:c98f991f0a4341fd59f53371f7a2c638822bdaf6cfe61bf46b63a3dadc554633",
@@ -50,9 +44,6 @@
           "architecture": "avr",
           "version": "1.0.2",
           "category": "Contributed",
-          "help": {
-            "online": ""
-          },
           "url": "https://MCUdude.github.io/MegaCore/MegaCore-1.0.2.tar.gz",
           "archiveFileName": "MegaCore-1.0.2.tar.gz",
           "checksum": "SHA-256:89cd53e37c0cf3cbe3728e0a529fc77957c5ac3af1d152c36f35fcb2fda2ba8e",
@@ -68,9 +59,6 @@
           "architecture": "avr",
           "version": "1.0.3",
           "category": "Contributed",
-          "help": {
-            "online": ""
-          },
           "url": "https://MCUdude.github.io/MegaCore/MegaCore-1.0.3.tar.gz",
           "archiveFileName": "MegaCore-1.0.3.tar.gz",
           "checksum": "SHA-256:dcc4b883fa4d7ebf26d817bbe8a0732a4d190a298672f2a05f43fb7c233adb8f",
