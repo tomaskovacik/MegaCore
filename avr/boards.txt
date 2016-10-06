@@ -1,5 +1,23 @@
+#########################################
+## This file is created by MCUdude 
+## for use with MegaCore
+## https://github.com/MCUdude/MegaCore	
+##
+## This is the file where fuse settings,
+## clock frequencies and compiler flags
+## are located.
+##
+## Run ./makeall to build all bootloaders
+#########################################
+
+# Menu options
 menu.clock=Clock
-############################################################
+menu.LTO=Compiler LTO
+
+
+#####################
+#### ATmega128/A ####
+#####################
 
 128.name=ATmega128
 128.upload.tool=avrdude
@@ -16,6 +34,20 @@ menu.clock=Clock
 128.build.mcu=atmega128
 128.build.board=AVR_ATmega128
 
+# Compiler link time optimization
+128.menu.LTO.Os=Disabled (default)
+128.menu.LTO.Os.compiler.c.extra_flags=
+128.menu.LTO.Os.compiler.c.elf.extra_flags=
+128.menu.LTO.Os.compiler.cpp.extra_flags=
+128.menu.LTO.Os.ltoarcmd=avr-ar
+
+128.menu.LTO.Os_flto=Enabled
+128.menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto
+128.menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto
+128.menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto
+128.menu.LTO.Os_flto.ltoarcmd=avr-gcc-ar
+
+# Clock frequencies
 #make atmega128 AVR_FREQ=16000000L BAUD_RATE=115200 UART=0 LED=B5 LED_START_FLASHES=2 -BIGBOOT
 128.menu.clock.16MHz_external=16MHz external (BOD 2.7v)
 128.menu.clock.16MHz_external.upload.speed=115200
@@ -73,8 +105,9 @@ menu.clock=Clock
 128.menu.clock.1MHz_internal.build.f_cpu=1000000L
 
 
-############################################################
-
+####################
+#### ATmega64/A ####
+####################
 
 64.name=ATmega64
 64.upload.tool=avrdude
@@ -91,6 +124,20 @@ menu.clock=Clock
 64.build.mcu=atmega64
 64.build.board=AVR_ATmega64
 
+# Compiler link time optimization
+64.menu.LTO.Os=Disabled (default)
+64.menu.LTO.Os.compiler.c.extra_flags=
+64.menu.LTO.Os.compiler.c.elf.extra_flags=
+64.menu.LTO.Os.compiler.cpp.extra_flags=
+64.menu.LTO.Os.ltoarcmd=avr-ar
+
+64.menu.LTO.Os_flto=Enabled
+64.menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto
+64.menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto
+64.menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto
+64.menu.LTO.Os_flto.ltoarcmd=avr-gcc-ar
+
+# Clock frequencies
 #make atmega64 AVR_FREQ=16000000L BAUD_RATE=115200 UART=0 LED=B5 LED_START_FLASHES=2 -BIGBOOT
 64.menu.clock.16MHz_external=16MHz external (BOD 2.7v)
 64.menu.clock.16MHz_external.upload.speed=115200
