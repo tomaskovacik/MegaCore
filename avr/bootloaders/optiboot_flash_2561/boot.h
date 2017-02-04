@@ -120,12 +120,10 @@
 /* Check for SPM Control Register in processor. */
 #if defined (SPMCSR)
 #  define __SPM_REG    SPMCSR
-#else
-#if defined (SPMCR)
+#elif defined (SPMCR)
 #  define __SPM_REG    SPMCR
 #else
 #  error AVR processor does not provide bootloader support!
-#endif
 #endif
 
 

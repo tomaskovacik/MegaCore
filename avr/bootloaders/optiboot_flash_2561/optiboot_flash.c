@@ -1,15 +1,10 @@
 #define FUNC_READ 1
 #define FUNC_WRITE 1
 /**********************************************************/
-/* Optiboot bootloader for Arduino                        */
-/*														  */
-/* Ported to ATmega64/128 by vanbwodonk					  */
-/* https://github.com/vanbwodonk/optiboot128			  */
+/* Majek's Optiboot bootloader for Arduino                */
 /*                                                        */
-/* http://optiboot.googlecode.com                         */
+/* http://github.com/majekw/optiboot                      */
 /*                                                        */
-/* Arduino-maintained version : See README.TXT            */
-/* http://code.google.com/p/arduino/                      */
 /*  It is the intent that changes not relevant to the     */
 /*  Arduino production envionment get moved from the      */
 /*  optiboot project to the arduino project in "lumps."   */
@@ -24,6 +19,7 @@
 /*   Customisable timeout with accurate timeconstant      */
 /*   Optional virtual UART. No hardware UART required.    */
 /*   Optional virtual boot partition for devices without. */
+/*	 Supports "write to flash" in application! 						*/
 /*                                                        */
 /* What you lose:                                         */
 /*   Implements a skeleton STK500 protocol which is       */
@@ -32,26 +28,10 @@
 /*   High baud rate breaks compatibility with standard    */
 /*     Arduino flash settings                             */
 /*                                                        */
-/* Fully supported:                                       */
-/*   ATmega168 based devices  (Diecimila etc)             */
-/*   ATmega328P based devices (Duemilanove etc)           */
 /*                                                        */
-/* Beta test (believed working.)                          */
-/*   ATmega8 based devices (Arduino legacy)               */
-/*   ATmega328 non-picopower devices                      */
-/*   ATmega644P based devices (Sanguino)                  */
-/*   ATmega1284P based devices                            */
-/*   ATmega1280 based devices (Arduino Mega)              */
-/*                                                        */
-/* Alpha test                                             */
-/*   ATmega32                                             */
-/*                                                        */
-/* Work in progress:                                      */
-/*   ATtiny84 based devices (Luminet)                     */
-/*                                                        */
-/* Does not support:                                      */
-/*   USB based devices (eg. Teensy, Leonardo)             */
-/*                                                        */
+/*  Supported microcontrollers:                           */
+/*   ATmega2561             															*/
+/*                                                        */                                                      
 /* Assumptions:                                           */
 /*   The code makes several assumptions that reduce the   */
 /*   code size. They are all true after a hardware reset, */
@@ -69,7 +49,7 @@
 /*   Adaboot               http://www.ladyada.net/library/arduino/bootloader.html */
 /*   AVR305                Atmel Application Note         */
 /*                                                        */
-
+/*                                                        */
 /* Copyright 2013-2015 by Bill Westfield.                 */
 /* Copyright 2010 by Peter Knight.                        */
 /*                                                        */
@@ -102,7 +82,7 @@
 /*                                                        */
 /**********************************************************/
 /*                                                        */
-/* BIGBOOT:                                              */
+/* BIGBOOT:                                               */
 /* Build a 1k bootloader, not 512 bytes. This turns on    */
 /* extra functionality.                                   */
 /*                                                        */
@@ -154,34 +134,34 @@
 /**********************************************************/
 
 /**********************************************************/
-/* Edit History:					  */
-/*							  */
-/* Aug 2014						  */
+/* Edit History:                                          */
+/*                                                        */
+/* Aug 2014                                               */
 /* 6.2 WestfW: make size of length variables dependent    */
 /*              on the SPM_PAGESIZE.  This saves space    */
 /*              on the chips where it's most important.   */
-/* 6.1 WestfW: Fix OPTIBOOT_CUSTOMVER (send it!)	  */
-/*             Make no-wait mod less picky about	  */
-/*               skipping the bootloader.		  */
-/*             Remove some dead code			  */
-/* Jun 2014						  */
-/* 6.0 WestfW: Modularize memory read/write functions	  */
-/*             Remove serial/flash overlap		  */
-/*              (and all references to NRWWSTART/etc)	  */
+/* 6.1 WestfW: Fix OPTIBOOT_CUSTOMVER (send it!)          */
+/*             Make no-wait mod less picky about          */
+/*               skipping the bootloader.                 */
+/*             Remove some dead code                      */
+/* Jun 2014                                               */
+/* 6.0 WestfW: Modularize memory read/write functions     */
+/*             Remove serial/flash overlap                */
+/*              (and all references to NRWWSTART/etc)     */
 /*             Correctly handle pagesize > 255bytes       */
 /*             Add EEPROM support in BIGBOOT (1284)       */
 /*             EEPROM write on small chips now causes err */
 /*             Split Makefile into smaller pieces         */
-/*             Add Wicked devices Wildfire		  */
-/*	       Move UART=n conditionals into pin_defs.h   */
-/*	       Remove LUDICOUS_SPEED option		  */
-/*	       Replace inline assembler for .version      */
+/*             Add Wicked devices Wildfire                */
+/*	       Move UART=n conditionals into pin_defs.h       */
+/*	       Remove LUDICOUS_SPEED option                   */
+/*	       Replace inline assembler for .version          */
 /*              and add OPTIBOOT_CUSTOMVER for user code  */
 /*             Fix LED value for Bobuino (Makefile)       */
 /*             Make all functions explicitly inline or    */
 /*              noinline, so we fit when using gcc4.8     */
-/*             Change optimization options for gcc4.8	  */
-/*             Make ENV=arduino work in 1.5.x trees.	  */
+/*             Change optimization options for gcc4.8     */
+/*             Make ENV=arduino work in 1.5.x trees.      */
 /* May 2014                                               */
 /* 5.0 WestfW: Add support for 1Mbps UART                 */
 /* Mar 2013                                               */
@@ -192,7 +172,7 @@
 /* 4.6 WestfW/Pito: Add ATmega32 support                  */
 /* 4.6 WestfW/radoni: Don't set LED_PIN as an output if   */
 /*                    not used. (LED_START_FLASHES = 0)   */
-/* Jan 2013						  */
+/* Jan 2013                                               */
 /* 4.6 WestfW/dkinzer: use autoincrement lpm for read     */
 /* 4.6 WestfW/dkinzer: pass reset cause to app in R2      */
 /* Mar 2012                                               */
@@ -223,7 +203,7 @@
 /*  http://code.google.com/p/arduino/issues/detail?id=368n*/
 /* 4.2 WestfW: reduce code size, fix timeouts, change     */
 /*             verifySpace to use WDT instead of appstart */
-/* 4.1 WestfW: put version number in binary.		  */
+/* 4.1 WestfW: put version number in binary.              */
 /**********************************************************/
 
 #define OPTIBOOT_MAJVER 6
@@ -278,9 +258,9 @@ optiboot_version = 256*(OPTIBOOT_MAJVER + OPTIBOOT_CUSTOMVER) + OPTIBOOT_MINVER;
 #ifndef BAUD_RATE
 #if F_CPU >= 8000000L
 #define BAUD_RATE   115200L // Highest rate Avrdude win32 will support
-#elsif F_CPU >= 1000000L
+#elif F_CPU >= 1000000L
 #define BAUD_RATE   9600L   // 19200 also supported, but with significant error
-#elsif F_CPU >= 128000L
+#elif F_CPU >= 128000L
 #define BAUD_RATE   4800L   // Good for 128kHz internal RC
 #else
 #define BAUD_RATE 1200L     // Good even at 32768Hz
@@ -293,16 +273,20 @@ optiboot_version = 256*(OPTIBOOT_MAJVER + OPTIBOOT_CUSTOMVER) + OPTIBOOT_MINVER;
 
 #define BAUD_SETTING (( (F_CPU + BAUD_RATE * 4L) / ((BAUD_RATE * 8L))) - 1 )
 #define BAUD_ACTUAL (F_CPU/(8 * ((BAUD_SETTING)+1)))
-#define BAUD_ERROR (( 100*(BAUD_RATE - BAUD_ACTUAL) ) / BAUD_RATE)
-
-#if BAUD_ERROR >= 5
-#error BAUD_RATE error greater than 5%
-#elif BAUD_ERROR <= -5
-#error BAUD_RATE error greater than -5%
-#elif BAUD_ERROR >= 2
-#warning BAUD_RATE error greater than 2%
-#elif BAUD_ERROR <= -2
-#warning BAUD_RATE error greater than -2%
+#if BAUD_ACTUAL <= BAUD_RATE
+  #define BAUD_ERROR (( 100*(BAUD_RATE - BAUD_ACTUAL) ) / BAUD_RATE)
+  #if BAUD_ERROR >= 5
+    #error BAUD_RATE error greater than -5%
+  #elif BAUD_ERROR >= 2
+    #warning BAUD_RATE error greater than -2%
+  #endif
+#else
+  #define BAUD_ERROR (( 100*(BAUD_ACTUAL - BAUD_RATE) ) / BAUD_RATE)
+  #if BAUD_ERROR >= 5
+    #error BAUD_RATE error greater than 5%
+  #elif BAUD_ERROR >= 2
+    #warning BAUD_RATE error greater than 2%
+  #endif
 #endif
 
 #if (F_CPU + BAUD_RATE * 4L) / (BAUD_RATE * 8L) - 1 > 250
@@ -358,7 +342,9 @@ void __attribute__((noinline)) verifySpace();
 void __attribute__((noinline)) watchdogConfig(uint8_t x);
 
 static inline void getNch(uint8_t);
+#if LED_START_FLASHES > 0
 static inline void flash_led(uint8_t);
+#endif
 static inline void watchdogReset();
 static inline void writebuffer(int8_t memtype, uint8_t *mybuff,
 			       uint16_t address, pagelen_t len);
@@ -381,7 +367,7 @@ void appStart(uint8_t rstFlags) __attribute__ ((naked));
 // correct for a bug in avr-libc
 #undef SIGNATURE_2
 #define SIGNATURE_2 0x0A
-#elif defined(__AVR_ATmega1280__)
+#elif defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega2561__)
 #undef RAMSTART
 #define RAMSTART (0x200)
 #endif
@@ -463,7 +449,7 @@ int main(void) {
   // If not, uncomment the following instructions:
   // cli();
   asm volatile ("clr __zero_reg__");
-#if defined(__AVR_ATmega8__) || defined (__AVR_ATmega32__) || defined (__AVR_ATmega16__) || defined (__AVR_ATmega162__) || defined (__AVR_ATmega128__) || defined (__AVR_ATmega64__)
+#if defined(__AVR_ATmega8__) || defined (__AVR_ATmega32__) || defined (__AVR_ATmega16__)
   SP=RAMEND;  // This is done by hardware reset
 #endif
 
@@ -473,12 +459,12 @@ int main(void) {
    * can leave multiple reset flags set; we only want the bootloader to
    * run on an 'external reset only' status
    */
-#if defined (__AVR_ATmega128__) || defined (__AVR_ATmega64__)
-  ch = MCUCSR;
-  MCUCSR = 0;
-#else
+#if !defined(__AVR_ATmega16__)
   ch = MCUSR;
   MCUSR = 0;
+#else
+  ch = MCUCSR;
+  MCUCSR = 0;
 #endif
   if (ch & (_BV(WDRF) | _BV(BORF) | _BV(PORF)))
       appStart(ch);
@@ -532,9 +518,9 @@ int main(void) {
        * Send optiboot version as "SW version"
        * Note that the references to memory are optimized away.
        */
-      if (which == 0x82) {
+      if (which == STK_SW_MINOR) {
 	  putch(optiboot_version & 0xFF);
-      } else if (which == 0x81) {
+      } else if (which == STK_SW_MAJOR) {
 	  putch(optiboot_version >> 8);
       } else {
 	/*
@@ -558,17 +544,39 @@ int main(void) {
       newAddress = getch();
       newAddress = (newAddress & 0xff) | (getch() << 8);
 #ifdef RAMPZ
-      // Transfer top bit to RAMPZ
-      RAMPZ = (newAddress & 0x8000) ? 1 : 0;
+      // Transfer top bit to LSB in RAMPZ
+      if (newAddress & 0x8000) {
+        RAMPZ |= 0x01;
+      }
+      else {
+        RAMPZ &= 0xFE;
+      }
 #endif
       newAddress += newAddress; // Convert from word address to byte address
       address = newAddress;
       verifySpace();
     }
     else if(ch == STK_UNIVERSAL) {
+#ifdef RAMPZ
+      // LOAD_EXTENDED_ADDRESS is needed in STK_UNIVERSAL for addressing more than 128kB
+      if ( AVR_OP_LOAD_EXT_ADDR == getch() ) {
+        // get address
+        getch();  // get '0'
+        RAMPZ = (RAMPZ & 0x01) | ((getch() << 1) & 0xff);  // get address and put it in RAMPZ
+        getNch(1); // get last '0'
+        // response
+        putch(0x00);
+      }
+      else {
+        // everything else is ignored
+        getNch(3);
+        putch(0x00);
+      }
+#else
       // UNIVERSAL command is ignored
       getNch(4);
       putch(0x00);
+#endif
     }
     /* Write memory, length is big endian and is in bytes */
     else if(ch == STK_PROG_PAGE) {
@@ -715,7 +723,7 @@ uint8_t getch(void) {
   uint8_t ch;
 
 #ifdef LED_DATA_FLASH
-#if defined(__AVR_ATmega8__) || defined (__AVR_ATmega32__) || defined (__AVR_ATmega16__) || defined (__AVR_ATmega162__) || defined (__AVR_ATmega128__) || defined (__AVR_ATmega64__)
+#if defined(__AVR_ATmega8__) || defined (__AVR_ATmega32__) || defined (__AVR_ATmega16__)
   LED_PORT ^= _BV(LED);
 #else
   LED_PIN |= _BV(LED);
@@ -766,7 +774,7 @@ uint8_t getch(void) {
 #endif
 
 #ifdef LED_DATA_FLASH
-#if defined(__AVR_ATmega8__) || defined (__AVR_ATmega32__) || defined (__AVR_ATmega16__) || defined (__AVR_ATmega162__) || defined (__AVR_ATmega128__) || defined (__AVR_ATmega64__)
+#if defined(__AVR_ATmega8__) || defined (__AVR_ATmega32__) || defined (__AVR_ATmega16__)
   LED_PORT ^= _BV(LED);
 #else
   LED_PIN |= _BV(LED);
@@ -815,7 +823,7 @@ void flash_led(uint8_t count) {
     TCNT1 = -(F_CPU/(1024*16));
     TIFR1 = _BV(TOV1);
     while(!(TIFR1 & _BV(TOV1)));
-#if defined(__AVR_ATmega8__)  || defined (__AVR_ATmega32__) || defined (__AVR_ATmega16__) || defined (__AVR_ATmega162__) || defined (__AVR_ATmega128__) || defined (__AVR_ATmega64__)
+#if defined(__AVR_ATmega8__) || defined (__AVR_ATmega32__) || defined (__AVR_ATmega16__)
     LED_PORT ^= _BV(LED);
 #else
     LED_PIN |= _BV(LED);
@@ -893,11 +901,7 @@ static inline void writebuffer(int8_t memtype, uint8_t *mybuff,
 	     * the serial link, but the performance improvement was slight,
 	     * and we needed the space back.
 	     */
-#if defined(__AVR_ATmega128__) || defined (__AVR_ATmega64__)
-		__boot_page_erase_normal((uint16_t)(void*)address);
-#else
 	    __boot_page_erase_short((uint16_t)(void*)address);
-#endif
 	    boot_spm_busy_wait();
 
 	    /*
@@ -907,30 +911,18 @@ static inline void writebuffer(int8_t memtype, uint8_t *mybuff,
 		uint16_t a;
 		a = *bufPtr++;
 		a |= (*bufPtr++) << 8;
-#if defined(__AVR_ATmega128__) || defined (__AVR_ATmega64__)
-		__boot_page_fill_normal((uint16_t)(void*)addrPtr,a);
-#else
 		__boot_page_fill_short((uint16_t)(void*)addrPtr,a);
-#endif
 		addrPtr += 2;
 	    } while (len -= 2);
 
 	    /*
 	     * Actually Write the buffer to flash (and wait for it to finish.)
 	     */
-#if defined(__AVR_ATmega128__) || defined (__AVR_ATmega64__)
-		__boot_page_write_normal((uint16_t)(void*)address);
-#else
 	    __boot_page_write_short((uint16_t)(void*)address);
-#endif
 	    boot_spm_busy_wait();
 #if defined(RWWSRE)
 	    // Reenable read access to flash
-#if defined(__AVR_ATmega128__) || defined (__AVR_ATmega64__)
-		__boot_rww_enable();
-#else
 	    boot_rww_enable();
-#endif
 #endif
 	} // default block
 	break;

@@ -1,15 +1,10 @@
 #define FUNC_READ 1
 #define FUNC_WRITE 1
 /**********************************************************/
-/* Optiboot bootloader for Arduino                        */
-/*														  													*/
-/* Ported to ATmega64/128 by vanbwodonk									  */
-/* https://github.com/vanbwodonk/optiboot128			  			*/
+/* Majek's Optiboot bootloader for Arduino                */
 /*                                                        */
-/* http://optiboot.googlecode.com                         */
+/* http://github.com/majekw/optiboot                      */
 /*                                                        */
-/* Arduino-maintained version : See README.TXT            */
-/* http://code.google.com/p/arduino/                      */
 /*  It is the intent that changes not relevant to the     */
 /*  Arduino production envionment get moved from the      */
 /*  optiboot project to the arduino project in "lumps."   */
@@ -24,6 +19,7 @@
 /*   Customisable timeout with accurate timeconstant      */
 /*   Optional virtual UART. No hardware UART required.    */
 /*   Optional virtual boot partition for devices without. */
+/*	 Supports "write to flash" in application! 						*/
 /*                                                        */
 /* What you lose:                                         */
 /*   Implements a skeleton STK500 protocol which is       */
@@ -32,26 +28,12 @@
 /*   High baud rate breaks compatibility with standard    */
 /*     Arduino flash settings                             */
 /*                                                        */
-/* Fully supported:                                       */
-/*   ATmega168 based devices  (Diecimila etc)             */
-/*   ATmega328P based devices (Duemilanove etc)           */
 /*                                                        */
-/* Beta test (believed working.)                          */
-/*   ATmega8 based devices (Arduino legacy)               */
-/*   ATmega328 non-picopower devices                      */
-/*   ATmega644P based devices (Sanguino)                  */
-/*   ATmega1284P based devices                            */
-/*   ATmega1280 based devices (Arduino Mega)              */
-/*                                                        */
-/* Alpha test                                             */
-/*   ATmega32                                             */
-/*                                                        */
-/* Work in progress:                                      */
-/*   ATtiny84 based devices (Luminet)                     */
-/*                                                        */
-/* Does not support:                                      */
-/*   USB based devices (eg. Teensy, Leonardo)             */
-/*                                                        */
+/*  Supported microcontrollers:                           */
+/*   ATmega1281             															*/
+/*   ATmega128           																	*/
+/*   ATmega64           																	*/
+/*                                                        */                                                      
 /* Assumptions:                                           */
 /*   The code makes several assumptions that reduce the   */
 /*   code size. They are all true after a hardware reset, */
@@ -102,7 +84,7 @@
 /*                                                        */
 /**********************************************************/
 /*                                                        */
-/* BIGBOOT:                                              */
+/* BIGBOOT:                                               */
 /* Build a 1k bootloader, not 512 bytes. This turns on    */
 /* extra functionality.                                   */
 /*                                                        */
@@ -154,34 +136,34 @@
 /**********************************************************/
 
 /**********************************************************/
-/* Edit History:					  */
-/*							  */
-/* Aug 2014						  */
+/* Edit History:                                          */
+/*                                                        */
+/* Aug 2014                                               */
 /* 6.2 WestfW: make size of length variables dependent    */
 /*              on the SPM_PAGESIZE.  This saves space    */
 /*              on the chips where it's most important.   */
-/* 6.1 WestfW: Fix OPTIBOOT_CUSTOMVER (send it!)	  */
-/*             Make no-wait mod less picky about	  */
-/*               skipping the bootloader.		  */
-/*             Remove some dead code			  */
-/* Jun 2014						  */
-/* 6.0 WestfW: Modularize memory read/write functions	  */
-/*             Remove serial/flash overlap		  */
-/*              (and all references to NRWWSTART/etc)	  */
+/* 6.1 WestfW: Fix OPTIBOOT_CUSTOMVER (send it!)          */
+/*             Make no-wait mod less picky about          */
+/*               skipping the bootloader.                 */
+/*             Remove some dead code                      */
+/* Jun 2014                                               */
+/* 6.0 WestfW: Modularize memory read/write functions     */
+/*             Remove serial/flash overlap                */
+/*              (and all references to NRWWSTART/etc)     */
 /*             Correctly handle pagesize > 255bytes       */
 /*             Add EEPROM support in BIGBOOT (1284)       */
 /*             EEPROM write on small chips now causes err */
 /*             Split Makefile into smaller pieces         */
-/*             Add Wicked devices Wildfire		  */
-/*	       Move UART=n conditionals into pin_defs.h   */
-/*	       Remove LUDICOUS_SPEED option		  */
-/*	       Replace inline assembler for .version      */
+/*             Add Wicked devices Wildfire                */
+/*	       Move UART=n conditionals into pin_defs.h       */
+/*	       Remove LUDICOUS_SPEED option                   */
+/*	       Replace inline assembler for .version          */
 /*              and add OPTIBOOT_CUSTOMVER for user code  */
 /*             Fix LED value for Bobuino (Makefile)       */
 /*             Make all functions explicitly inline or    */
 /*              noinline, so we fit when using gcc4.8     */
-/*             Change optimization options for gcc4.8	  */
-/*             Make ENV=arduino work in 1.5.x trees.	  */
+/*             Change optimization options for gcc4.8	    */
+/*             Make ENV=arduino work in 1.5.x trees.	    */
 /* May 2014                                               */
 /* 5.0 WestfW: Add support for 1Mbps UART                 */
 /* Mar 2013                                               */
@@ -192,7 +174,7 @@
 /* 4.6 WestfW/Pito: Add ATmega32 support                  */
 /* 4.6 WestfW/radoni: Don't set LED_PIN as an output if   */
 /*                    not used. (LED_START_FLASHES = 0)   */
-/* Jan 2013						  */
+/* Jan 2013                                               */
 /* 4.6 WestfW/dkinzer: use autoincrement lpm for read     */
 /* 4.6 WestfW/dkinzer: pass reset cause to app in R2      */
 /* Mar 2012                                               */
@@ -223,7 +205,7 @@
 /*  http://code.google.com/p/arduino/issues/detail?id=368n*/
 /* 4.2 WestfW: reduce code size, fix timeouts, change     */
 /*             verifySpace to use WDT instead of appstart */
-/* 4.1 WestfW: put version number in binary.		  */
+/* 4.1 WestfW: put version number in binary.              */
 /**********************************************************/
 
 #define OPTIBOOT_MAJVER 6
@@ -383,7 +365,7 @@ void appStart(uint8_t rstFlags) __attribute__ ((naked));
 // correct for a bug in avr-libc
 #undef SIGNATURE_2
 #define SIGNATURE_2 0x0A
-#elif defined(__AVR_ATmega1280__)
+#elif defined(__AVR_ATmega1280__) || defined(__AVR_ATmega1281__)
 #undef RAMSTART
 #define RAMSTART (0x200)
 #endif

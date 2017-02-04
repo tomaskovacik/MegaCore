@@ -1,34 +1,53 @@
-// MEGACORE - ATmega64/128 pin mapping
-// Created by MCUdude
-// https://github.com/MCUdude/MegaCore
+/***************************************
+** This file is created by MCUdude 
+** for use with MegaCore
+** https://github.com/MCUdude/MegaCore	
+**
+** This is the file where all Arduino pins
+** and hardware related stuff are defined
+****************************************/
+
 //
-// 	ARD.  	 AVR
-// 	PINS  	 PINS
-//  	|>        |  		       	A0   A1   A2   A3   A4   A5   A6   A7 
-//  	|>	  |		        D45  D46  D47  D48  D49  D50  D51  D52		  D44  D43  D42
-//  	|	  | >	 AVC  GND  ARE  PF0  PF1  PF2  PF3  PF4  PF5  PF6  PF7  GND  VCC  PA0  PA1  PA2
-//  	V	  V	  -    -    -    -    -    -    -    -    -    -    -    -    -    -    -    -
-//		 PEN	|									       | PA3	D41
-//	D0	 PE0	|									       | PA4	D40
-//	D1	 PE1	|									       | PA5	D39
-//	D2	 PE2	|									       | PA6	D38
-//	D3	 PE3	|									       | PA7	D37
-//	D4	 PE4	|									       | PG2	D36
-//	D5	 PE5	|									       | PC7	D35
-//	D6	 PE6	|									       | PC6	D34
-//	D7	 PE7	|									       | PC5	D33
-//	D8	 PB0	|									       | PC4	D32
-//	D9	 PB1	|									       | PC3	D31
-//	D10	 PB2	|									       | PC2	D30
-//	D11	 PB3	|									       | PC1	D29
-//	D12	 PB4	|									       | PC0	D28
-//	D13	 PB5	|									       | PG1	D27 
-//	D14	 PB6	|									       | PG0	D26 
-//		  	  -    -    -    -    -    -    -    -    -    -    -    -    -    -    -    -
-//		 	 PB7  PG3  PG4  RST  VCC  GND  XT2  XT1  PD0  PD1  PD2  PD3  PD4  PD5  PD6  PD7
-//			 D15  D16  D17  			 D18  D19  D20  D21  D22  D23  D24  D25
-//
-//
+//  ARD.  AVR
+//  PINS  PINS
+//    |>  |                    A0   A1   A2   A3   A4   A5   A6   A7 
+//    |>  |                   D45  D46  D47  D48  D49  D50  D51  D52            D44  D43  D42
+//    |	  | >	 AVC  GND  AREF PF0  PF1  PF2  PF3  PF4  PF5  PF6  PF7  GND  VCC  PA0  PA1  PA2
+//    V	  V     -    -    -    -    -    -    -    -    -    -    -    -    -    -    -    -
+// (D53) PEN  |                                                                              | PA3  D41
+//            |                                                                              |
+//   D0  PE0  |                                                                              | PA4  D40
+//            |                                                                              |
+//   D1  PE1  |                                                                              | PA5  D39
+//            |                                                                              |
+//   D2  PE2  |                                                                              | PA6  D38
+//            |                                                                              |
+//   D3	 PE3  |                                                                              | PA7  D37
+//            |                                                                              |
+//   D4	 PE4  |                                                                              | PG2  D36
+//            |                                  ATMEGA64                                    |
+//   D5	 PE5  |                                                                              | PC7  D35
+//            |                                 ATMEGA128                                    |
+//   D6	 PE6  |                                                                              | PC6  D34
+//            |                                 ATMEGA1281                                   |
+//   D7	 PE7  |                                                                              | PC5  D33
+//            |                                 ATMEGA2561                                   |
+//   D8	 PB0  |                                                                              | PC4  D32
+//            |                                                                              |
+//   D9	 PB1  |                                                                              | PC3  D31
+//            |                                                                              |
+//   D10 PB2  |                                                                              | PC2  D30
+//            |                                                                              |
+//   D11 PB3  |                                                                              | PC1  D29
+//            |                    https://github.com/MCUdude/MegaCore                       |
+//   D12 PB4  |                                                                              | PC0  D28
+//            |                                                                              |
+//   D13 PB5  |                                                                              | PG1  D27 
+//            |                                                                              |
+//   D14 PB6  |                                                                              | PG0  D26 
+//              -    -    -    -    -    -    -    -    -    -    -    -    -    -    -    -
+//             PB7  PG3  PG4  RST  VCC  GND  XT2  XT1  PD0  PD1  PD2  PD3  PD4  PD5  PD6  PD7
+//             D15  D16  D17                           D18  D19  D20  D21  D22  D23  D24  D25
 //
 
 #ifndef Pins_Arduino_h
@@ -38,7 +57,11 @@
 #include <avr/pgmspace.h>
 
 
+#if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
 #define NUM_DIGITAL_PINS            53
+#elseif defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+#define NUM_DIGITAL_PINS            54
+#endif	
 #define NUM_ANALOG_INPUTS           8
 #define analogInputToDigitalPin(p) (((p) < 8) ? (p) + 45 : -1)
 #define digitalPinHasPWM(p)        (((p) >= 3 && (p) <= 5) || ((p) >= 12 && (p) <= 15))
@@ -161,7 +184,11 @@ const uint8_t PROGMEM digital_pin_to_port_PGM[] = {
 	PF, // PF4 ** D49 ** A4	
 	PF, // PF5 ** D50 ** A5	
 	PF, // PF6 ** D51 ** A6	
-	PF, // PF7 ** D52 ** A7	
+	PF, // PF7 ** D52 ** A7
+	
+	#if defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+	PG, // PG5 ** D53 ** PWM
+	#endif
 };
 
 const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
@@ -226,15 +253,19 @@ const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
 	_BV(5), // PF5 ** D50 ** A5	
 	_BV(6), // PF6 ** D51 ** A6	
 	_BV(7), // PF7 ** D52 ** A7	
+	
+	#if defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+	_BV(5), // PG5 ** D53 ** PWM
+	#endif
 };
 
 const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
 	NOT_ON_TIMER, // PE0 ** D0 ** RX0	
 	NOT_ON_TIMER, // PE1 ** D1 ** TX0	
 	NOT_ON_TIMER, // PE2 ** D2
-	TIMER3A, 	  // PE3 ** D3 ** PWM
-	TIMER3B, 	  // PE4 ** D4 ** PWM	
-	TIMER3C, 	  // PE5 ** D5 ** PWM
+	TIMER3A,      // PE3 ** D3 ** PWM
+	TIMER3B,      // PE4 ** D4 ** PWM	
+	TIMER3C,      // PE5 ** D5 ** PWM
 	NOT_ON_TIMER, // PE6 ** D6 
 	NOT_ON_TIMER, // PE7 ** D7
 	
@@ -242,10 +273,14 @@ const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
 	NOT_ON_TIMER, // PB1 ** D9 ** SCK
 	NOT_ON_TIMER, // PB2 ** D10 ** MOSI	
 	NOT_ON_TIMER, // PB3 ** D11 ** MISO	
-	TIMER0, 	  // PB4 ** D12 ** PWM
-	TIMER1A, 	  // PB5 ** D13 ** PWM
-	TIMER1B, 	  // PB6 ** D14 ** PWM	
-	TIMER1C, 	  // PB7 ** D15 ** PWM	
+	#if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
+	TIMER0,       // PB4 ** D12 ** PWM
+	#elif defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+	TIMER2A,      // PB4 ** D12 ** PWM
+	#endif	
+	TIMER1A,      // PB5 ** D13 ** PWM
+	TIMER1B,      // PB6 ** D14 ** PWM	
+	TIMER1C,      // PB7 ** D15 ** PWM	
 	
 	NOT_ON_TIMER, // PG3 ** D16
 	NOT_ON_TIMER, // PG4 ** D17
@@ -289,7 +324,11 @@ const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
 	NOT_ON_TIMER, // PF4 ** D49 ** A4	
 	NOT_ON_TIMER, // PF5 ** D50 ** A5	
 	NOT_ON_TIMER, // PF6 ** D51 ** A6	
-	NOT_ON_TIMER, // PF7 ** D52 ** A7	
+	NOT_ON_TIMER, // PF7 ** D52 ** A7
+	
+	#if defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+	TIMER0B,      // PG5 ** D53 ** PWM
+	#endif
 };
 
 #endif

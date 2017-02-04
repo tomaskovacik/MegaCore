@@ -79,10 +79,28 @@
 
 
 /*------------------------------------------------------------------------ */
-#if defined(__AVR_ATmega1280__)
+#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
 /*------------------------------------------------------------------------ */
 #if !defined(LED)
 #define LED         B7
+#endif
+
+/* Ports for soft UART */
+#ifdef SOFT_UART
+#define UART_PORT   PORTE
+#define UART_PIN    PINE
+#define UART_DDR    DDRE
+#define UART_TX_BIT 1
+#define UART_RX_BIT 0
+#endif
+#endif
+
+
+/*------------------------------------------------------------------------ */
+#if defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+/*------------------------------------------------------------------------ */
+#if !defined(LED)
+#define LED         B5
 #endif
 
 /* Ports for soft UART */

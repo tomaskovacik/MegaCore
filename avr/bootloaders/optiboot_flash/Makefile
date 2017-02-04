@@ -225,6 +225,13 @@ endif
 #---------------------------------------------------------------------------
 #
 
+#ATmega1281
+atmega1281: MCU_TARGET = atmega1281
+atmega1281: CFLAGS += $(COMMON_OPTIONS) -DBIGBOOT $(UART_CMD)
+atmega1281: AVR_FREQ ?= 16000000L
+atmega1281: LDSECTIONS  = -Wl,--section-start=.text=0x1fc00  -Wl,--section-start=.version=0x1fffe
+atmega1281: atmega1281/$(PROGRAM)_atmega1281_$(BAUD_RATE)_$(AVR_FREQ).hex
+atmega1281: atmega1281/$(PROGRAM)_atmega1281_$(BAUD_RATE)_$(AVR_FREQ).lst
 
 #ATmega1280
 atmega1280: MCU_TARGET = atmega1280
