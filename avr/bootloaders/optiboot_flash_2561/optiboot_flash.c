@@ -334,6 +334,7 @@ typedef uint8_t pagelen_t;
  * supress some compile-time options we want.)
  */
 
+void pre_main(void) __attribute__ ((naked)) __attribute__ ((section (".init8")));
 int main(void) __attribute__ ((OS_main)) __attribute__ ((section (".init9")));
 
 void __attribute__((noinline)) putch(char);
@@ -342,14 +343,13 @@ void __attribute__((noinline)) verifySpace();
 void __attribute__((noinline)) watchdogConfig(uint8_t x);
 
 static inline void getNch(uint8_t);
-#if LED_START_FLASHES > 0
 static inline void flash_led(uint8_t);
-#endif
 static inline void watchdogReset();
 static inline void writebuffer(int8_t memtype, uint8_t *mybuff,
 			       uint16_t address, pagelen_t len);
 static inline void read_mem(uint8_t memtype,
 			    uint16_t address, pagelen_t len);
+static void __attribute__((noinline)) do_spm(uint16_t address, uint8_t command, uint16_t data);
 
 #ifdef SOFT_UART
 void uartDelay() __attribute__ ((naked));
@@ -367,7 +367,8 @@ void appStart(uint8_t rstFlags) __attribute__ ((naked));
 // correct for a bug in avr-libc
 #undef SIGNATURE_2
 #define SIGNATURE_2 0x0A
-#elif defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega2561__)
+#elif defined(__AVR_ATmega1280__) || defined(__AVR_ATmega1281__)
+|| defined(__AVR_ATmega2560__) || defined(__AVR_ATmega2561__)
 #undef RAMSTART
 #define RAMSTART (0x200)
 #endif
@@ -425,6 +426,18 @@ void appStart(uint8_t rstFlags) __attribute__ ((naked));
 #define appstart_vec (0)
 #endif // VIRTUAL_BOOT_PARTITION
 
+/* everything that needs to run VERY early */
+void pre_main(void) {
+  // Allow convenient way of calling do_spm function - jump table,
+  //   so entry to this function will always be here, indepedent of compilation,
+  //   features etc
+  asm volatile (
+    "	rjmp	1f\n"
+    "	rjmp	do_spm\n"
+    "1:\n"
+  );
+}
+
 
 /* main program starts here */
 int main(void) {
@@ -454,21 +467,49 @@ int main(void) {
 #endif
 
   /*
-   * modified Adaboot no-wait mod.
-   * Pass the reset reason to app.  Also, it appears that an Uno poweron
-   * can leave multiple reset flags set; we only want the bootloader to
-   * run on an 'external reset only' status
+   * Protect as much from MCUSR as possible for application
+   * and still skip bootloader if not necessary
+   * 
+   * Code by MarkG55
+   * see discusion in https://github.com/Optiboot/optiboot/issues/97
    */
 #if !defined(__AVR_ATmega16__)
   ch = MCUSR;
-  MCUSR = 0;
 #else
   ch = MCUCSR;
-  MCUCSR = 0;
 #endif
-  if (ch & (_BV(WDRF) | _BV(BORF) | _BV(PORF)))
+  // Skip all logic and run bootloader if MCUSR is cleared (application request)
+  if (ch != 0) {
+    /*
+     * To run the boot loader, External Reset Flag must be set.
+     * If not, we could make shortcut and jump directly to application code.
+     * Also WDRF set with EXTRF is a result of Optiboot timeout, so we
+     * shouldn't run bootloader in loop :-) That's why:
+     *  1. application is running if WDRF is cleared
+     *  2. we clear WDRF if it's set with EXTRF to avoid loops
+     * One problematic scenario: broken application code sets watchdog timer 
+     * without clearing MCUSR before and triggers it quickly. But it's
+     * recoverable by power-on with pushed reset button.
+     */
+    if ((ch & (_BV(WDRF) | _BV(EXTRF))) != _BV(EXTRF)) { 
+      if (ch & _BV(EXTRF)) {
+        /*
+         * Clear WDRF because it was most probably set by wdr in bootloader.
+         * It's also needed to avoid loop by broken application which could
+         * prevent entering bootloader.
+         * '&' operation is skipped to spare few bytes as bits in MCUSR
+         * can only be cleared.
+         */
+#if !defined(__AVR_ATmega16__)
+        MCUSR = ~(_BV(WDRF));  
+#else
+        MCUCSR = ~(_BV(WDRF));  
+#endif
+      }
       appStart(ch);
-
+    }
+  }
+  
 #if LED_START_FLASHES > 0
   // Set up Timer 1 for timeout counter
   TCCR1B = _BV(CS12) | _BV(CS10); // div 1024
@@ -489,7 +530,7 @@ int main(void) {
 #endif
 
   // Set up watchdog to trigger after 1s
-  watchdogConfig(WATCHDOG_1S);
+  watchdogConfig(WATCHDOG_2S);
 
 #if (LED_START_FLASHES > 0) || defined(LED_DATA_FLASH)
   /* Set LED pin as output */
@@ -901,8 +942,7 @@ static inline void writebuffer(int8_t memtype, uint8_t *mybuff,
 	     * the serial link, but the performance improvement was slight,
 	     * and we needed the space back.
 	     */
-	    __boot_page_erase_short((uint16_t)(void*)address);
-	    boot_spm_busy_wait();
+	    do_spm((uint16_t)(void*)address,__BOOT_PAGE_ERASE,0);
 
 	    /*
 	     * Copy data from the buffer into the flash write buffer.
@@ -911,19 +951,14 @@ static inline void writebuffer(int8_t memtype, uint8_t *mybuff,
 		uint16_t a;
 		a = *bufPtr++;
 		a |= (*bufPtr++) << 8;
-		__boot_page_fill_short((uint16_t)(void*)addrPtr,a);
+		do_spm((uint16_t)(void*)addrPtr,__BOOT_PAGE_FILL,a);
 		addrPtr += 2;
 	    } while (len -= 2);
 
 	    /*
 	     * Actually Write the buffer to flash (and wait for it to finish.)
 	     */
-	    __boot_page_write_short((uint16_t)(void*)address);
-	    boot_spm_busy_wait();
-#if defined(RWWSRE)
-	    // Reenable read access to flash
-	    boot_rww_enable();
-#endif
+	    do_spm((uint16_t)(void*)address,__BOOT_PAGE_WRITE,0);
 	} // default block
 	break;
     } // switch
@@ -967,4 +1002,51 @@ static inline void read_mem(uint8_t memtype, uint16_t address, pagelen_t length)
 	} while (--length);
 	break;
     } // switch
+}
+
+/*
+ * Separate function for doing spm stuff
+ * It's needed for application to do SPM, as SPM instruction works only
+ * from bootloader.
+ *
+ * How it works:
+ * - do SPM
+ * - wait for SPM to complete
+ * - if chip have RWW/NRWW sections it does additionaly:
+ *   - if command is WRITE or ERASE, AND data=0 then reenable RWW section
+ *
+ * In short:
+ * If you play erase-fill-write, just set data to 0 in ERASE and WRITE
+ * If you are brave, you have your code just below bootloader in NRWW section
+ *   you could do fill-erase-write sequence with data!=0 in ERASE and
+ *   data=0 in WRITE
+ */
+static void do_spm(uint16_t address, uint8_t command, uint16_t data) {
+    // Do spm stuff
+    asm volatile (
+	"    movw  r0, %3\n"
+        "    out %0, %1\n"
+        "    spm\n"
+        "    clr  r1\n"
+        :
+        : "i" (_SFR_IO_ADDR(__SPM_REG)),
+          "r" ((uint8_t)command),
+          "z" ((uint16_t)address),
+          "r" ((uint16_t)data)
+        : "r0"
+    );
+
+    // wait for spm to complete
+    //   it doesn't have much sense for __BOOT_PAGE_FILL,
+    //   but it doesn't hurt and saves some bytes on 'if'
+    boot_spm_busy_wait();
+#if defined(RWWSRE)
+    // this 'if' condition should be: (command == __BOOT_PAGE_WRITE || command == __BOOT_PAGE_ERASE)...
+    // but it's tweaked a little assuming that in every command we are interested in here, there
+    // must be also SELFPRGEN set. If we skip checking this bit, we save here 4B
+    if ((command & (_BV(PGWRT)|_BV(PGERS))) && (data == 0) ) {
+      // Reenable read access to flash
+      boot_rww_enable();
+    }
+#endif
 }
