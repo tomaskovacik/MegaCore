@@ -59,7 +59,7 @@
 
 #if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
 #define NUM_DIGITAL_PINS            53
-#elseif defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+#elif defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
 #define NUM_DIGITAL_PINS            54
 #endif	
 #define NUM_ANALOG_INPUTS           8
