@@ -11,8 +11,6 @@
  * See optiboot.c for details.
  */
 
-
-
 /*
  * Handle devices with up to 4 uarts (eg m1280.)  Rather inelegantly.
  * Note that mega8/m32 still needs special handling, because ubrr is handled
@@ -53,15 +51,13 @@
 # define UART_UDR UDR3
 #endif
 
-
-
-
 /*------------------------------------------------------------------------ */
-#if defined(__AVR_ATmega64__) || defined (__AVR_ATmega128__)
+#if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
 /*------------------------------------------------------------------------ */
 #if !defined(LED)
 #define LED         B5
 #endif
+
 #define TIFR1 TIFR
 #define WDTCSR WDTCR
 //#define MCUSR MCUCSR
@@ -79,7 +75,7 @@
 
 
 /*------------------------------------------------------------------------ */
-#if defined(__AVR_ATmega640__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
+#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
 /*------------------------------------------------------------------------ */
 #if !defined(LED)
 #define LED         B7
@@ -112,6 +108,7 @@
 #define UART_RX_BIT 0
 #endif
 #endif
+
 
 
 /*

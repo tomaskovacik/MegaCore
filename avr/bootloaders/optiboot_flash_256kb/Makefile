@@ -3,32 +3,29 @@
 #
 
 # Edit History
-# 201607xx: MCUdude: Rewrote the make routines and deleted all the extra makefiles.
-#										 One can now simply run the makeall script to make all variants
-#										 of this bootloader.	 
-#											
-# 201406xx: WestfW:  More Makefile restructuring.
-#                    Split off Makefile.1284, Makefile.extras, Makefile.custom
-#                    So that in theory, the main Makefile contains only the
-#                    official platforms, and does not need to be modified to
-#                    add "less supported" chips and boards.
-#
-# 201303xx: WestfW:  Major Makefile restructuring.
-#                    Allows options on Make command line "make xx LED=B3"
-#                    (see also pin_defs.h)
-#                    Divide into "chip" targets and "board" targets.
-#                    Most boards are (recursive) board targets with options.
-#                    Move isp target to separate makefile (fixes m8 EFUSE)
-#                    Some (many) targets will now be rebuilt when not
-#                    strictly necessary, so that options will be included.
-#                    (any "make" with options will always compile.)
-#                    Set many variables with ?= so they can be overridden
-#                    Use arduinoISP settings as default for ISP targets
+# 201701xx: MCUdude: Small layout changes to make it look like the other makefile	
+# 
+# 201406xx: WestfW: More Makefile restructuring.
+#                   Split off Makefile.1284, Makefile.extras, Makefile.custom
+#                   So that in theory, the main Makefile contains only the
+#                   official platforms, and does not need to be modified to
+#                   add "less supported" chips and boards.
+# 201303xx: WestfW: Major Makefile restructuring.
+#                   Allows options on Make command line "make xx LED=B3"
+#                   (see also pin_defs.h)
+#                   Divide into "chip" targets and "board" targets.
+#                   Most boards are (recursive) board targets with options.
+#                   Move isp target to separate makefile (fixes m8 EFUSE)
+#                   Some (many) targets will now be rebuilt when not
+#                     strictly necessary, so that options will be included.
+#                     (any "make" with options will always compile.)
+#                   Set many variables with ?= so they can be overridden
+#                   Use arduinoISP settings as default for ISP targets
 #
 #
 # * Copyright 2013-2015 by Bill Westfield.  Part of Optiboot.
 # * This software is licensed under version 2 of the Gnu Public Licence.
-# * See optiboot_flash.c for details.
+# * See optiboot.c for details.
 
 #----------------------------------------------------------------------
 #
@@ -49,8 +46,8 @@ PROGRAM    = optiboot_flash
 export
 
 # defaults
-#MCU_TARGET = atmega128
-#LDSECTIONS  = -Wl,--section-start=.text=0x3e00 -Wl,--section-start=.version=0x3ffe
+#MCU_TARGET = atmega2561
+#LDSECTIONS  = -Wl,--section-start=.text=0x3fc00 -Wl,--section-start=.version=0x3fffe
 
 # Build environments
 # Start of some ugly makefile-isms to allow optiboot to be built
@@ -113,7 +110,7 @@ STK500-2 = $(STK500) -d$(MCU_TARGET) -ms -q -lCF -LCF -cUSB -I200kHz -s -wt
 
 
 OBJ        = $(PROGRAM).o
-OPTIMIZE = -Os -fno-split-wide-types -mrelax -fno-caller-saves
+OPTIMIZE = -Os -fno-split-wide-types -mrelax
 
 DEFS       = 
 
@@ -209,7 +206,7 @@ endif
 # A "Chip-level Platform" compiles for a particular chip, but probably does
 # not have "standard" values for things like clock speed, LED pin, etc.
 # Makes for chip-level platforms should usually explicitly define their
-# options like: "make atmega1285 AVR_FREQ=16000000L LED=D0"
+# options like: "make atmega1281 AVR_FREQ=16000000L LED=B5"
 #---------------------------------------------------------------------------
 #
 # Note about fuses:
@@ -225,46 +222,26 @@ endif
 #---------------------------------------------------------------------------
 #
 
-#ATmega1281
-atmega1281: MCU_TARGET = atmega1281
-atmega1281: CFLAGS += $(COMMON_OPTIONS) -DBIGBOOT $(UART_CMD)
-atmega1281: AVR_FREQ ?= 16000000L
-atmega1281: LDSECTIONS  = -Wl,--section-start=.text=0x1fc00  -Wl,--section-start=.version=0x1fffe
-atmega1281: atmega1281/$(PROGRAM)_atmega1281_$(BAUD_RATE)_$(AVR_FREQ).hex
-atmega1281: atmega1281/$(PROGRAM)_atmega1281_$(BAUD_RATE)_$(AVR_FREQ).lst
 
-#ATmega1280
-atmega1280: MCU_TARGET = atmega1280
-atmega1280: CFLAGS += $(COMMON_OPTIONS) -DBIGBOOT $(UART_CMD)
-atmega1280: AVR_FREQ ?= 16000000L
-atmega1280: LDSECTIONS  = -Wl,--section-start=.text=0x1fc00  -Wl,--section-start=.version=0x1fffe
-atmega1280: atmega1280/$(PROGRAM)_atmega1280_$(BAUD_RATE)_$(AVR_FREQ).hex
-atmega1280: atmega1280/$(PROGRAM)_atmega1280_$(BAUD_RATE)_$(AVR_FREQ).lst
+#Atmega2560
+atmega2560: TARGET = atmega2560
+atmega2560: MCU_TARGET = atmega2560
+atmega2560: CFLAGS += $(COMMON_OPTIONS) -DBIGBOOT
+atmega2560: AVR_FREQ ?= 16000000L
+atmega2560: LDSECTIONS  = -Wl,--section-start=.text=0x3fc00 -Wl,--section-start=.version=0x3fffe
+atmega2560: CFLAGS += $(UART_CMD)
+atmega2560: atmega2560/$(PROGRAM)_atmega2560_$(BAUD_RATE)_$(AVR_FREQ).hex
+atmega2560: atmega2560/$(PROGRAM)_atmega2560_$(BAUD_RATE)_$(AVR_FREQ).lst
 
-#ATmega128
-atmega128: MCU_TARGET = atmega128
-atmega128: CFLAGS += $(COMMON_OPTIONS) -DBIGBOOT $(UART_CMD)
-atmega128: AVR_FREQ ?= 16000000L
-atmega128: LDSECTIONS = -Wl,--section-start=.text=0x1fc00 -Wl,--section-start=.version=0x1fffe
-atmega128: atmega128/$(PROGRAM)_atmega128_$(BAUD_RATE)_$(AVR_FREQ).hex
-atmega128: atmega128/$(PROGRAM)_atmega128_$(BAUD_RATE)_$(AVR_FREQ).lst
-
-#ATmega640
-atmega640: MCU_TARGET = atmega640
-atmega640: CFLAGS += $(COMMON_OPTIONS) -DBIGBOOT $(UART_CMD)
-atmega640: AVR_FREQ ?= 16000000L
-atmega640: LDSECTIONS  = -Wl,--section-start=.text=0xfc00  -Wl,--section-start=.version=0xfffe
-atmega640: atmega640/$(PROGRAM)_atmega640_$(BAUD_RATE)_$(AVR_FREQ).hex
-atmega640: atmega640/$(PROGRAM)_atmega640_$(BAUD_RATE)_$(AVR_FREQ).lst
-
-#ATmega64
-atmega64: MCU_TARGET = atmega64
-atmega64: CFLAGS += $(COMMON_OPTIONS) -DBIGBOOT $(UART_CMD)
-atmega64: AVR_FREQ ?= 16000000L
-atmega64: LDSECTIONS = -Wl,--section-start=.text=0xfc00 -Wl,--section-start=.version=0xfffe
-atmega64: atmega64/$(PROGRAM)_atmega64_$(BAUD_RATE)_$(AVR_FREQ).hex
-atmega64: atmega64/$(PROGRAM)_atmega64_$(BAUD_RATE)_$(AVR_FREQ).lst
-
+#ATmega2561
+atmega2561: TARGET = atmega2561
+atmega2561: MCU_TARGET = atmega2561
+atmega2561: CFLAGS += $(COMMON_OPTIONS) -DBIGBOOT
+atmega2561: AVR_FREQ ?= 16000000L
+atmega2561: LDSECTIONS  = -Wl,--section-start=.text=0x3fc00 -Wl,--section-start=.version=0x3fffe
+atmega2561: CFLAGS += $(UART_CMD)
+atmega2561: atmega2561/$(PROGRAM)_atmega2561_$(BAUD_RATE)_$(AVR_FREQ).hex
+atmega2561: atmega2561/$(PROGRAM)_atmega2561_$(BAUD_RATE)_$(AVR_FREQ).lst
 
 #---------------------------------------------------------------------------
 #
@@ -291,19 +268,13 @@ isp-stk500: $(PROGRAM)_$(TARGET).hex
 
 clean:
 	rm -rf *.o *.elf *.lst *.map *.sym *.lss *.eep *.srec *.bin *.hex *.tmp.sh
-	rm -rf atmega64/*.hex atmega64/*.lst
-	rm -rf atmega640/*.hex atmega640/*.lst
-	rm -rf atmega128/*.hex atmega128/*.lst
-	rm -rf atmega1280/*.hex atmega1280/*.lst
-	rm -rf atmega1281/*.hex atmega1281/*.lst
+	rm -rf atmega2560/*.hex atmega2560/*.lst
+	rm -rf atmega2561/*.hex atmega2561/*.lst
 	rm -rf baudcheck.tmp.sh
 
-clean_asm:
-	rm -rf atmega64/*.lst
-	rm -rf atmega640/*.lst
-	rm -rf atmega128/*.lst
-	rm -rf atmega1280/*.lst
-	rm -rf atmega1281/*.lst
+clean_asm: 
+	rm -rf atmega2560/*.lst
+	rm -rf atmega2561/*.lst
 	rm -rf baudcheck.tmp.sh
 
 %.lst: %.elf
