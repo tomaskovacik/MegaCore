@@ -26,8 +26,8 @@ If you're into "pure" AVR programming, I'm happy to tell you that all relevant k
 * ATmega1281
 * ATmega128
 * ATmega64
- 
-* All variants - A, L and so on
+  
+(All variants - A, L, V)
 <br> <br>
 Can't decide what microcontroller to choose? Have a look at the specification table below:
 
@@ -35,7 +35,7 @@ Can't decide what microcontroller to choose? Have a look at the specification ta
 |--------------|------------|------------|----------|----------|
 | **Flash**    | 256kB      | 128kB      | 128kB    | 64kB     |
 | **RAM**      | 8kB        | 8kB        | 4kB      | 4kB      |
-| **EEPROM**   | 4kB				| 4kB        | 4kB      | 2kB      |
+| **EEPROM**   | 4kB        | 4kB        | 4kB      | 2kB      |
 | **IO pins**  | 54         | 54         | 53       | 53       |
 | **PWM pins** | 8          | 8          | 7        | 7        |
 
@@ -43,7 +43,7 @@ Can't decide what microcontroller to choose? Have a look at the specification ta
 ## Why add Arduino support for these microcontrollers?
 * They're dirt cheap (ATmega64/128 can be bought for less than a dollar at AliExpress and Ebay)
 * They're still hand solderable (The TQFP variant have 0.8mm pin pitch)
-* They got 53 or 54 IO pins (vs 32 for the [MightyCore](https://github.com/MCUdude/MightyCore) compatible ones and 86 for the ATmega1280/2560)
+* 53/54 IO pins (vs 32 for the [MightyCore](https://github.com/MCUdude/MightyCore) compatible ones and 86 for the ATmega1280/2560)
 
 
 ##Supported clock frequencies
@@ -159,5 +159,5 @@ Since there are no standarized Arduino pinout for the ATmega64/128/1281/2561, I 
 
 
 ##Minimal setup
-Here is a simple schematic showing a minimal setup using an external crystal. Skip the crystal and the two 22pF capacitors if you're using the internal oscillator. <br/>
+Here is a simple schematic showing a minimal setup using an external crystal. Skip the crystal and the two 22pF capacitors if you're using the internal oscillator. <br/> **There have been reported issues when trying to burn the bootloader. If you experience such issues, try adding a 1k resistor in series with pin PE0 and PE1.**
 <img src="http://i.imgur.com/UIino8I.png" width="750">
