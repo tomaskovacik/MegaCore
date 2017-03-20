@@ -28,7 +28,7 @@ If you're into "pure" AVR programming, I'm happy to tell you that all relevant k
 * ATmega64
   
 (All variants - A, L, V)
-<br> <br>
+<br/> <br/>
 Can't decide what microcontroller to choose? Have a look at the specification table below:
 
 |              | ATmega2561 | ATmega1281 |ATmega128 | ATmega64 | 
