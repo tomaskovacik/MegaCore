@@ -63,16 +63,17 @@ void yield(void);
 
 // Analog reference definitions
 #if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
-  #define EXTERNAL 1
-  #define INTERNAL 2
+  #define EXTERNAL 0
+  #define DEFAULT 1 // Default -> AVCC with external capacitor at AREF pin
+  #define INTERNAL 3
+  #define INTERNAL2V56 3
 #elif defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+  #define EXTERNAL 0
+  #define DEFAULT 1 // Default -> AVCC with external capacitor at AREF pin
   #define INTERNAL1V1 2
   #define INTERNAL2V56 3
 #endif
-
-// Default -> AVCC with external capacitor at AREF pin
-#define DEFAULT 1
-
+ 
 // undefine stdlib's abs if encountered
 #ifdef abs
 #undef abs
