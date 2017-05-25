@@ -327,12 +327,13 @@ private:
 #if !defined(SPI_HAS_EXTENDED_CS_PIN_HANDLING)
   #define SPI_ETHERNET_SETTINGS SPISettings(4000000, MSBFIRST, SPI_MODE0)
   #if defined(ARDUINO_ARCH_AVR)
-    #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
+  
+    // MegaCore 
+    #if defined(__AVR_ATmega640__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
       inline static void initSS()    { DDRB  |=  _BV(4); };
       inline static void setSS()     { PORTB &= ~_BV(4); };
       inline static void resetSS()   { PORTB |=  _BV(4); };
-    
-    // MegaCore  
+     
     #elif defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__) \
     || defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
       inline static void initSS()    { DDRB  |=  _BV(0); };
@@ -340,34 +341,26 @@ private:
       inline static void resetSS()   { PORTB |=  _BV(0); };  
   	
   	//MightyCore
-	#elif defined(__AVR_ATmega1284__) || defined(__AVR_ATmega1284P__) \
-	|| defined(__AVR_ATmega644__) || defined(__AVR_ATmega644P__)\
-	|| defined(__AVR_ATmega324__) || defined(__AVR_ATmega324P__)\
-	|| defined(__AVR_ATmega324PA__) || defined(__AVR_ATmega164__)\
-	|| defined(__AVR_ATmega164P__) || defined(__AVR_ATmega32__)\
-	|| defined(__AVR_ATmega16__) || defined(__AVR_ATmega8535__)
+	  #elif defined(__AVR_ATmega1284__) || defined(__AVR_ATmega1284P__) \
+	  || defined(__AVR_ATmega644__) || defined(__AVR_ATmega644P__)\
+	  || defined(__AVR_ATmega324__) || defined(__AVR_ATmega324P__)\
+	  || defined(__AVR_ATmega324PA__) || defined(__AVR_ATmega164__)\
+	  || defined(__AVR_ATmega164P__) || defined(__AVR_ATmega32__)\
+	  || defined(__AVR_ATmega16__) || defined(__AVR_ATmega8535__)
   	  inline static void initSS()    { DDRB  |=  _BV(4); }
       inline static void setSS()     { PORTB &= ~_BV(4); }
       inline static void resetSS()   { PORTB |=  _BV(4); }
-   
       
-    #elif defined(__AVR_ATmega32U4__)
-      inline static void initSS()    { DDRB  |=  _BV(6); };
-      inline static void setSS()     { PORTB &= ~_BV(6); };
-      inline static void resetSS()   { PORTB |=  _BV(6); };
-    #elif defined(__AVR_AT90USB1286__) || defined(__AVR_AT90USB646__) || defined(__AVR_AT90USB162__)
-      inline static void initSS()    { DDRB  |=  _BV(0); };
-      inline static void setSS()     { PORTB &= ~_BV(0); };
-      inline static void resetSS()   { PORTB |=  _BV(0); };
     #else
       inline static void initSS()    { DDRB  |=  _BV(2); };
       inline static void setSS()     { PORTB &= ~_BV(2); };
       inline static void resetSS()   { PORTB |=  _BV(2); };
     #endif
+    
   #elif defined(__ARDUINO_ARC__)
-	inline static void initSS() { pinMode(10, OUTPUT); };
-	inline static void setSS() { digitalWrite(10, LOW); };
-	inline static void resetSS() { digitalWrite(10, HIGH); };
+	inline static void initSS() { pinMode(SS, OUTPUT); };
+	inline static void setSS() { digitalWrite(SS, LOW); };
+	inline static void resetSS() { digitalWrite(SS, HIGH); };
   #else
     inline static void initSS() {
       *portModeRegister(digitalPinToPort(ETHERNET_SHIELD_SPI_CS)) |= digitalPinToBitMask(ETHERNET_SHIELD_SPI_CS);
