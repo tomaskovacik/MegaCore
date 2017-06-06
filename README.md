@@ -37,7 +37,7 @@ Can't decide what microcontroller to choose? Have a look at the specification ta
 
 |              | Mega2560 | Mega1280 | Mega640 | Mega2561 | Mega1281 | Mega128 | Mega64 | 
 |--------------|----------|----------|---------|----------|----------|---------|--------|
-| **Flash**    | 256kB    | 128kB    | 64kB    | 128kB    | 128kB    | 128kB   | 64kB   |
+| **Flash**    | 256kB    | 128kB    | 64kB    | 256kB    | 128kB    | 128kB   | 64kB   |
 | **RAM**      | 8kB      | 8kB      | 8kB     | 8kB      | 8kB      | 4kB     | 4kB    |
 | **EEPROM**   | 4kB      | 4kB      | 4kB     | 4kB      | 4kB      | 4kB     | 2kB    |
 | **IO pins**  | 70/86 *  | 70/86 *  | 70/86 * | 54       | 54       | 53      | 53     |
