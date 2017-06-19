@@ -76,8 +76,8 @@ static const uint8_t MISO = 11;
 
 #define LED_BUILTIN 13
 
-static const uint8_t SDA = 18;
-static const uint8_t SCL = 19;
+static const uint8_t SCL = 18;
+static const uint8_t SDA = 19;
 
 static const uint8_t A0 = 45;
 static const uint8_t A1 = 46;
