@@ -7,7 +7,7 @@ sudo: required
 env:
   global:
     # The Arduino IDE will be installed at APPLICATION_FOLDER/arduino
-    - APPLICATION_FOLDER="/usr/local/share"
+    - APPLICATION_FOLDER="${HOME}/arduino-ide"
     - SKETCHBOOK_FOLDER="${HOME}/Arduino"
 
     # The oldest version of the Arduino IDE that MegaCore's platform.txt is compatible with is 1.6.2 but that IDE version has a bug that interferes with other installations of the IDE.
