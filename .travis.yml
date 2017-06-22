@@ -394,6 +394,9 @@ before_install:
   # Check for board definition errors that don't affect compilation
   - set_board_testing "true"
 
+  # Check for library issues that don't affect compilation
+  - set_library_testing "true"
+
   # Install all IDE version required by the job
   - install_ide "$START_IDE_VERSION" "$END_IDE_VERSION"
 
