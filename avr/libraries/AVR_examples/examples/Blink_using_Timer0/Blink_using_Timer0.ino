@@ -60,8 +60,8 @@ ISR(TIMER0_OVF_vect)
   timeCount++;
   if(timeCount == 61) // Timer overflown for the 61th time
   {    
-    PORTB ^= _BV(ledPin); // Toggle the LED
-    timeCount = 0;        // Reset overflow counter
+    PORTB ^= ledPin;  // Toggle the LED
+    timeCount = 0;    // Reset overflow counter
   }
 }
 
