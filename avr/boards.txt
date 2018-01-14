@@ -647,7 +647,7 @@ menu.pinout=Pinout
 128.menu.clock.8MHz_internal.build.f_cpu=8000000L
 
 128.menu.clock.1MHz_internal=1 MHz internal
-128.menu.clock.8MHz_internal.upload.port=UART0
+128.menu.clock.1MHz_internal.upload.port=UART0
 128.menu.clock.1MHz_internal.upload.speed=9600
 128.menu.clock.1MHz_internal.bootloader.sut_cksel_bits=100001
 128.menu.clock.1MHz_internal.bootloader.high_fuses=0xd6
