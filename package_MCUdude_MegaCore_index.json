@@ -135,6 +135,26 @@
             {"name": "ATmega64"}
           ],
           "toolsDependencies": []
+        },
+        {
+          "name": "MegaCore",
+          "architecture": "avr",
+          "version": "2.0.1",
+          "category": "Contributed",
+          "url": "https://MCUdude.github.io/MegaCore/MegaCore-2.0.1.tar.bz2",
+          "archiveFileName": "MegaCore-2.0.1.tar.bz2",
+          "checksum": "SHA-256:6df594fe4585b32f56a6fae2506dcc874031b6b5673d05f93ec7e3868ffcfe5e",
+          "size": "332618",
+          "boards": [
+            {"name": "ATmega2561"},
+            {"name": "ATmega2560"},
+            {"name": "ATmega1281"},
+            {"name": "ATmega1280"},
+            {"name": "ATmega640"},
+            {"name": "ATmega128"},
+            {"name": "ATmega64"}
+          ],
+          "toolsDependencies": []
         }
       ],
       "tools": []
