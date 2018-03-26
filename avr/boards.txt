@@ -347,7 +347,7 @@ menu.pinout=Pinout
 1280.name=ATmega1280
 1280.upload.tool=avrdude
 1280.upload.protocol=arduino
-1280.upload.maximum_size=261120
+1280.upload.maximum_size=130048
 1280.upload.maximum_data_size=8192
 
 1280.bootloader.tool=avrdude
@@ -453,7 +453,7 @@ menu.pinout=Pinout
 640.name=ATmega640
 640.upload.tool=avrdude
 640.upload.protocol=arduino
-640.upload.maximum_size=261120
+640.upload.maximum_size=64512
 640.upload.maximum_data_size=8192
 
 640.bootloader.tool=avrdude
