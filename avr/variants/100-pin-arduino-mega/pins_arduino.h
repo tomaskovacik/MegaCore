@@ -18,7 +18,7 @@
 #define MEGACORE_100_PIN_MEGA_PINOUT
 
 // General IO defs
-#define NUM_DIGITAL_PINS            70
+#define NUM_DIGITAL_PINS            84
 #define NUM_ANALOG_INPUTS           16
 #define EXTERNAL_NUM_INTERRUPTS     8
 #define analogInputToDigitalPin(p)  ((p < 16) ? (p) + 54 : -1)
@@ -224,6 +224,22 @@ const uint8_t PROGMEM digital_pin_to_port_PGM[] = {
   PK, // PK 5 ** 67 ** A13  
   PK, // PK 6 ** 68 ** A14  
   PK, // PK 7 ** 69 ** A15  
+  PE, // PE 2 ** 70 ** D70  
+  PE, // PE 6 ** 71 ** D71  
+  PE, // PE 7 ** 72 ** D72  
+  PH, // PH 2 ** 73 ** D73  
+  PH, // PH 7 ** 74 ** D74  
+  PG, // PG 3 ** 75 ** D75  
+  PG, // PG 4 ** 76 ** D76  
+  PD, // PD 4 ** 77 ** D77  
+  PD, // PD 5 ** 78 ** D78  
+  PD, // PD 6 ** 79 ** D79  
+  PJ, // PJ 2 ** 80 ** D80  
+  PJ, // PJ 3 ** 81 ** D81  
+  PJ, // PJ 4 ** 82 ** D82  
+  PJ, // PJ 5 ** 83 ** D83  
+  PJ, // PJ 6 ** 84 ** D84  
+  PJ, // PJ 7 ** 85 ** D85  
 };
 
 const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
@@ -299,6 +315,22 @@ const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
   _BV(5), // PK 5 ** 67 ** A13  
   _BV(6), // PK 6 ** 68 ** A14  
   _BV(7), // PK 7 ** 69 ** A15  
+  _BV(2), // PE 2 ** 70 ** D70  
+  _BV(6), // PE 6 ** 71 ** D71  
+  _BV(7), // PE 7 ** 72 ** D72  
+  _BV(2), // PH 2 ** 73 ** D73  
+  _BV(7), // PH 7 ** 74 ** D74  
+  _BV(3), // PG 3 ** 75 ** D75  
+  _BV(4), // PG 4 ** 76 ** D76  
+  _BV(4), // PD 4 ** 77 ** D77  
+  _BV(5), // PD 5 ** 78 ** D78  
+  _BV(6), // PD 6 ** 79 ** D79  
+  _BV(2), // PJ 2 ** 80 ** D80  
+  _BV(3), // PJ 3 ** 81 ** D81  
+  _BV(4), // PJ 4 ** 82 ** D82  
+  _BV(5), // PJ 5 ** 83 ** D83  
+  _BV(6), // PJ 6 ** 84 ** D84  
+  _BV(7), // PJ 7 ** 85 ** D85  
 };
 
 const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
@@ -374,6 +406,22 @@ const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
   NOT_ON_TIMER, // PK 5 ** 67 ** A13  
   NOT_ON_TIMER, // PK 6 ** 68 ** A14  
   NOT_ON_TIMER, // PK 7 ** 69 ** A15  
+  NOT_ON_TIMER, // PE 2 ** 70 ** D70  
+  NOT_ON_TIMER, // PE 6 ** 71 ** D71  
+  NOT_ON_TIMER, // PE 7 ** 72 ** D72  
+  NOT_ON_TIMER, // PH 2 ** 73 ** D73  
+  NOT_ON_TIMER, // PH 7 ** 74 ** D74  
+  NOT_ON_TIMER, // PG 3 ** 75 ** D75  
+  NOT_ON_TIMER, // PG 4 ** 76 ** D76  
+  NOT_ON_TIMER, // PD 4 ** 77 ** D77  
+  NOT_ON_TIMER, // PD 5 ** 78 ** D78  
+  NOT_ON_TIMER, // PD 6 ** 79 ** D79  
+  NOT_ON_TIMER, // PJ 2 ** 80 ** D80  
+  NOT_ON_TIMER, // PJ 3 ** 81 ** D81  
+  NOT_ON_TIMER, // PJ 4 ** 82 ** D82  
+  NOT_ON_TIMER, // PJ 5 ** 83 ** D83  
+  NOT_ON_TIMER, // PJ 6 ** 84 ** D84  
+  NOT_ON_TIMER, // PJ 7 ** 85 ** D85
 };
 
 #endif
