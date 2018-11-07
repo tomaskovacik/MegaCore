@@ -69,9 +69,9 @@ menu.pinout=Pinout
 2561.menu.LTO.Os.ltoarcmd=avr-ar
 
 2561.menu.LTO.Os_flto=Enabled
-2561.menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto
-2561.menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto
-2561.menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto
+2561.menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto -g
+2561.menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto -g
+2561.menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto -g
 2561.menu.LTO.Os_flto.ltoarcmd=avr-gcc-ar
 
 # Clock frequencies
@@ -175,9 +175,9 @@ menu.pinout=Pinout
 2560.menu.LTO.Os.ltoarcmd=avr-ar
 
 2560.menu.LTO.Os_flto=Enabled
-2560.menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto
-2560.menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto
-2560.menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto
+2560.menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto -g
+2560.menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto -g
+2560.menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto -g
 2560.menu.LTO.Os_flto.ltoarcmd=avr-gcc-ar
 
 # Clock frequencies
@@ -276,9 +276,9 @@ menu.pinout=Pinout
 1281.menu.LTO.Os.ltoarcmd=avr-ar
 
 1281.menu.LTO.Os_flto=Enabled
-1281.menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto
-1281.menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto
-1281.menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto
+1281.menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto -g
+1281.menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto -g
+1281.menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto -g
 1281.menu.LTO.Os_flto.ltoarcmd=avr-gcc-ar
 
 # Clock frequencies
@@ -382,9 +382,9 @@ menu.pinout=Pinout
 1280.menu.LTO.Os.ltoarcmd=avr-ar
 
 1280.menu.LTO.Os_flto=Enabled
-1280.menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto
-1280.menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto
-1280.menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto
+1280.menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto -g
+1280.menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto -g
+1280.menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto -g
 1280.menu.LTO.Os_flto.ltoarcmd=avr-gcc-ar
 
 # Clock frequencies
@@ -488,9 +488,9 @@ menu.pinout=Pinout
 640.menu.LTO.Os.ltoarcmd=avr-ar
 
 640.menu.LTO.Os_flto=Enabled
-640.menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto
-640.menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto
-640.menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto
+640.menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto -g
+640.menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto -g
+640.menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto -g
 640.menu.LTO.Os_flto.ltoarcmd=avr-gcc-ar
 
 # Clock frequencies
@@ -588,9 +588,9 @@ menu.pinout=Pinout
 128.menu.LTO.Os.ltoarcmd=avr-ar
 
 128.menu.LTO.Os_flto=Enabled
-128.menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto
-128.menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto
-128.menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto
+128.menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto -g
+128.menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto -g
+128.menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto -g
 128.menu.LTO.Os_flto.ltoarcmd=avr-gcc-ar
 
 # Clock frequencies
@@ -695,9 +695,9 @@ menu.pinout=Pinout
 64.menu.LTO.Os.ltoarcmd=avr-ar
 
 64.menu.LTO.Os_flto=Enabled
-64.menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto
-64.menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto
-64.menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto
+64.menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto -g
+64.menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto -g
+64.menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto -g
 64.menu.LTO.Os_flto.ltoarcmd=avr-gcc-ar
 
 # Clock frequencies
