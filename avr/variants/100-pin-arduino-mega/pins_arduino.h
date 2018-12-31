@@ -41,7 +41,7 @@ static const uint8_t SCK  = 52;
 #define PIN_WIRE_SDA  20
 #define PIN_WIRE_SCL  21
 static const uint8_t SDA = 20;
-static const uint8_t SCL = 20;
+static const uint8_t SCL = 21;
 
 #define LED_BUILTIN 13
 
