@@ -18,7 +18,7 @@
 #define MEGACORE_100_PIN_MEGA_PINOUT
 
 // General IO defs
-#define NUM_DIGITAL_PINS            84
+#define NUM_DIGITAL_PINS            86
 #define NUM_ANALOG_INPUTS           16
 #define EXTERNAL_NUM_INTERRUPTS     8
 #define analogInputToDigitalPin(p)  ((p < 16) ? (p) + 54 : -1)
