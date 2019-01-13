@@ -156,7 +156,7 @@ Since there are no standarized Arduino pinout for the ATmega64/128/1281/2561, I'
 ### ATmega640/1280/2560
 Beside including the original Arduino Mega pinout for the ATmega640/1280/2560, I've also added an *AVR style pinout*, which is a more straight forward and logical pinout if you're not working with the Arduino Mega board. For the default Arduino Mega pinout, the standard LED pin is assigned to Arduino pin 13, and for the AVR pin it's assigned to pin 22.
 <b>Click to enlarge:</b> <br/>
-<img src="http://i.imgur.com/ez5MyvI.jpg" width="280"> <img src="https://i.imgur.com/O7WtWAj.jpg" width="280"> <img src="http://i.imgur.com/DfR7arD.jpg" width="280">
+<img src="https://i.imgur.com/zS6LTAj.jpg" width="280"> <img src="https://i.imgur.com/O7WtWAj.jpg" width="280"> <img src="http://i.imgur.com/DfR7arD.jpg" width="280">
 
 
 
