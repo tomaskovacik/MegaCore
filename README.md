@@ -9,6 +9,7 @@ If you're into "pure" AVR programming, I'm happy to tell you that all relevant k
 # Table of contents
 * [Supported microcontrollers](#supported-microcontrollers)
 * [Supported clock frequencies](#supported-clock-frequencies)
+* [Bootloader option](#bootloader-option)
 * [BOD option](#bod-option)
 * [Link time optimization / LTO](#link-time-optimization--lto)
 * [Programmers](#programmers)
@@ -68,6 +69,13 @@ for static delays use *_delay_ms()* and *_delay_us()* instead.
 * Edit the baudrate line in the [boards.txt](https://github.com/MCUdude/MegaCore/blob/11fd19fd0a5dcc808f4e8fc0b627c4477df515c8/avr/boards.txt#L59) file, and choose either 115200, 57600, 38400 or 19200 baud.
 * Upload the code using a programmer (USBasp, USBtinyISP etc.) or skip the bootloader
 * Use the 1 MHz option instead 
+
+
+## Bootloader option
+MegaCore lets you select which serial port you want to use for uploading. UART0 is the default port for all targets, but UART1 may also be used for uploading.
+If your application doesn't need or require a bootloader for uploading code you can also choose to disable this by selecting *No bootloader*. This frees 1024 bytes of flash memory.
+
+Note that you have need to connect a programmer and hit **Burn bootloader** if you want to change any of the *Upload port settings*.
 
 
 ## BOD option
