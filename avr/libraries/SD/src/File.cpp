@@ -143,4 +143,3 @@ File::operator bool() {
     return  _file->isOpen();
   return false;
 }
-

@@ -246,5 +246,3 @@ uint8_t EthernetUDP::beginMulticast(IPAddress ip, uint16_t port)
   socket(_sock, SnMR::UDP, port, SnMR::MULTI);
   return 1;
 }
-
-

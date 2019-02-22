@@ -60,5 +60,3 @@ ISR(TIMER1_CAPT_vect) // Timer1 input capture
 
   Serial.println(periodOut); //Print the period [ms]
 }
-
-

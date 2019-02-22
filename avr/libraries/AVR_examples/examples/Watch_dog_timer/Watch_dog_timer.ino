@@ -53,4 +53,3 @@ int main(void)
 
   while(1); // The watchdog will reset the microcontroller after 1 second
 }
-

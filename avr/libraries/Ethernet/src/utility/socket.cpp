@@ -466,4 +466,3 @@ int sendUDP(SOCKET s)
   /* Sent ok */
   return 1;
 }
-

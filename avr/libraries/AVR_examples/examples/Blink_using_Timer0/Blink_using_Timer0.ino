@@ -64,4 +64,3 @@ ISR(TIMER0_OVF_vect)
     timeCount = 0;    // Reset overflow counter
   }
 }
-

@@ -73,4 +73,3 @@ typedef enum { _timer5, _timer1, _timer3, _timer4, _Nbr_16timers } timer16_Seque
 #define _useTimer1
 typedef enum { _timer1, _Nbr_16timers } timer16_Sequence_t;
 #endif
-

@@ -38,4 +38,3 @@ void loop()
 {
   t.update(); // Updates the timer
 }
-
