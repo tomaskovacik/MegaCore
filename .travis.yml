@@ -417,11 +417,14 @@ before_install:
   # Check for library issues that don't affect compilation
   - set_library_testing "true"
 
-  # Install all IDE version required by the job
-  - install_ide "$START_IDE_VERSION" "$END_IDE_VERSION"
-
   # Install MegaCore from the repository
   - install_package
+
+  # Check for common issues with the bundled libraries and their example sketches
+  - check_library_structure "${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" 1
+
+  # Install all IDE version required by the job
+  - install_ide "$START_IDE_VERSION" "$END_IDE_VERSION"
 
 
 script:
