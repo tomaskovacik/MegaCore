@@ -19,42 +19,42 @@
 
  Library modified by MCUdude to work with "regular" interrupt pins.
  This example code is in the public domain.
- 
- 
+
+
  ***** MEGACORE *****
- Not all pins on the ATmega640, ATmega1280 and ATmega2560 support interrupts. 
+ Not all pins on the ATmega640, ATmega1280 and ATmega2560 support interrupts.
  For the "Arduino MEGA pinout" the following pins may be used for RX:
  2, 3, 10, 11, 12, 13, 18, 19, 20, 21, 50, 51, 52, 53, 62, 63, 64, 65, 66, 67, 68, 69
  For the "AVR pinout" the following may be used for RX:
  4, 5, 6, 7, 15, 16, 17, 18, 19, 20, 21, 22, 34, 35, 36, 37, 52, 53, 54, 55, 56, 57, 58,
  77, 78, 79, 80, 81, 82, 83, 84
- 
+
  Not all pins on the ATmega1281 and ATmega2561 support interrupts.
  The following pins may be used for RX:
  0, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21
- 
- No pins on the ATmega64 and ATmega128 supportpin change interrupts, 
+
+ No pins on the ATmega64 and ATmega128 supportpin change interrupts,
  so only "regular" interrupts may be used.
  The following pins may be used for RX:
  4, 5, 6, 7, 18, 19, 20, 21
-  
- 
+
+
  ***** MINICORE *****
- All pins on the ATmega48, ATmega88, ATmega168 and ATmega328 
+ All pins on the ATmega48, ATmega88, ATmega168 and ATmega328
  support pin change interrupts, so all pins may be used for RX.
 
  No pins on the ATmega8 support pin change interrupts,
- so only "regular" interrupts may be used. 
+ so only "regular" interrupts may be used.
  The following pins may be used for RX: 2, 3
- 
- 
+
+
  ***** MAJORCORE *****
  Not all pins on the ATmega162 support interrupts.
  The following pins may be used for RX:
  10, 11, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32
- 
+
  No pins on the ATmega8515 supports pin change interrupts,
- so only "regular" interrupts may be used. 
+ so only "regular" interrupts may be used.
  The following pins may be used for RX: 10, 11, 32
 */
 
@@ -67,7 +67,7 @@ SoftwareSerial portOne(10, 11);
 // on the Mega, use other pins instead, since 8 and 9 don't work on the Mega
 SoftwareSerial portTwo(8, 9);
 
-void setup() 
+void setup()
 {
   // Open serial communications and wait for port to open:
   Serial.begin(9600);
@@ -78,7 +78,7 @@ void setup()
   portTwo.begin(9600);
 }
 
-void loop() 
+void loop()
 {
   // By default, the last intialized port is listening.
   // when you want to listen on a port, explicitly select it:
@@ -86,7 +86,7 @@ void loop()
   Serial.println("Data from port one:");
   // while there is data coming in, read it
   // and send to the hardware serial port:
-  while (portOne.available() > 0) 
+  while (portOne.available() > 0)
   {
     char inByte = portOne.read();
     Serial.write(inByte);
@@ -100,7 +100,7 @@ void loop()
   // while there is data coming in, read it
   // and send to the hardware serial port:
   Serial.println("Data from port two:");
-  while (portTwo.available() > 0) 
+  while (portTwo.available() > 0)
   {
     char inByte = portTwo.read();
     Serial.write(inByte);

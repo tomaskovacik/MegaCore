@@ -6,7 +6,7 @@
  A detailed explaination about debugging, port and
  pin definitions can be watched here:
  https://www.youtube.com/watch?v=plJf0r7IcWc
-***************************************************/ 
+***************************************************/
 
 
 #include <avr/io.h>
@@ -14,10 +14,10 @@
 
 
 int main(void)
-{       
+{
 
-  /************************************************ 
-   A few different ways to set a pin as output and 
+  /************************************************
+   A few different ways to set a pin as output and
    ignore the rest of the pins. Pick your favorite!
   *************************************************/
   DDRB |= 0x10;     // XXXXXXXX | 00100000 = XX1XXXXX
@@ -26,31 +26,31 @@ int main(void)
 
 
 
-  /************************************************ 
-   A few different ways to set a pin as input and 
+  /************************************************
+   A few different ways to set a pin as input and
    ignore the rest of the pins.
   *************************************************/
   //DDRB &= ~0x10; //00100000 -> 11011111 & XXXXXXXX = XX0XXXXX
-  //DDRB &= ~_BV(PB5); 
+  //DDRB &= ~_BV(PB5);
   //DDRB &= ~(1 << PB5);
-    
-  
+
+
   // Infinite loop
   while(1)
   {
-    /*********************************************** 
-     A few different ways to set a pin high and 
-     ignore the rest of the pins. 
+    /***********************************************
+     A few different ways to set a pin high and
+     ignore the rest of the pins.
     ************************************************/
     PORTB |= 0x10;  // XXXXXXXX | 00100000 = XX1XXXXX
     //PORTB |= _BV(PB5);
     //PORTB |= (1 << PB5);
-    //SetPinHigh(&PORTB, 5); 
+    //SetPinHigh(&PORTB, 5);
     _delay_ms(1000);
-    
-    
-    /*********************************************** 
-     A few different ways to set a pin low and 
+
+
+    /***********************************************
+     A few different ways to set a pin low and
      ignore the rest of the pins.
     ************************************************/
     PORTB &= ~0x10;  // 00100000 -> 11011111 & XXXXXXXX = XX0XXXXX
@@ -59,7 +59,7 @@ int main(void)
     //SetPinLow(&PORTB, 5);
     _delay_ms(1000);
   }
-    
+
   return 0;
 }
 

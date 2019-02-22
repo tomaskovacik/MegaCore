@@ -9,7 +9,7 @@
 |                                                   |
 |***************************************************/
 
- 
+
 #ifndef Pins_Arduino_h
 #define Pins_Arduino_h
 
@@ -145,8 +145,8 @@ const uint16_t PROGMEM port_to_input_PGM[] = {
 };
 
 const uint8_t PROGMEM digital_pin_to_port_PGM[] = {
-  // PORTLIST    
-  // -------------------------------------------    
+  // PORTLIST
+  // -------------------------------------------
   PE, // PE 0 ** 0 ** RXD0
   PE, // PE 1 ** 1 ** TXD0
   PE, // PE 2 ** 2
@@ -236,34 +236,34 @@ const uint8_t PROGMEM digital_pin_to_port_PGM[] = {
 };
 
 const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
-  // PIN IN PORT    
-  // -------------------------------------------    
+  // PIN IN PORT
+  // -------------------------------------------
   _BV(0), // PE 0 ** 0 ** RXD0
   _BV(1), // PE 1 ** 1 ** TXD0
-  _BV(2), // PE 2 ** 2   
+  _BV(2), // PE 2 ** 2
   _BV(3), // PE 3 ** 3
   _BV(4), // PE 4 ** 4
   _BV(5), // PE 5 ** 5
   _BV(6), // PE 6 ** 6
   _BV(7), // PE 7 ** 7
-  _BV(0), // PH 0 ** 8 ** RXD2  
-  _BV(1), // PH 1 ** 9 ** TXD2  
-  _BV(2), // PH 2 ** 10  
-  _BV(3), // PH 3 ** 11  
-  _BV(4), // PH 4 ** 12  
-  _BV(5), // PH 5 ** 13  
-  _BV(6), // PH 6 ** 14  
-  _BV(0), // PB 0 ** 15 ** SS  
-  _BV(1), // PB 1 ** 16 ** SCK  
-  _BV(2), // PB 2 ** 17 ** MOSI  
-  _BV(3), // PB 3 ** 18 ** MISO  
+  _BV(0), // PH 0 ** 8 ** RXD2
+  _BV(1), // PH 1 ** 9 ** TXD2
+  _BV(2), // PH 2 ** 10
+  _BV(3), // PH 3 ** 11
+  _BV(4), // PH 4 ** 12
+  _BV(5), // PH 5 ** 13
+  _BV(6), // PH 6 ** 14
+  _BV(0), // PB 0 ** 15 ** SS
+  _BV(1), // PB 1 ** 16 ** SCK
+  _BV(2), // PB 2 ** 17 ** MOSI
+  _BV(3), // PB 3 ** 18 ** MISO
   _BV(4), // PB 4 ** 19
   _BV(5), // PB 5 ** 20
   _BV(6), // PB 6 ** 21
-  _BV(7), // PB 7 ** 22  
-  _BV(7), // PH 7 ** 23    
+  _BV(7), // PB 7 ** 22
+  _BV(7), // PH 7 ** 23
   _BV(3), // PG 3 ** 24
-  _BV(4), // PG 4 ** 25    
+  _BV(4), // PG 4 ** 25
   _BV(0), // PL 0 ** 26
   _BV(1), // PL 1 ** 27
   _BV(2), // PL 2 ** 28
@@ -279,19 +279,19 @@ const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
   _BV(4), // PD 4 ** 38
   _BV(5), // PD 5 ** 39
   _BV(6), // PD 6 ** 40
-  _BV(7), // PD 7 ** 41  
+  _BV(7), // PD 7 ** 41
   _BV(0), // PG 0 ** 42
   _BV(1), // PG 1 ** 43
   _BV(0), // PC 0 ** 44
   _BV(1), // PC 1 ** 45
   _BV(2), // PC 2 ** 46
-  _BV(3), // PC 3 ** 47  
-  _BV(4), // PC 4 ** 48  
-  _BV(5), // PC 5 ** 49  
+  _BV(3), // PC 3 ** 47
+  _BV(4), // PC 4 ** 48
+  _BV(5), // PC 5 ** 49
   _BV(6), // PC 6 ** 50
-  _BV(7), // PC 7 ** 51  
-  _BV(0), // PJ 0 ** 52 ** RXD3  
-  _BV(1), // PJ 1 ** 53 ** TXD3  
+  _BV(7), // PC 7 ** 51
+  _BV(0), // PJ 0 ** 52 ** RXD3
+  _BV(1), // PJ 1 ** 53 ** TXD3
   _BV(2), // PJ 2 ** 54
   _BV(3), // PJ 3 ** 55
   _BV(4), // PJ 4 ** 56
@@ -305,8 +305,8 @@ const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
   _BV(3), // PA 3 ** 64
   _BV(2), // PA 2 ** 65
   _BV(1), // PA 1 ** 66
-  _BV(0), // PA 0 ** 67    
-  _BV(7), // PJ 7 ** 68  
+  _BV(0), // PA 0 ** 67
+  _BV(7), // PJ 7 ** 68
   _BV(0), // PF 0 ** 69 ** A0
   _BV(1), // PF 1 ** 70 ** A1
   _BV(2), // PF 2 ** 71 ** A2
@@ -322,13 +322,13 @@ const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
   _BV(4), // PK 4 ** 81 ** A12
   _BV(5), // PK 5 ** 82 ** A13
   _BV(6), // PK 6 ** 83 ** A14
-  _BV(7), // PK 7 ** 84 ** A15  
+  _BV(7), // PK 7 ** 84 ** A15
   _BV(5), // PG 5 ** 85
 };
 
 const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
-  // TIMERS    
-  // -------------------------------------------    
+  // TIMERS
+  // -------------------------------------------
   NOT_ON_TIMER, // PE 0 ** 0 ** RXD0
   NOT_ON_TIMER, // PE 1 ** 1 ** TXD0
   NOT_ON_TIMER, // PE 2 ** 2

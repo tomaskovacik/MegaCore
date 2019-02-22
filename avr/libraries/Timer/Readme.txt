@@ -1,5 +1,5 @@
 Arduino Timer Library
-Readme file for version 2.1  
+Readme file for version 2.1
 https://github.com/JChristensen/Timer/tree/v2.1
 
 This library was originally developed by Dr. Simon Monk to avoid problems that arise when you start trying to do much inside the loop() function.  It can change pin values or run a callback function.  See Dr. Monk's original page http://www.doctormonk.com/2012/01/arduino-timer-library.html.
@@ -42,7 +42,7 @@ int pin = 13;
 void setup()
 {
     pinMode(pin, OUTPUT);
-    t.pulse(pin, 10 * 60 * 1000, HIGH); // 10 minutes  
+    t.pulse(pin, 10 * 60 * 1000, HIGH); // 10 minutes
 }
 
 void loop()
@@ -108,7 +108,7 @@ void setup()
 
     int afterEvent = t.after(10000, doAfter, (void*)0);
     Serial.print("After event started id=");
-    Serial.println(afterEvent); 
+    Serial.println(afterEvent);
 }
 
 void loop()
@@ -143,11 +143,11 @@ every();
 Description:
   Runs the callback function every period milliseconds. Optionally stops after repeatCount times.
 Syntax:
-  t.every(period, callback, context);  
+  t.every(period, callback, context);
   t.every(period, callback, repeatCount, context);
 Parameters:
-  period: How often to run the callback function, in milliseconds (unsigned long) 
-  callback: The name of the callback function which is called when the timer event fires (function pointer)* 
+  period: How often to run the callback function, in milliseconds (unsigned long)
+  callback: The name of the callback function which is called when the timer event fires (function pointer)*
   repeatCount: The number of times to run the callback function (int, optional)
   context: Context value to be passed to the callback function (void pointer)
 Returns:
@@ -160,9 +160,9 @@ Description:
 Syntax:
   t.after(period, callback, context);
 Parameters:
-  period: How long to wait before running the callback function, in milliseconds (unsigned long) 
+  period: How long to wait before running the callback function, in milliseconds (unsigned long)
   callback: The name of the callback function which is called when the timer event fires (function pointer)
-  context: Context value to be passed to the callback function (void pointer) 
+  context: Context value to be passed to the callback function (void pointer)
 Returns:
   The ID of the Timer event (int8_t or char)
 
@@ -171,10 +171,10 @@ oscillate();
 Description:
   Toggle the state of the digital output pin every period milliseconds. The pin's starting value is specified by startingValue, which should be HIGH or LOW. Optionally stops after repeatCount times.
 Syntax:
-  t.oscillate(pin, period, startingValue);  
+  t.oscillate(pin, period, startingValue);
   t.oscillate(pin, period, startingValue, repeatCount);
 Parameters:
-  pin: The number of the pin to oscillate (uint8_t or byte) 
+  pin: The number of the pin to oscillate (uint8_t or byte)
   period: How often to toggle the pin, in milliseconds (unsigned long)
   startingValue: HIGH or LOW, the state at which the pin will start (uint8_t or byte)
   repeatCount: Optional number of toggles to stop after (int)
@@ -248,20 +248,20 @@ Changed data types of variables and functions:
 
 #1.2 by Damian Philipp
 - Added a range check to Timer::stop() to avoid memory corruption.
-- Added constants to <Timer.h>: 
+- Added constants to <Timer.h>:
   - NO_TIMER_AVAILABLE: Signals that while an event was to be queued, no free timer could be found.
   - TIMER_NOT_AN_EVENT: Can be used to flag a variable that *might* contain a timer ID as *not* containing a timer ID
 - Replaced a bunch of magic numbers in Timer.cpp with the above constants
 - Added several comments
 - Added Timer::pulseImmediate(). pulseImmediate sets the pin to the specified value for the given duration. After the duration, the pin is set to !value.
-   
+
 #1.3 by Jack Christensen
 - Added "blink2" example illustrating flashing two LEDs at different rates.
 - 19Oct2013: This is the last v1.x release. It will continue to be available on GitHub as a branch named v1.3. Future development will continue with Sandy Walsh's v2.0 which can pass context (timer ID, etc.) to the callback functions.
-   
+
 #2.0 by Sandy Walsh
 - Added a "context" parameter to callbacks. You can pass in the context when the event is created and it will be sent back to callback when called. If you don't have any context data you want to pass in (let's say you're using separate callbacks for each timer), you can just pass in 0 and ignore it in the callback.
-   
+
 #2.1 by ThoMo
 - Changed the stop() method to return TIMER_NOT_AN_EVENT when it is given a valid timer event ID.  Given an invalid (out of bounds) ID, it simply returns the same ID that it was given.
 - Converted the ReadMe file to Markdown, added examples, reference, etc. from Dr. Monk's site. *[jc]*.

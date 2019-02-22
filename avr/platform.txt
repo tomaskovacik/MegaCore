@@ -8,7 +8,7 @@ name=MegaCore
 version=2.0.1
 
 # AVR compile variables
-# --------------------- 
+# ---------------------
 
 compiler.warning_flags=-w
 compiler.warning_flags.none=-w

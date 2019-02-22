@@ -46,7 +46,7 @@ void setup() {
 void loop() {
   portWrite(portNumber, val);
   val = val + 1;
-  if (val > 255) 
+  if (val > 255)
     val = 0;
 }
 ```
@@ -81,7 +81,7 @@ byte inport = 1;
 byte val = 0;
 
 void setup() {
-  portMode(PortNumber, INPUT); 
+  portMode(PortNumber, INPUT);
   Serial.begin(9600);
 }
 
@@ -122,13 +122,13 @@ byte outport = 1;
 byte val = 0;
 
 void setup() {
-  portMode(PortNumber, OUTPUT); 
+  portMode(PortNumber, OUTPUT);
 }
 
 void loop() {
   portWrite(PortNumber, val);
   val = val + 1;
-  if (val > 255) 
+  if (val > 255)
     val = 0;
 }
 ```
@@ -172,11 +172,11 @@ sleepMode(mode)
 // Set the sleep mode to SLEEP_IDLE
 sleepMode(SLEEP_IDLE);
 sleep(); // Go to sleep
-  
+
 if(some_condition)
   noSleep(); // Wakes up
 
-  
+
 // ...
 ```
 
@@ -198,11 +198,11 @@ sleep()
 // Set the sleep mode to SLEEP_IDLE
 sleepMode(SLEEP_IDLE);
 sleep(); // Go to sleep
-  
+
 if(some_condition)
   noSleep(); // Wakes up
 
-  
+
 // ...
 ```
 
@@ -226,10 +226,10 @@ noSleep()
 // Set the sleep mode to SLEEP_IDLE
 sleepMode(SLEEP_IDLE);
 sleep(); // Go to sleep
-  
+
 if(some_condition)
   noSleep(); // Wakes up
 
-  
+
 // ...
 ```

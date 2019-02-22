@@ -186,7 +186,7 @@ static void finISR(timer16_Sequence_t timer)
 {
     //disable use of the given timer
 #if defined WIRING   // Wiring
-  if(timer == _timer1) 
+  if(timer == _timer1)
   {
     #if defined(__AVR_ATmega640__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega1281__) \
     || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega2561__)
@@ -196,7 +196,7 @@ static void finISR(timer16_Sequence_t timer)
     #endif
     timerDetach(TIMER1OUTCOMPAREA_INT);
   }
-  else if(timer == _timer3) 
+  else if(timer == _timer3)
   {
     #if defined(__AVR_ATmega640__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega1281__) \
     || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega2561__)

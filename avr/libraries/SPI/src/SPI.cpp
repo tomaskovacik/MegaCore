@@ -101,7 +101,7 @@ void SPIClass::end() {
   #define SPI_INT5_MASK  (1<<INT3)
   #define SPI_INT6_MASK  (1<<INT6)
   #define SPI_INT7_MASK  (1<<INT7)
-  
+
 // "AVR compatible" interrupt mapping for the ATmega640/1280/2560
 #elif defined(__AVR_ATmega640__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) && defined(MEGA_AVR_PINOUT)
   #define SPI_INT0_MASK  (1<<INT0)

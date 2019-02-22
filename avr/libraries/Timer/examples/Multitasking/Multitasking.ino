@@ -1,6 +1,6 @@
-/* ARDUINO TIMER LIBRARY 
+/* ARDUINO TIMER LIBRARY
    https://github.com/JChristensen/Timer/tree/v2.1
-    
+
    A simple sketch that demonstrates the
    "every" method. This method let you run code
    every second, every millisecond or any other
@@ -18,7 +18,7 @@ Timer t; // Object of the timer class
 
 
 void setup() {
-  
+
   Serial.begin(9600);
   pinMode(ledPin, OUTPUT); // Define ledPin as an output
 

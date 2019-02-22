@@ -1,4 +1,4 @@
-/************************************************************** 
+/**************************************************************
  This sketch measures the period of a square wave.
  The square wave connected to PD4 are measured and printed
  on the serial monitor. The measurement starts and stops
@@ -27,18 +27,18 @@ int main(void)
   PORTD |= 0x10; // Enable pullup on PD6, Input Capture Pin 1 (ICP1)
   TCCR1A = 0;    // Disable all waveform functions
   TCCR1B = 0xC2; // Timer1 input to clock/8, enable rising edge input capture and noise canceler
-  
+
   #if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
     TIMSK = 0x24;  // Unmask Timer1 overflow and capture interrupts
   #elif defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__) || \
   defined(__AVR_ATmega640__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
     TIMSK1 = 0x24;  // Unmask Timer1 overflow and capture interrupts
-  #endif  
-  
+  #endif
+
   sei(); // Enable global interrupts
 
   while(1); //infinite loop, waiting for interrupt
-  
+
 }
 
 
@@ -51,10 +51,10 @@ ISR(TIMER1_OVF_vect) // Timer1 overflow
 ISR(TIMER1_CAPT_vect) // Timer1 input capture
 {
   // Combine the two 8-bit capture registers (ICR1H and ICR1L) into the 16-bit count
-  endingEdge = 256 * ICR1H + ICR1L; 
+  endingEdge = 256 * ICR1H + ICR1L;
   clocks = endingEdge + (overflowCounter * 65536) - startingEdge;
   periodOut = (clocks / 2000); // Store milliseconds to periodOut
-  
+
   overflowCounter = 0;
   startingEdge = endingEdge;
 

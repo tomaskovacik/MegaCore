@@ -65,7 +65,7 @@ void setup()
 }
 
 
-void loop() 
+void loop()
 {
   // Print main menu
   Serial.println();
@@ -89,7 +89,7 @@ void loop()
   Serial.println(F("|------------------------------------------------|"));
   Serial.println();
 
-  
+
   // Get menu option from the serial monitor
   do
   {
@@ -99,13 +99,13 @@ void loop()
       Serial.print(F("\nPlease enter a valid option! "));
   }
   while(menuOption < 1 || menuOption > 2);
-  
+
   Serial.print(F("Option "));
   Serial.print(menuOption);
   Serial.println(F(" selected."));
 
 
-    
+
   // Read flash option selected
   if(menuOption == 1)
   {
@@ -124,7 +124,7 @@ void loop()
       }
     }
     while(pageNumber > NUMBER_OF_PAGES);
-    
+
     if(pageNumber > 0)
       Serial.println(pageNumber);
 
@@ -134,7 +134,7 @@ void loop()
     // pageNumber is the page the data is read from
     // blankChar is the character that gets printed/stored if there are unused space (default '.')
     // use optiboot_readPage(flashSpace, ramBuffer, pageNumber) if you don't want blank chars
-    
+
     if(pageNumber == 0) // Read all pages
     {
       Serial.println(F("\nAll flash content:"));
@@ -150,7 +150,7 @@ void loop()
     else // Read selected page
     {
       optiboot_readPage(flashSpace, ramBuffer, pageNumber, blankChar);
-      
+
       // Print page content
       Serial.print(F("\nContent of page "));
       Serial.print(pageNumber);
@@ -161,7 +161,7 @@ void loop()
   }  // End of flash read option
 
 
- 
+
   // Write flash option selected
   else if(menuOption == 2)
   {
@@ -191,13 +191,13 @@ void loop()
     Serial.print(F("End the line by sending the '"));
     Serial.write(terminationChar);
     Serial.println(F("' character:"));
-    
+
     // Get all characters from the serial monitor and store it to the ramBuffer
     memset(ramBuffer, 0, sizeof(ramBuffer));
     uint16_t counter = 0;
-    while (counter < SPM_PAGESIZE && charBuffer != terminationChar) 
+    while (counter < SPM_PAGESIZE && charBuffer != terminationChar)
     {
-      if(Serial.available() > 0) 
+      if(Serial.available() > 0)
       {
         charBuffer = Serial.read(); // read character from serial
         if(charBuffer != terminationChar)
@@ -205,7 +205,7 @@ void loop()
           Serial.write(charBuffer); // echo character back
           ramBuffer[counter] = charBuffer;
           counter++;
-        }      
+        }
       }
     }
     charBuffer = 0;

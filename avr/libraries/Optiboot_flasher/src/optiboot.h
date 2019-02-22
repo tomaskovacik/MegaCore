@@ -28,12 +28,12 @@
 #include "Arduino.h"
 
 
-/* 
+/*
  * Main 'magic' function - enter to bootloader do_spm function
  *
  * address - address to write (in bytes) but must be even number
  * command - one of __BOOT_PAGE_WRITE, __BOOT_PAGE_ERASE or __BOOT_PAGE_FILL
- * data - data to write in __BOOT_PAGE_FILL. In __BOOT_PAGE_ERASE or 
+ * data - data to write in __BOOT_PAGE_FILL. In __BOOT_PAGE_ERASE or
  *          __BOOT_PAGE_WRITE it control if boot_rww_enable is run
  *         (0 = run, !0 = skip running boot_rww_enable)
  *
@@ -46,7 +46,7 @@ typedef void (*do_spm_t)(uint16_t address, uint8_t command, uint16_t data);
 /*
  * Devices with more than 64KB of flash:
  * - have larger bootloader area (1KB) (they are BIGBOOT targets)
- * - have RAMPZ register :-) 
+ * - have RAMPZ register :-)
  * - need larger variable to hold address (pgmspace.h uses uint32_t)
  */
 #ifdef RAMPZ
@@ -65,7 +65,7 @@ typedef void (*do_spm_t)(uint16_t address, uint8_t command, uint16_t data);
 /*
  * The same as do_spm but with disable/restore interrupts state
  * required to succesfull SPM execution
- * 
+ *
  * On devices with more than 64kB flash, 16 bit address is not enough,
  * so there is also RAMPZ used in that case.
  */
@@ -104,7 +104,7 @@ void optiboot_page_write(optiboot_addr_t address) {
 
 
 /*
- * Higher level functions for reading and writing from flash 
+ * Higher level functions for reading and writing from flash
  * See the examples for more info on how to use these functions
  */
 
@@ -112,13 +112,13 @@ void optiboot_page_write(optiboot_addr_t address) {
 void optiboot_readPage(const uint8_t allocated_flash_space[], uint8_t storage_array[], uint16_t page, char blank_character)
 {
   uint8_t read_character;
-  for(uint16_t j = 0; j < SPM_PAGESIZE; j++) 
+  for(uint16_t j = 0; j < SPM_PAGESIZE; j++)
   {
     read_character = pgm_read_byte(&allocated_flash_space[j + SPM_PAGESIZE*(page-1)]);
     if(read_character != 0 && read_character != 255)
-      storage_array[j] = read_character; 
+      storage_array[j] = read_character;
     else
-      storage_array[j] = blank_character;   
+      storage_array[j] = blank_character;
   }
 }
 
@@ -127,7 +127,7 @@ void optiboot_readPage(const uint8_t allocated_flash_space[], uint8_t storage_ar
 void optiboot_readPage(const uint8_t allocated_flash_space[], uint8_t storage_array[], uint16_t page)
 {
   uint8_t read_character;
-  for(uint16_t j = 0; j < SPM_PAGESIZE; j++) 
+  for(uint16_t j = 0; j < SPM_PAGESIZE; j++)
   {
     read_character = pgm_read_byte(&allocated_flash_space[j + SPM_PAGESIZE*(page-1)]);
     if(read_character != 0 && read_character != 255)
@@ -139,23 +139,23 @@ void optiboot_readPage(const uint8_t allocated_flash_space[], uint8_t storage_ar
 // Function to write data to a flash page
 void optiboot_writePage(const uint8_t allocated_flash_space[], uint8_t data_to_store[], uint16_t page)
 {
-  uint16_t word_buffer = 0; 
-       
+  uint16_t word_buffer = 0;
+
   // Erase the flash page
   optiboot_page_erase((optiboot_addr_t)(void*) &allocated_flash_space[SPM_PAGESIZE*(page-1)]);
-    
+
   // Copy ram buffer to temporary flash buffer
-  for(uint16_t i = 0; i < SPM_PAGESIZE; i++) 
+  for(uint16_t i = 0; i < SPM_PAGESIZE; i++)
   {
     if(i % 2 == 0) // We must write words
       word_buffer = data_to_store[i];
-    else 
+    else
     {
       word_buffer += (data_to_store[i] << 8);
       optiboot_page_fill((optiboot_addr_t)(void*) &allocated_flash_space[i + SPM_PAGESIZE*(page-1)], word_buffer);
     }
   }
-  
+
   // Writing temporary buffer to flash
   optiboot_page_write((optiboot_addr_t)(void*) &allocated_flash_space[SPM_PAGESIZE*(page-1)]);
 }
