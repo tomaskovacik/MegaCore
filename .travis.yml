@@ -379,6 +379,10 @@ env:
 
 
 before_install:
+  # Formatting checks:
+  # Check for files starting with a blank line
+  - find . -path './.git' -prune -or -path './avr/travis-ci' -prune -or -path './avr/cores/MCUdude_corefiles' -prune -or -path './avr/bootloaders' -prune -or -type f -print0 | xargs -0 -L1 bash -c 'head -1 "$0" | grep --binary-files=without-match --regexp="^$"; if [[ "$?" == "0" ]]; then echo "Blank line found at start of $0."; false; fi'
+
   # Install the script used to simplify use of Travis CI for testing Arduino projects
   - source "${TRAVIS_BUILD_DIR}/avr/travis-ci/arduino-ci-script/arduino-ci-script.sh"
 
