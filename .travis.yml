@@ -426,6 +426,9 @@ before_install:
   # Install all IDE version required by the job
   - install_ide "$START_IDE_VERSION" "$END_IDE_VERSION"
 
+  # Check for common issues with keywords.txt files (must be done after installing the IDE to check the reference links)
+  - check_keywords_txt "${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" 1
+
 
 script:
   # Verify every sketch in SKETCH_PATH using the environment variables set in the matrix
