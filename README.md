@@ -15,10 +15,10 @@ If you're into "pure" AVR programming, I'm happy to tell you that all relevant k
 * [Programmers](#programmers)
 * [Write to own flash](#write-to-own-flash)
 * **[How to install](#how-to-install)**
-	- [Boards Manager Installation](#boards-manager-installation)
-	- [Manual Installation](#manual-installation)
+  - [Boards Manager Installation](#boards-manager-installation)
+  - [Manual Installation](#manual-installation)
 * **[Getting started with MegaCore](#getting-started-with-megacore)**
-* [Wiring reference](#wiring-reference)	
+* [Wiring reference](#wiring-reference) 
 * **[Pinout](#pinout)**
 * **[Minimal setup](#minimal-setup)**
 
@@ -128,14 +128,14 @@ Open Arduino IDE, and a new category in the boards menu called "MegaCore" will s
 ## Getting started with MegaCore
 Ok, so you're downloaded and installed MegaCore, but how to get started? Here's a quick start guide:
 * Hook up your microcontroller as shown in the [pinout diagram](#pinout).
-	- If you're not planning to use the bootloader (uploading code using a USB to serial adapter), the FTDI header and the 100 nF capacitor on the reset pin can be omitted. 
+  - If you're not planning to use the bootloader (uploading code using a USB to serial adapter), the FTDI header and the 100 nF capacitor on the reset pin can be omitted. 
 * Open the **Tools > Board** menu item, and select **ATmega64**, **ATmega128**, **ATmega1281**, **ATmega2561**, **ATmega640**, **ATmega1280** or **ATmega2560**.
 * Select your prefered clock frequency. **16 MHz** is standard on most Arduino boards.
 * Select what kind of programmer you're using under the **Programmers** menu.
 * Hit **Burn Bootloader**. If an LED is connected to pin PB5/PB7, it should flash twice every second.
 * Now that the correct fuse settings is sat and the bootloader burnt, you can upload your code in two ways:
-	- Disconnect your programmer tool, and connect a USB to serial adapter to the microcontroller, like shown in the [pinout diagram](#pinout). Then select the correct serial port under the **Tools** menu, and click the **Upload** button. If you're getting some kind of timeout error, it means your RX and TX pins are swapped, or your auto reset circuity isn't working properly (the 100 nF capacitor on the reset line).
-	- Keep your programmer connected, and hold down the `shift` button while clicking **Upload**. This will erase the bootloader and upload your code using the programmer tool.
+  - Disconnect your programmer tool, and connect a USB to serial adapter to the microcontroller, like shown in the [pinout diagram](#pinout). Then select the correct serial port under the **Tools** menu, and click the **Upload** button. If you're getting some kind of timeout error, it means your RX and TX pins are swapped, or your auto reset circuity isn't working properly (the 100 nF capacitor on the reset line).
+  - Keep your programmer connected, and hold down the `shift` button while clicking **Upload**. This will erase the bootloader and upload your code using the programmer tool.
 
 Your code should now be running on the microcontroller!
 
@@ -150,7 +150,7 @@ I hope you find this useful, because they really are!
 * sleepMode()
 * sleep()
 * noSleep()
-* enablePower()	
+* enablePower()
 * disablePower()
 
 ### For further information please view the [Wiring reference page](https://github.com/MCUdude/MegaCore/blob/master/Wiring_reference.md)!

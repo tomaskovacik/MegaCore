@@ -54,8 +54,8 @@ protected:
 
 public:
   EthernetUDP();  // Constructor
-  virtual uint8_t begin(uint16_t);	// initialize, start listening on specified port. Returns 1 if successful, 0 if there are no sockets available to use
-  virtual uint8_t beginMulticast(IPAddress, uint16_t);	// initialize, start listening on specified port. Returns 1 if successful, 0 if there are no sockets available to use
+  virtual uint8_t begin(uint16_t);  // initialize, start listening on specified port. Returns 1 if successful, 0 if there are no sockets available to use
+  virtual uint8_t beginMulticast(IPAddress, uint16_t);  // initialize, start listening on specified port. Returns 1 if successful, 0 if there are no sockets available to use
   virtual void stop();  // Finish with the UDP socket
 
   // Sending UDP packets
@@ -91,7 +91,7 @@ public:
   virtual int read(char* buffer, size_t len) { return read((unsigned char*)buffer, len); };
   // Return the next byte from the current packet without moving on to the next byte
   virtual int peek();
-  virtual void flush();	// Finish reading the current packet
+  virtual void flush(); // Finish reading the current packet
 
   // Return the IP address of the host who sent the current incoming packet
   virtual IPAddress remoteIP() { return _remoteIP; };

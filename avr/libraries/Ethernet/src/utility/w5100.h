@@ -7,8 +7,8 @@
  * published by the Free Software Foundation.
  */
 
-#ifndef	W5100_H_INCLUDED
-#define	W5100_H_INCLUDED
+#ifndef W5100_H_INCLUDED
+#define W5100_H_INCLUDED
 
 #include <SPI.h>
 
@@ -133,7 +133,7 @@ public:
   void init();
 
   /**
-   * @brief	This function is being used for copy the data form Receive buffer of the chip to application buffer.
+   * @brief This function is being used for copy the data form Receive buffer of the chip to application buffer.
    * 
    * It calculate the actual physical address where one has to read
    * the data from Receive buffer. Here also take care of the condition while it exceed
@@ -142,7 +142,7 @@ public:
   void read_data(SOCKET s, volatile uint16_t src, volatile uint8_t * dst, uint16_t len);
   
   /**
-   * @brief	 This function is being called by send() and sendto() function also. 
+   * @brief  This function is being called by send() and sendto() function also. 
    * 
    * This function read the Tx write pointer register and after copy the data in buffer update the Tx write pointer
    * register. User should read upper byte first and lower byte later to get proper value.
@@ -162,7 +162,7 @@ public:
   void send_data_processing_offset(SOCKET s, uint16_t data_offset, const uint8_t *data, uint16_t len);
 
   /**
-   * @brief	This function is being called by recv() also.
+   * @brief This function is being called by recv() also.
    * 
    * This function read the Rx read pointer register
    * and after copy the data from receive buffer update the Rx write pointer register.
@@ -339,15 +339,15 @@ private:
       inline static void initSS()    { DDRB  |=  _BV(0); };
       inline static void setSS()     { PORTB &= ~_BV(0); };
       inline static void resetSS()   { PORTB |=  _BV(0); };  
-  	
-  	//MightyCore
-	  #elif defined(__AVR_ATmega1284__) || defined(__AVR_ATmega1284P__) \
-	  || defined(__AVR_ATmega644__) || defined(__AVR_ATmega644P__)\
-	  || defined(__AVR_ATmega324__) || defined(__AVR_ATmega324P__)\
-	  || defined(__AVR_ATmega324PA__) || defined(__AVR_ATmega164__)\
-	  || defined(__AVR_ATmega164P__) || defined(__AVR_ATmega32__)\
-	  || defined(__AVR_ATmega16__) || defined(__AVR_ATmega8535__)
-  	  inline static void initSS()    { DDRB  |=  _BV(4); }
+    
+    //MightyCore
+    #elif defined(__AVR_ATmega1284__) || defined(__AVR_ATmega1284P__) \
+    || defined(__AVR_ATmega644__) || defined(__AVR_ATmega644P__)\
+    || defined(__AVR_ATmega324__) || defined(__AVR_ATmega324P__)\
+    || defined(__AVR_ATmega324PA__) || defined(__AVR_ATmega164__)\
+    || defined(__AVR_ATmega164P__) || defined(__AVR_ATmega32__)\
+    || defined(__AVR_ATmega16__) || defined(__AVR_ATmega8535__)
+      inline static void initSS()    { DDRB  |=  _BV(4); }
       inline static void setSS()     { PORTB &= ~_BV(4); }
       inline static void resetSS()   { PORTB |=  _BV(4); }
       
@@ -358,9 +358,9 @@ private:
     #endif
     
   #elif defined(__ARDUINO_ARC__)
-	inline static void initSS() { pinMode(SS, OUTPUT); };
-	inline static void setSS() { digitalWrite(SS, LOW); };
-	inline static void resetSS() { digitalWrite(SS, HIGH); };
+  inline static void initSS() { pinMode(SS, OUTPUT); };
+  inline static void setSS() { digitalWrite(SS, LOW); };
+  inline static void resetSS() { digitalWrite(SS, HIGH); };
   #else
     inline static void initSS() {
       *portModeRegister(digitalPinToPort(ETHERNET_SHIELD_SPI_CS)) |= digitalPinToBitMask(ETHERNET_SHIELD_SPI_CS);
