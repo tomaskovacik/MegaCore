@@ -3,7 +3,7 @@
  connected to PB0 (Arduino pin D0)
  Note that the compiled sketch is significally
  smaller that the original Arduino blink sketch.
- A detailed explaination about debugging, port and
+ A detailed explanation about debugging, port and
  pin definitions can be watched here:
  https://www.youtube.com/watch?v=plJf0r7IcWc
 ***************************************************/

@@ -5,7 +5,7 @@
  on rising edge.
  The timer is being clocked by F_CPU/8 (16MHz / 8 = 2MHz).
  This means that for every milliusecons that has elapsed,
- 2000 counts have occured. Dividinng the counts by 2000
+ 2000 counts have occurred. Dividing the counts by 2000
  produces the actual number of milliseconds in the measurement
  period.
  **************************************************************/

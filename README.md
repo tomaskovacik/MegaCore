@@ -121,7 +121,7 @@ This installation method requires Arduino IDE version 1.6.4 or greater.
 * After installation is complete close the **Boards Manager** window.
 
 #### Manual Installation
-Click on the "Download ZIP" button in the upper right corner. Exctract the ZIP file, and move the extracted folder to the location "**~/Documents/Arduino/hardware**". Create the "hardware" folder if it doesn't exist.
+Click on the "Download ZIP" button in the upper right corner. Extract the ZIP file, and move the extracted folder to the location "**~/Documents/Arduino/hardware**". Create the "hardware" folder if it doesn't exist.
 Open Arduino IDE, and a new category in the boards menu called "MegaCore" will show up.
 
 
@@ -130,7 +130,7 @@ Ok, so you're downloaded and installed MegaCore, but how to get started? Here's 
 * Hook up your microcontroller as shown in the [pinout diagram](#pinout).
   - If you're not planning to use the bootloader (uploading code using a USB to serial adapter), the FTDI header and the 100 nF capacitor on the reset pin can be omitted.
 * Open the **Tools > Board** menu item, and select **ATmega64**, **ATmega128**, **ATmega1281**, **ATmega2561**, **ATmega640**, **ATmega1280** or **ATmega2560**.
-* Select your prefered clock frequency. **16 MHz** is standard on most Arduino boards.
+* Select your preferred clock frequency. **16 MHz** is standard on most Arduino boards.
 * Select what kind of programmer you're using under the **Programmers** menu.
 * Hit **Burn Bootloader**. If an LED is connected to pin PB5/PB7, it should flash twice every second.
 * Now that the correct fuse settings is sat and the bootloader burnt, you can upload your code in two ways:
@@ -140,7 +140,7 @@ Ok, so you're downloaded and installed MegaCore, but how to get started? Here's 
 Your code should now be running on the microcontroller!
 
 ## Wiring reference
-To extend this core's functionality a bit futher, I've added a few missing Wiring functions to this hardware package. As many of you know Arduino is based on Wiring, but that doesn't mean the Wiring development isn't active. These functions is used as "regular" Arduino functions, and there's no need to include an external library.<br/>
+To extend this core's functionality a bit further, I've added a few missing Wiring functions to this hardware package. As many of you know Arduino is based on Wiring, but that doesn't mean the Wiring development isn't active. These functions is used as "regular" Arduino functions, and there's no need to include an external library.<br/>
 I hope you find this useful, because they really are!
 
 ### Function list

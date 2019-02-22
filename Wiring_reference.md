@@ -1,5 +1,5 @@
 # Wiring reference
-To extend this core's functionality a bit futher, I've added a few missing Wiring functions. As many of you know Arduino is based on Wiring, but that doesn't mean the Wiring development isnt active. These functions is used as "regular" Arduino functions, and there's no need to include an external library.
+To extend this core's functionality a bit further, I've added a few missing Wiring functions. As many of you know Arduino is based on Wiring, but that doesn't mean the Wiring development isn't active. These functions is used as "regular" Arduino functions, and there's no need to include an external library.
 
 ## Content
 * [portMode](#portmode)()
@@ -181,7 +181,7 @@ if(some_condition)
 ```
 
 ## sleep()
-the <b>sleep()</b> command can allow an application to reduce its power comsumption considerably. Sleep modes enable the application to shut down unused modules in the microcontroller, thereby saving power. The default mode is SLEEP_IDLE. Different AVR devices provides various sleep modes allowing the user to tailor the power consumption to the application's requirements. There are six sleep modes set by the [sleepMode()](#sleepmode) command.
+the <b>sleep()</b> command can allow an application to reduce its power consumption considerably. Sleep modes enable the application to shut down unused modules in the microcontroller, thereby saving power. The default mode is SLEEP_IDLE. Different AVR devices provides various sleep modes allowing the user to tailor the power consumption to the application's requirements. There are six sleep modes set by the [sleepMode()](#sleepmode) command.
 
 ### Syntax
 ``` c++

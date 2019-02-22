@@ -25,7 +25,7 @@
      directories which simplifies interacting with files in subdirectories.
 
    * Utility methods are provided to determine whether a file exists
-     and to create a directory heirarchy.
+     and to create a directory hierarchy.
 
 
   Note however that not all functionality provided by the underlying
@@ -290,7 +290,7 @@ boolean callback_openPath(SdFile& parentDir, char *filePathComponent,
     file/directory with the associated file open mode property.
 
     Always returns true if the directory traversal hasn't reached the
-    bottom of the directory heirarchy.
+    bottom of the directory hierarchy.
 
     Returns false once the file has been opened--to prevent the traversal
     from descending further. (This may be unnecessary.)
@@ -377,7 +377,7 @@ SdFile SDClass::getParentDir(const char *filepath, int *index) {
     // extract just the name of the next subdirectory
     uint8_t idx = strchr(filepath, '/') - filepath;
     if (idx > 12)
-      idx = 12;    // dont let them specify long names
+      idx = 12;    // don't let them specify long names
     char subdirname[13];
     strncpy(subdirname, filepath, idx);
     subdirname[idx] = 0;
@@ -401,7 +401,7 @@ SdFile SDClass::getParentDir(const char *filepath, int *index) {
   }
 
   *index = (int)(filepath - origpath);
-  // parent is now the parent diretory of the file!
+  // parent is now the parent directory of the file!
   return *parent;
 }
 
@@ -456,7 +456,7 @@ File SDClass::open(const char *filepath, uint8_t mode) {
       // failed to open the file :(
       return File();
     }
-    // dont close the root!
+    // don't close the root!
   } else {
     if ( ! file.open(parentdir, filepath, mode)) {
       return File();
@@ -541,7 +541,7 @@ boolean SDClass::exists(const char *filepath) {
 boolean SDClass::mkdir(const char *filepath) {
   /*
 
-    Makes a single directory or a heirarchy of directories.
+    Makes a single directory or a hierarchy of directories.
 
     A rough equivalent to `mkdir -p`.
 
@@ -552,7 +552,7 @@ boolean SDClass::mkdir(const char *filepath) {
 boolean SDClass::rmdir(const char *filepath) {
   /*
 
-    Remove a single directory or a heirarchy of directories.
+    Remove a single directory or a hierarchy of directories.
 
     A rough equivalent to `rm -rf`.
 

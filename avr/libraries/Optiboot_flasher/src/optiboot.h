@@ -64,7 +64,7 @@ typedef void (*do_spm_t)(uint16_t address, uint8_t command, uint16_t data);
 
 /*
  * The same as do_spm but with disable/restore interrupts state
- * required to succesfull SPM execution
+ * required to successful SPM execution
  *
  * On devices with more than 64kB flash, 16 bit address is not enough,
  * so there is also RAMPZ used in that case.

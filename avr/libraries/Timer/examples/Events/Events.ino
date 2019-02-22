@@ -2,7 +2,7 @@
    https://github.com/JChristensen/Timer/tree/v2.1
 
    This sketch demonstrates the usage of events,
-   and that they got diffrent IDs.
+   and that they got different IDs.
    Works great with the MegaCore!
 */
 

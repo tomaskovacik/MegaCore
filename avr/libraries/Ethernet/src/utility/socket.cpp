@@ -71,7 +71,7 @@ uint8_t listen(SOCKET s)
 
 /**
  * @brief This function established  the connection for the channel in Active (client) mode.
- *        This function waits for the untill the connection is established.
+ *        This function waits for the until the connection is established.
  *
  * @return  1 for success else 0.
  */

@@ -184,7 +184,7 @@ Returns:
 
 pulse();
 Description:
-  Generates a pulse of !startingValue, occuring period after the call to this method and lasting for period. The pin will be left in !startingValue state.
+  Generates a pulse of !startingValue, occurring period after the call to this method and lasting for period. The pin will be left in !startingValue state.
 Syntax:
   t.pulse(pin, period, startingValue);
 Parameters:
