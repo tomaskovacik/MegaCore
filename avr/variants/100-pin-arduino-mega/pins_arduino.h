@@ -15,19 +15,22 @@
 
 #include <avr/pgmspace.h>
 
+
+// Current pinout
 #define MEGACORE_100_PIN_MEGA_PINOUT
 
-// General IO defs
-#define NUM_DIGITAL_PINS            86
-#define NUM_ANALOG_INPUTS           16
-#define EXTERNAL_NUM_INTERRUPTS     8
-#define analogInputToDigitalPin(p)  ((p < 16) ? (p) + 54 : -1)
-#define analogPinToChannel(p)      ((p) < NUM_ANALOG_INPUTS ? (p) : (p) >= 54 ? (p) - 54 : -1)
+
+// Digital pins
+#define NUM_DIGITAL_PINS            (86)
+
+// PWM pins
 #define digitalPinHasPWM(p)         (((p) >= 2 && (p) <= 13) || ((p) >= 44 && (p)<= 46))
-#define digitalPinToInterrupt(p) ((p) == 2 ? 0 : ((p) == 3 ? 1 : ((p) >= 18 && (p) <= 21 ? 23 - (p) : NOT_AN_INTERRUPT)))
 
+// Builtin LED
+#define LED_BUILTIN   (13)
+static const uint8_t LED = LED_BUILTIN;
 
-// SPI defs
+// SPI
 #define PIN_SPI_SS    53
 #define PIN_SPI_MOSI  51
 #define PIN_SPI_MISO  50
@@ -37,31 +40,29 @@ static const uint8_t MOSI = 51;
 static const uint8_t MISO = 50;
 static const uint8_t SCK  = 52;
 
-// i2c defs
+// i2c
 #define PIN_WIRE_SDA  20
 #define PIN_WIRE_SCL  21
 static const uint8_t SDA = 20;
 static const uint8_t SCL = 21;
 
-#define LED_BUILTIN 13
-
-// Analog pin defs
-#define PIN_A0   54
-#define PIN_A1   55
-#define PIN_A2   56
-#define PIN_A3   57
-#define PIN_A4   58
-#define PIN_A5   59
-#define PIN_A6   60
-#define PIN_A7   61
-#define PIN_A8   62
-#define PIN_A9   63
-#define PIN_A10  64
-#define PIN_A11  65
-#define PIN_A12  66
-#define PIN_A13  67
-#define PIN_A14  68
-#define PIN_A15  69
+// Analog pins
+#define PIN_A0   (54)
+#define PIN_A1   (55)
+#define PIN_A2   (56)
+#define PIN_A3   (57)
+#define PIN_A4   (58)
+#define PIN_A5   (59)
+#define PIN_A6   (60)
+#define PIN_A7   (61)
+#define PIN_A8   (62)
+#define PIN_A9   (63)
+#define PIN_A10  (64)
+#define PIN_A11  (65)
+#define PIN_A12  (66)
+#define PIN_A13  (67)
+#define PIN_A14  (68)
+#define PIN_A15  (69)
 static const uint8_t A0 = PIN_A0;
 static const uint8_t A1 = PIN_A1;
 static const uint8_t A2 = PIN_A2;
@@ -78,27 +79,19 @@ static const uint8_t A12 = PIN_A12;
 static const uint8_t A13 = PIN_A13;
 static const uint8_t A14 = PIN_A14;
 static const uint8_t A15 = PIN_A15;
+#define NUM_ANALOG_INPUTS           (16)
+#define analogInputToDigitalPin(p)  ((p < 16) ? (p) + 54 : -1)
+#define analogPinToChannel(p)       ((p) < NUM_ANALOG_INPUTS ? (p) : (p) >= 54 ? (p) - 54 : -1)
+
+// Interrupts
+#define EXTERNAL_NUM_INTERRUPTS     (8)
+#define digitalPinToInterrupt(p)    ((p) == 2 ? 0 : ((p) == 3 ? 1 : ((p) >= 18 && (p) <= 21 ? 23 - (p) : NOT_AN_INTERRUPT)))
 
 // PCINT defs
-#define digitalPinToPCICR(p)    ( (((p) >= 10) && ((p) <= 13)) || \
-                                  (((p) >= 50) && ((p) <= 53)) || \
-                                  (((p) >= 62) && ((p) <= 69)) ? (&PCICR) : ((uint8_t *)0) )
-
-#define digitalPinToPCICRbit(p) ( (((p) >= 10) && ((p) <= 13)) || (((p) >= 50) && ((p) <= 53)) ? 0 : \
-                                ( (((p) >= 62) && ((p) <= 69)) ? 2 : \
-                                0 ) )
-
-#define digitalPinToPCMSK(p)    ( (((p) >= 10) && ((p) <= 13)) || (((p) >= 50) && ((p) <= 53)) ? (&PCMSK0) : \
-                                ( (((p) >= 62) && ((p) <= 69)) ? (&PCMSK2) : \
-                                ((uint8_t *)0) ) )
-
-#define digitalPinToPCMSKbit(p) ( (((p) >= 10) && ((p) <= 13)) ? ((p) - 6) : \
-                                ( ((p) == 50) ? 3 : \
-                                ( ((p) == 51) ? 2 : \
-                                ( ((p) == 52) ? 1 : \
-                                ( ((p) == 53) ? 0 : \
-                                ( (((p) >= 62) && ((p) <= 69)) ? ((p) - 62) : \
-                                0 ) ) ) ) ) )
+#define digitalPinToPCICR(p)        ((((p) >= 10) && ((p) <= 13)) || (((p) >= 50) && ((p) <= 53)) || (((p) >= 62) && ((p) <= 69)) ? (&PCICR) : ((uint8_t *)0))
+#define digitalPinToPCICRbit(p)     ((((p) >= 10) && ((p) <= 13)) || (((p) >= 50) && ((p) <= 53)) ? 0 : ((((p) >= 62) && ((p) <= 69)) ? 2 : 0))
+#define digitalPinToPCMSK(p)        ((((p) >= 10) && ((p) <= 13)) || (((p) >= 50) && ((p) <= 53)) ? (&PCMSK0) : ((((p) >= 62) && ((p) <= 69)) ? (&PCMSK2) : ((uint8_t *)0)))
+#define digitalPinToPCMSKbit(p)     ((((p) >= 10) && ((p) <= 13)) ? ((p) - 6) : (((p) == 50) ? 3 : (((p) == 51) ? 2 : (((p) == 52) ? 1 : (((p) == 53) ? 0 : ((((p) >= 62) && ((p) <= 69)) ? ((p) - 62) : 0))))))
 
 
 #ifdef ARDUINO_MAIN
