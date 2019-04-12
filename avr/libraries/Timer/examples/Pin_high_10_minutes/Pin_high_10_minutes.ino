@@ -1,7 +1,7 @@
-/* ARDUINO TIMER LIBRARY 
+/* ARDUINO TIMER LIBRARY
    https://github.com/JChristensen/Timer/tree/v2.1
-    
-   This is a simple test sketch that demonstrates 
+
+   This is a simple test sketch that demonstrates
    the usage of the "pulseImmediate" method and
    how can turn on an LED for ten minutes without
    the use if delay().
@@ -18,16 +18,16 @@ Timer t; // Object of the timer class
 
 
 void setup()
-{ 
+{
   pinMode(ledPin, OUTPUT); // Define ledPin as an output
 
-/* This method will turn on the LED for ten 
+/* This method will turn on the LED for ten
    seconds, and the turn it off forever */
-  t.pulseImmediate(ledPin, tenMinutes, HIGH); // (pin, pause, toggle to) 
+  t.pulseImmediate(ledPin, tenMinutes, HIGH); // (pin, pause, toggle to)
 
 /* This method will turn on the LED for ten
    minutes, and the turn it off forever */
-  //t.pulseImmediate(ledPin, tenSeconds, HIGH); // (pin, pause, toggle to) 
+  //t.pulseImmediate(ledPin, tenSeconds, HIGH); // (pin, pause, toggle to)
 
 /* The LED will be low for ten seconds and then turn on
    for ten seconds. Then the LED will stay low forever */
@@ -38,4 +38,3 @@ void loop()
 {
   t.update(); // Updates the timer
 }
-

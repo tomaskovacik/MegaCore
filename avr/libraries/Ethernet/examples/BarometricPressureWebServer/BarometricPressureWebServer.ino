@@ -63,7 +63,7 @@ void setup() {
   Ethernet.begin(mac, ip);
   server.begin();
 
-  // initalize the  data ready and chip select pins:
+  // initialize the  data ready and chip select pins:
   pinMode(dataReadyPin, INPUT);
   pinMode(chipSelectPin, OUTPUT);
 

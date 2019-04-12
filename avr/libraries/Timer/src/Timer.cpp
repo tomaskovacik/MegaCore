@@ -82,7 +82,7 @@ int8_t Timer::oscillate(uint8_t pin, unsigned long period, uint8_t startingValue
 }
 
 /**
- * This method will generate a pulse of !startingValue, occuring period after the
+ * This method will generate a pulse of !startingValue, occurring period after the
  * call of this method and lasting for period. The Pin will be left in !startingValue.
  */
 int8_t Timer::pulse(uint8_t pin, unsigned long period, uint8_t startingValue)

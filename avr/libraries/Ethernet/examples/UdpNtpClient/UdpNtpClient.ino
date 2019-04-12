@@ -130,13 +130,3 @@ void sendNTPpacket(char* address) {
   Udp.write(packetBuffer, NTP_PACKET_SIZE);
   Udp.endPacket();
 }
-
-
-
-
-
-
-
-
-
-

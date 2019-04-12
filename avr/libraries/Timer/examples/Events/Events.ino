@@ -1,8 +1,8 @@
-/* ARDUINO TIMER LIBRARY 
+/* ARDUINO TIMER LIBRARY
    https://github.com/JChristensen/Timer/tree/v2.1
 
    This sketch demonstrates the usage of events,
-   and that they got diffrent IDs.
+   and that they got different IDs.
    Works great with the MegaCore!
 */
 
@@ -22,18 +22,18 @@ Timer t; // Object of the timer class
 
 
 void setup() {
-  
+
   Serial.begin(9600);
   pinMode(ledPin, OUTPUT); // Define ledPin as an output
 
 
-/* Run the doSomething method every 1000th millisecond, 
+/* Run the doSomething method every 1000th millisecond,
    and store the timer ID to tickEvent. Send the value
    '1' as an argument to the doSomething method, then
    print the event ID on the serial monitor */
   Serial.print("1 second tick started. ID = ");
-  tickEvent = t.every(pause1, doSomething, (void*)1); 
-  Serial.println(tickEvent); 
+  tickEvent = t.every(pause1, doSomething, (void*)1);
+  Serial.println(tickEvent);
 
 
 /* Let ledPin toggle every 2000th millisecond with start
@@ -41,20 +41,20 @@ void setup() {
    Finally print the event ID on the serial monitor */
   ledEvent = t.oscillate(ledPin, pause2, HIGH);
   Serial.print("LED event started. ID = ");
-  Serial.println(ledEvent); 
+  Serial.println(ledEvent);
 
 
-/* Run the doAfter method once after 10000 milliseconds 
+/* Run the doAfter method once after 10000 milliseconds
    and srore the timer ID to afterEvent. Send the value
    '10' as an argument to the doAfter method, then print
    the event ID on the serial monitor */
-  afterEvent = t.after(pause3, doAfter, (void*)10); 
+  afterEvent = t.after(pause3, doAfter, (void*)10);
   Serial.print("After event started. ID = ");
-  Serial.println(afterEvent); 
-  
+  Serial.println(afterEvent);
+
 }
 
-void loop() 
+void loop()
 {
   t.update(); // Updates the timer
 }

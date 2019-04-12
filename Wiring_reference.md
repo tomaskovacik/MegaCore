@@ -1,5 +1,5 @@
 # Wiring reference
-To extend this core's functionality a bit futher, I've added a few missing Wiring functions. As many of you know Arduino is based on Wiring, but that doesn't mean the Wiring development isnt active. These functions is used as "regular" Arduino functions, and there's no need to include an external library.
+To extend this core's functionality a bit further, I've added a few missing Wiring functions. As many of you know Arduino is based on Wiring, but that doesn't mean the Wiring development isn't active. These functions is used as "regular" Arduino functions, and there's no need to include an external library.
 
 ## Content
 * [portMode](#portmode)()
@@ -8,7 +8,7 @@ To extend this core's functionality a bit futher, I've added a few missing Wirin
 * [sleepMode](#sleepmode)()
 * [sleep](#sleep)()
 * [noSleep](#disablesleep)()
-* [enablePower](#enablepower)()	
+* [enablePower](#enablepower)()
 * [disablepower](#disablePower)()
 
 ## portMode()
@@ -46,7 +46,7 @@ void setup() {
 void loop() {
   portWrite(portNumber, val);
   val = val + 1;
-  if (val > 255) 
+  if (val > 255)
     val = 0;
 }
 ```
@@ -81,7 +81,7 @@ byte inport = 1;
 byte val = 0;
 
 void setup() {
-  portMode(PortNumber, INPUT); 
+  portMode(PortNumber, INPUT);
   Serial.begin(9600);
 }
 
@@ -122,13 +122,13 @@ byte outport = 1;
 byte val = 0;
 
 void setup() {
-  portMode(PortNumber, OUTPUT); 
+  portMode(PortNumber, OUTPUT);
 }
 
 void loop() {
   portWrite(PortNumber, val);
   val = val + 1;
-  if (val > 255) 
+  if (val > 255)
     val = 0;
 }
 ```
@@ -172,16 +172,16 @@ sleepMode(mode)
 // Set the sleep mode to SLEEP_IDLE
 sleepMode(SLEEP_IDLE);
 sleep(); // Go to sleep
-  
+
 if(some_condition)
   noSleep(); // Wakes up
 
-  
+
 // ...
 ```
 
 ## sleep()
-the <b>sleep()</b> command can allow an application to reduce its power comsumption considerably. Sleep modes enable the application to shut down unused modules in the microcontroller, thereby saving power. The default mode is SLEEP_IDLE. Different AVR devices provides various sleep modes allowing the user to tailor the power consumption to the application's requirements. There are six sleep modes set by the [sleepMode()](#sleepmode) command.
+the <b>sleep()</b> command can allow an application to reduce its power consumption considerably. Sleep modes enable the application to shut down unused modules in the microcontroller, thereby saving power. The default mode is SLEEP_IDLE. Different AVR devices provides various sleep modes allowing the user to tailor the power consumption to the application's requirements. There are six sleep modes set by the [sleepMode()](#sleepmode) command.
 
 ### Syntax
 ``` c++
@@ -198,11 +198,11 @@ sleep()
 // Set the sleep mode to SLEEP_IDLE
 sleepMode(SLEEP_IDLE);
 sleep(); // Go to sleep
-  
+
 if(some_condition)
   noSleep(); // Wakes up
 
-  
+
 // ...
 ```
 
@@ -226,10 +226,10 @@ noSleep()
 // Set the sleep mode to SLEEP_IDLE
 sleepMode(SLEEP_IDLE);
 sleep(); // Go to sleep
-  
+
 if(some_condition)
   noSleep(); // Wakes up
 
-  
+
 // ...
 ```

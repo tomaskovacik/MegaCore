@@ -7,8 +7,8 @@
  * published by the Free Software Foundation.
  */
 
-#ifndef	W5100_H_INCLUDED
-#define	W5100_H_INCLUDED
+#ifndef W5100_H_INCLUDED
+#define W5100_H_INCLUDED
 
 #include <SPI.h>
 
@@ -133,17 +133,17 @@ public:
   void init();
 
   /**
-   * @brief	This function is being used for copy the data form Receive buffer of the chip to application buffer.
-   * 
+   * @brief This function is being used for copy the data form Receive buffer of the chip to application buffer.
+   *
    * It calculate the actual physical address where one has to read
    * the data from Receive buffer. Here also take care of the condition while it exceed
    * the Rx memory uper-bound of socket.
    */
   void read_data(SOCKET s, volatile uint16_t src, volatile uint8_t * dst, uint16_t len);
-  
+
   /**
-   * @brief	 This function is being called by send() and sendto() function also. 
-   * 
+   * @brief  This function is being called by send() and sendto() function also.
+   *
    * This function read the Tx write pointer register and after copy the data in buffer update the Tx write pointer
    * register. User should read upper byte first and lower byte later to get proper value.
    */
@@ -162,8 +162,8 @@ public:
   void send_data_processing_offset(SOCKET s, uint16_t data_offset, const uint8_t *data, uint16_t len);
 
   /**
-   * @brief	This function is being called by recv() also.
-   * 
+   * @brief This function is being called by recv() also.
+   *
    * This function read the Rx read pointer register
    * and after copy the data from receive buffer update the Rx write pointer register.
    * User should read upper byte first and lower byte later to get proper value.
@@ -186,10 +186,10 @@ public:
   inline void setRetransmissionCount(uint8_t _retry);
 
   void execCmdSn(SOCKET s, SockCMD _cmd);
-  
+
   uint16_t getTXFreeSize(SOCKET s);
   uint16_t getRXReceivedSize(SOCKET s);
-  
+
 
   // W5100 Registers
   // ---------------
@@ -198,7 +198,7 @@ private:
   static uint16_t write(uint16_t addr, const uint8_t *buf, uint16_t len);
   static uint8_t read(uint16_t addr);
   static uint16_t read(uint16_t addr, uint8_t *buf, uint16_t len);
-  
+
 #define __GP_REGISTER8(name, address)             \
   static inline void write##name(uint8_t _data) { \
     write(address, _data);                        \
@@ -241,7 +241,7 @@ public:
   __GP_REGISTER8 (PMAGIC, 0x0029);    // PPP LCP Magic Number
   __GP_REGISTER_N(UIPR,   0x002A, 4); // Unreachable IP address in UDP mode
   __GP_REGISTER16(UPORT,  0x002E);    // Unreachable Port address in UDP mode
-  
+
 #undef __GP_REGISTER8
 #undef __GP_REGISTER16
 #undef __GP_REGISTER_N
@@ -284,7 +284,7 @@ private:
   static uint16_t read##name(SOCKET _s, uint8_t *_buff) {    \
     return readSn(_s, address, _buff, size);                 \
   }
-  
+
 public:
   __SOCKET_REGISTER8(SnMR,        0x0000)        // Mode
   __SOCKET_REGISTER8(SnCR,        0x0001)        // Command
@@ -304,7 +304,7 @@ public:
   __SOCKET_REGISTER16(SnRX_RSR,   0x0026)        // RX Free Size
   __SOCKET_REGISTER16(SnRX_RD,    0x0028)        // RX Read Pointer
   __SOCKET_REGISTER16(SnRX_WR,    0x002A)        // RX Write Pointer (supported?)
-  
+
 #undef __SOCKET_REGISTER8
 #undef __SOCKET_REGISTER16
 #undef __SOCKET_REGISTER_N
@@ -327,40 +327,40 @@ private:
 #if !defined(SPI_HAS_EXTENDED_CS_PIN_HANDLING)
   #define SPI_ETHERNET_SETTINGS SPISettings(4000000, MSBFIRST, SPI_MODE0)
   #if defined(ARDUINO_ARCH_AVR)
-  
-    // MegaCore 
+
+    // MegaCore
     #if defined(__AVR_ATmega640__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
       inline static void initSS()    { DDRB  |=  _BV(4); };
       inline static void setSS()     { PORTB &= ~_BV(4); };
       inline static void resetSS()   { PORTB |=  _BV(4); };
-     
+
     #elif defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__) \
     || defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
       inline static void initSS()    { DDRB  |=  _BV(0); };
       inline static void setSS()     { PORTB &= ~_BV(0); };
-      inline static void resetSS()   { PORTB |=  _BV(0); };  
-  	
-  	//MightyCore
-	  #elif defined(__AVR_ATmega1284__) || defined(__AVR_ATmega1284P__) \
-	  || defined(__AVR_ATmega644__) || defined(__AVR_ATmega644P__)\
-	  || defined(__AVR_ATmega324__) || defined(__AVR_ATmega324P__)\
-	  || defined(__AVR_ATmega324PA__) || defined(__AVR_ATmega164__)\
-	  || defined(__AVR_ATmega164P__) || defined(__AVR_ATmega32__)\
-	  || defined(__AVR_ATmega16__) || defined(__AVR_ATmega8535__)
-  	  inline static void initSS()    { DDRB  |=  _BV(4); }
+      inline static void resetSS()   { PORTB |=  _BV(0); };
+
+    //MightyCore
+    #elif defined(__AVR_ATmega1284__) || defined(__AVR_ATmega1284P__) \
+    || defined(__AVR_ATmega644__) || defined(__AVR_ATmega644P__)\
+    || defined(__AVR_ATmega324__) || defined(__AVR_ATmega324P__)\
+    || defined(__AVR_ATmega324PA__) || defined(__AVR_ATmega164__)\
+    || defined(__AVR_ATmega164P__) || defined(__AVR_ATmega32__)\
+    || defined(__AVR_ATmega16__) || defined(__AVR_ATmega8535__)
+      inline static void initSS()    { DDRB  |=  _BV(4); }
       inline static void setSS()     { PORTB &= ~_BV(4); }
       inline static void resetSS()   { PORTB |=  _BV(4); }
-      
+
     #else
       inline static void initSS()    { DDRB  |=  _BV(2); };
       inline static void setSS()     { PORTB &= ~_BV(2); };
       inline static void resetSS()   { PORTB |=  _BV(2); };
     #endif
-    
+
   #elif defined(__ARDUINO_ARC__)
-	inline static void initSS() { pinMode(SS, OUTPUT); };
-	inline static void setSS() { digitalWrite(SS, LOW); };
-	inline static void resetSS() { digitalWrite(SS, HIGH); };
+  inline static void initSS() { pinMode(SS, OUTPUT); };
+  inline static void setSS() { digitalWrite(SS, LOW); };
+  inline static void resetSS() { digitalWrite(SS, HIGH); };
   #else
     inline static void initSS() {
       *portModeRegister(digitalPinToPort(ETHERNET_SHIELD_SPI_CS)) |= digitalPinToBitMask(ETHERNET_SHIELD_SPI_CS);

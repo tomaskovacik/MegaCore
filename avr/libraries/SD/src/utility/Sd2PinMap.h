@@ -48,7 +48,7 @@ struct pin_map_t {
 };
 
 //Pin definitions for ATmega64/128/1281/2561
-#if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__) || defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__) 
+#if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__) || defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
 
 
 // Two Wire (aka I2C) ports
@@ -57,9 +57,9 @@ uint8_t const SCL_PIN = 19;
 
 // SPI port
 uint8_t const SS_PIN = 8;
-uint8_t const SCK_PIN = 9;			
-uint8_t const MOSI_PIN = 10;	
-uint8_t const MISO_PIN = 11;	
+uint8_t const SCK_PIN = 9;
+uint8_t const MOSI_PIN = 10;
+uint8_t const MISO_PIN = 11;
 
 static const pin_map_t digitalPinMap[] = {
   {&DDRE, &PINE, &PORTE, 0},  // E0  0
@@ -202,7 +202,7 @@ static const pin_map_t digitalPinMap[] = {
   {&DDRK, &PINK, &PORTK, 6},  // K6 68
   {&DDRK, &PINK, &PORTK, 7}   // K7 69
 };
-  
+
 
 //"AVR" compatible pin definitions for ATmega640/1280/2560
 #elif defined(__AVR_ATmega640__) ||defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) && defined(MEGA_AVR_PINOUT)
@@ -226,7 +226,7 @@ static const pin_map_t digitalPinMap[] = {
   {&DDRE, &PINE, &PORTE, 5},  // E5  5
   {&DDRE, &PINE, &PORTE, 6},  // E6  6
   {&DDRE, &PINE, &PORTE, 7},  // E7  7
-  
+
   {&DDRH, &PINH, &PORTH, 0},  // H0  8
   {&DDRH, &PINH, &PORTH, 1},  // H1  9
   {&DDRH, &PINH, &PORTH, 2},  // H2 10
@@ -234,7 +234,7 @@ static const pin_map_t digitalPinMap[] = {
   {&DDRH, &PINH, &PORTH, 4},  // H4 12
   {&DDRH, &PINH, &PORTH, 5},  // H5 13
   {&DDRH, &PINH, &PORTH, 6},  // H6 14
-  
+
   {&DDRB, &PINB, &PORTB, 0},  // B0 15
   {&DDRB, &PINB, &PORTB, 1},  // B1 16
   {&DDRB, &PINB, &PORTB, 2},  // B2 17
@@ -243,12 +243,12 @@ static const pin_map_t digitalPinMap[] = {
   {&DDRB, &PINB, &PORTB, 5},  // B5 20
   {&DDRB, &PINB, &PORTB, 6},  // B6 21
   {&DDRB, &PINB, &PORTB, 7},  // B7 22
-  
+
   {&DDRH, &PINH, &PORTH, 7},  // H7 23
-  
+
   {&DDRG, &PING, &PORTG, 3},  // G3 24
   {&DDRG, &PING, &PORTG, 4},  // G4 25
-  
+
   {&DDRL, &PINL, &PORTL, 0},  // L0 26
   {&DDRL, &PINL, &PORTL, 1},  // L1 27
   {&DDRL, &PINL, &PORTL, 2},  // L2 28
@@ -257,7 +257,7 @@ static const pin_map_t digitalPinMap[] = {
   {&DDRL, &PINL, &PORTL, 5},  // L5 31
   {&DDRL, &PINL, &PORTL, 6},  // L6 32
   {&DDRL, &PINL, &PORTL, 7},  // L7 33
-  
+
   {&DDRD, &PIND, &PORTD, 0},  // D0 34
   {&DDRD, &PIND, &PORTD, 1},  // D1 35
   {&DDRD, &PIND, &PORTD, 2},  // D2 36
@@ -266,10 +266,10 @@ static const pin_map_t digitalPinMap[] = {
   {&DDRD, &PIND, &PORTD, 5},  // D5 39
   {&DDRD, &PIND, &PORTD, 6},  // D6 40
   {&DDRD, &PIND, &PORTD, 7},  // D7 41
- 
+
   {&DDRG, &PING, &PORTG, 0},  // G0 42
   {&DDRG, &PING, &PORTG, 1},  // G1 43
-  
+
   {&DDRC, &PINC, &PORTC, 0},  // C0 44
   {&DDRC, &PINC, &PORTC, 1},  // C1 45
   {&DDRC, &PINC, &PORTC, 2},  // C2 46
@@ -278,7 +278,7 @@ static const pin_map_t digitalPinMap[] = {
   {&DDRC, &PINC, &PORTC, 5},  // C5 49
   {&DDRC, &PINC, &PORTC, 6},  // C6 50
   {&DDRC, &PINC, &PORTC, 7},  // C7 51
-  
+
   {&DDRJ, &PINJ, &PORTJ, 0},  // J0 52
   {&DDRJ, &PINJ, &PORTJ, 1},  // J1 53
   {&DDRJ, &PINJ, &PORTJ, 2},  // J2 54
@@ -286,9 +286,9 @@ static const pin_map_t digitalPinMap[] = {
   {&DDRJ, &PINJ, &PORTJ, 4},  // J4 56
   {&DDRJ, &PINJ, &PORTJ, 5},  // J5 57
   {&DDRJ, &PINJ, &PORTJ, 6},  // J6 58
-  
+
   {&DDRG, &PING, &PORTG, 2},  // G2 59
-  
+
   {&DDRA, &PINA, &PORTA, 7},  // A7 60
   {&DDRA, &PINA, &PORTA, 6},  // A6 61
   {&DDRA, &PINA, &PORTA, 5},  // A5 62
@@ -297,9 +297,9 @@ static const pin_map_t digitalPinMap[] = {
   {&DDRA, &PINA, &PORTA, 2},  // A2 65
   {&DDRA, &PINA, &PORTA, 1},  // A1 66
   {&DDRA, &PINA, &PORTA, 0},  // A0 67
-  
+
   {&DDRJ, &PINJ, &PORTJ, 7},  // J7 68
-  
+
   {&DDRF, &PINF, &PORTF, 0},  // F0 69
   {&DDRF, &PINF, &PORTF, 1},  // F1 70
   {&DDRF, &PINF, &PORTF, 2},  // F2 71
@@ -308,7 +308,7 @@ static const pin_map_t digitalPinMap[] = {
   {&DDRF, &PINF, &PORTF, 5},  // F5 74
   {&DDRF, &PINF, &PORTF, 6},  // F6 75
   {&DDRF, &PINF, &PORTF, 7},  // F7 76
-  
+
   {&DDRK, &PINK, &PORTK, 0},  // K0 77
   {&DDRK, &PINK, &PORTK, 1},  // K1 78
   {&DDRK, &PINK, &PORTK, 2},  // K2 79
@@ -317,7 +317,7 @@ static const pin_map_t digitalPinMap[] = {
   {&DDRK, &PINK, &PORTK, 5},  // K5 82
   {&DDRK, &PINK, &PORTK, 6},  // K6 83
   {&DDRK, &PINK, &PORTK, 7},  // K7 84
-  
+
   {&DDRG, &PING, &PORTG, 5},  // G5 85
 };
 
@@ -336,10 +336,10 @@ uint8_t const SDA_PIN = 17;
 uint8_t const SCL_PIN = 16;
 
 // SPI port
-uint8_t const SS_PIN = 4;		
-uint8_t const MOSI_PIN = 5;	
-uint8_t const MISO_PIN = 6;	
-uint8_t const SCK_PIN = 7;	
+uint8_t const SS_PIN = 4;
+uint8_t const MOSI_PIN = 5;
+uint8_t const MISO_PIN = 6;
+uint8_t const SCK_PIN = 7;
 
 static const pin_map_t digitalPinMap[] = {
   {&DDRB, &PINB, &PORTB, 0},  // B0  0
@@ -430,8 +430,8 @@ static const pin_map_t digitalPinMap[] = {
   {&DDRD, &PIND, &PORTD, 4},  // D30 PD4
   {&DDRD, &PIND, &PORTD, 7},  // D31 PD7
 
-};                       
-                        
+};
+
 
 
 
@@ -496,7 +496,7 @@ uint8_t const MOSI_PIN = 11;
 uint8_t const MISO_PIN = 12;
 uint8_t const SCK_PIN = 13;
 
-#endif	// Arduino ARC
+#endif  // Arduino ARC
 
 #else
 #error Architecture or board not supported.
