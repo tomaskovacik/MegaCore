@@ -280,7 +280,7 @@ menu.bootloader=Bootloader
 
 1281.menu.bootloader.no_bootloader=No bootloader
 1281.menu.bootloader.no_bootloader.upload.maximum_size=131072
-1281.menu.bootloader.no_bootl1281.menuoader.bootloader.high_fuses=0xd7
+1281.menu.bootloader.no_bootloader.bootloader.high_fuses=0xd7
 1281.menu.bootloader.no_bootloader.bootloader.file=empty/empty.hex
 
 # Brown out detection
