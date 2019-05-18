@@ -432,6 +432,69 @@ matrix:
     # clock=8MHz_internal
     - env: SKETCH_PATH="${APPLICATION_FOLDER}/arduino/examples/01.Basics/BareMinimum/BareMinimum.ino" BOARD_ID="MegaCore:avr:64:bootloader=uart0,BOD=2v7,LTO=Os,clock=8MHz_internal" ALLOW_FAILURE="false" START_IDE_VERSION="$OLDEST_IDE_VERSION_TO_TEST" END_IDE_VERSION="newest"
 
+    # bootloader=uart0, BOD=2v7, LTO=Os, clock=16MHz_external
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can128:bootloader=uart0,BOD=2v7,LTO=Os,clock=16MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$FIRST_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$FIRST_SPLIT_JOB_END_IDE_VERSION"
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can128:bootloader=uart0,BOD=2v7,LTO=Os,clock=16MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$SECOND_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$SECOND_SPLIT_JOB_END_IDE_VERSION"
+    # BOD=4v1, LTO=Os_flto, clock=20MHz_external
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can128:bootloader=uart0,BOD=4v1,LTO=Os_flto,clock=20MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$OLDEST_IDE_VERSION_TO_TEST_WITH_LTO" END_IDE_VERSION="newest"
+    # bootloader=uart1, BOD=4v0, clock=18_432MHz_external
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can128:bootloader=uart1,BOD=4v0,LTO=Os,clock=18_432MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$FIRST_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$FIRST_SPLIT_JOB_END_IDE_VERSION"
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can128:bootloader=uart1,BOD=4v0,LTO=Os,clock=18_432MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$SECOND_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$SECOND_SPLIT_JOB_END_IDE_VERSION"
+    # bootloader=no_bootloader, BOD=3v9, clock=12MHz_external
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can128:bootloader=no_bootloader,BOD=3v9,LTO=Os,clock=12MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$FIRST_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$FIRST_SPLIT_JOB_END_IDE_VERSION"
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can128:bootloader=no_bootloader,BOD=3v9,LTO=Os,clock=12MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$SECOND_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$SECOND_SPLIT_JOB_END_IDE_VERSION"
+    # BOD=3v8, clock=8MHz_external
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can128:bootloader=uart0,BOD=3v8,LTO=Os,clock=8MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$FIRST_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$FIRST_SPLIT_JOB_END_IDE_VERSION"
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can128:bootloader=uart0,BOD=3v8,LTO=Os,clock=8MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$SECOND_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$SECOND_SPLIT_JOB_END_IDE_VERSION"
+    # F_CPU of 8 MHz has already been fully tested and the BOD and internal clock configuration will have no effect on code so it's only necessary to do a single verification per IDE version for the 8 MHz internal clock setting
+    # BOD=2v6, clock=8MHz_internal
+    - env: SKETCH_PATH="${APPLICATION_FOLDER}/arduino/examples/01.Basics/BareMinimum/BareMinimum.ino" BOARD_ID="MegaCore:avr:can128:bootloader=uart0,BOD=2v6,LTO=Os,clock=8MHz_internal" ALLOW_FAILURE="false" START_IDE_VERSION="$OLDEST_IDE_VERSION_TO_TEST" END_IDE_VERSION="newest"
+    # BOD=2v5/disabled, clock=1MHz_internal
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can128:bootloader=uart0,BOD=2v5,LTO=Os,clock=1MHz_internal" ALLOW_FAILURE="false" START_IDE_VERSION="$FIRST_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$FIRST_SPLIT_JOB_END_IDE_VERSION"
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can128:bootloader=uart0,BOD=disabled,LTO=Os,clock=1MHz_internal" ALLOW_FAILURE="false" START_IDE_VERSION="$SECOND_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$SECOND_SPLIT_JOB_END_IDE_VERSION"
+
+    # bootloader=uart0, BOD=2v7, LTO=Os, clock=16MHz_external
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can64:bootloader=uart0,BOD=2v7,LTO=Os,clock=16MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$FIRST_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$FIRST_SPLIT_JOB_END_IDE_VERSION"
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can64:bootloader=uart0,BOD=2v7,LTO=Os,clock=16MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$SECOND_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$SECOND_SPLIT_JOB_END_IDE_VERSION"
+    # BOD=4v1, LTO=Os_flto, clock=20MHz_external
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can64:bootloader=uart0,BOD=4v1,LTO=Os_flto,clock=20MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$OLDEST_IDE_VERSION_TO_TEST_WITH_LTO" END_IDE_VERSION="newest"
+    # bootloader=uart1, BOD=4v0, clock=18_432MHz_external
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can64:bootloader=uart1,BOD=4v0,LTO=Os,clock=18_432MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$FIRST_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$FIRST_SPLIT_JOB_END_IDE_VERSION"
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can64:bootloader=uart1,BOD=4v0,LTO=Os,clock=18_432MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$SECOND_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$SECOND_SPLIT_JOB_END_IDE_VERSION"
+    # bootloader=no_bootloader, BOD=3v9, clock=12MHz_external
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can64:bootloader=no_bootloader,BOD=3v9,LTO=Os,clock=12MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$FIRST_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$FIRST_SPLIT_JOB_END_IDE_VERSION"
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can64:bootloader=no_bootloader,BOD=3v9,LTO=Os,clock=12MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$SECOND_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$SECOND_SPLIT_JOB_END_IDE_VERSION"
+    # BOD=3v8, clock=8MHz_external
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can64:bootloader=uart0,BOD=3v8,LTO=Os,clock=8MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$FIRST_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$FIRST_SPLIT_JOB_END_IDE_VERSION"
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can64:bootloader=uart0,BOD=3v8,LTO=Os,clock=8MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$SECOND_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$SECOND_SPLIT_JOB_END_IDE_VERSION"
+    # F_CPU of 8 MHz has already been fully tested and the BOD and internal clock configuration will have no effect on code so it's only necessary to do a single verification per IDE version for the 8 MHz internal clock setting
+    # BOD=2v6, clock=8MHz_internal
+    - env: SKETCH_PATH="${APPLICATION_FOLDER}/arduino/examples/01.Basics/BareMinimum/BareMinimum.ino" BOARD_ID="MegaCore:avr:can64:bootloader=uart0,BOD=2v6,LTO=Os,clock=8MHz_internal" ALLOW_FAILURE="false" START_IDE_VERSION="$OLDEST_IDE_VERSION_TO_TEST" END_IDE_VERSION="newest"
+    # BOD=2v5/disabled, clock=1MHz_internal
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can64:bootloader=uart0,BOD=2v5,LTO=Os,clock=1MHz_internal" ALLOW_FAILURE="false" START_IDE_VERSION="$FIRST_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$FIRST_SPLIT_JOB_END_IDE_VERSION"
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can64:bootloader=uart0,BOD=disabled,LTO=Os,clock=1MHz_internal" ALLOW_FAILURE="false" START_IDE_VERSION="$SECOND_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$SECOND_SPLIT_JOB_END_IDE_VERSION"
+
+    # bootloader=uart0, BOD=2v7, LTO=Os, clock=16MHz_external
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can32:bootloader=uart0,BOD=2v7,LTO=Os,clock=16MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$FIRST_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$FIRST_SPLIT_JOB_END_IDE_VERSION"
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can32:bootloader=uart0,BOD=2v7,LTO=Os,clock=16MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$SECOND_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$SECOND_SPLIT_JOB_END_IDE_VERSION"
+    # BOD=4v1, LTO=Os_flto, clock=20MHz_external
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can32:bootloader=uart0,BOD=4v1,LTO=Os_flto,clock=20MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$OLDEST_IDE_VERSION_TO_TEST_WITH_LTO" END_IDE_VERSION="newest"
+    # bootloader=uart1, BOD=4v0, clock=18_432MHz_external
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can32:bootloader=uart1,BOD=4v0,LTO=Os,clock=18_432MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$FIRST_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$FIRST_SPLIT_JOB_END_IDE_VERSION"
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can32:bootloader=uart1,BOD=4v0,LTO=Os,clock=18_432MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$SECOND_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$SECOND_SPLIT_JOB_END_IDE_VERSION"
+    # bootloader=no_bootloader, BOD=3v9, clock=12MHz_external
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can32:bootloader=no_bootloader,BOD=3v9,LTO=Os,clock=12MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$FIRST_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$FIRST_SPLIT_JOB_END_IDE_VERSION"
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can32:bootloader=no_bootloader,BOD=3v9,LTO=Os,clock=12MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$SECOND_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$SECOND_SPLIT_JOB_END_IDE_VERSION"
+    # BOD=3v8, clock=8MHz_external
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can32:bootloader=uart0,BOD=3v8,LTO=Os,clock=8MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$FIRST_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$FIRST_SPLIT_JOB_END_IDE_VERSION"
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can32:bootloader=uart0,BOD=3v8,LTO=Os,clock=8MHz_external" ALLOW_FAILURE="false" START_IDE_VERSION="$SECOND_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$SECOND_SPLIT_JOB_END_IDE_VERSION"
+    # F_CPU of 8 MHz has already been fully tested and the BOD and internal clock configuration will have no effect on code so it's only necessary to do a single verification per IDE version for the 8 MHz internal clock setting
+    # BOD=2v6, clock=8MHz_internal
+    - env: SKETCH_PATH="${APPLICATION_FOLDER}/arduino/examples/01.Basics/BareMinimum/BareMinimum.ino" BOARD_ID="MegaCore:avr:can32:bootloader=uart0,BOD=2v6,LTO=Os,clock=8MHz_internal" ALLOW_FAILURE="false" START_IDE_VERSION="$OLDEST_IDE_VERSION_TO_TEST" END_IDE_VERSION="newest"
+    # BOD=2v5/disabled, clock=1MHz_internal
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can32:bootloader=uart0,BOD=2v5,LTO=Os,clock=1MHz_internal" ALLOW_FAILURE="false" START_IDE_VERSION="$FIRST_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$FIRST_SPLIT_JOB_END_IDE_VERSION"
+    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries" BOARD_ID="MegaCore:avr:can32:bootloader=uart0,BOD=disabled,LTO=Os,clock=1MHz_internal" ALLOW_FAILURE="false" START_IDE_VERSION="$SECOND_SPLIT_JOB_START_IDE_VERSION" END_IDE_VERSION="$SECOND_SPLIT_JOB_END_IDE_VERSION"
+
 
 # Shared phase definitions, which will be used for any job that doesn't define its own
 before_install:
