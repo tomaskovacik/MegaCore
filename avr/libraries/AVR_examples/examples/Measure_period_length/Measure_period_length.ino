@@ -30,8 +30,9 @@ int main(void)
 
   #if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
     TIMSK = 0x24;  // Unmask Timer1 overflow and capture interrupts
-  #elif defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__) || \
-  defined(__AVR_ATmega640__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
+  #elif defined(__AVR_AT90CAN32__) || defined(__AVR_AT90CAN64__) || defined(__AVR_AT90CAN128__) \
+  || defined(__AVR_ATmega640__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega1281__)   \
+  || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega2561__)
     TIMSK1 = 0x24;  // Unmask Timer1 overflow and capture interrupts
   #endif
 
