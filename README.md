@@ -63,7 +63,7 @@ Select your microcontroller in the boards menu, then select the clock frequency.
 Make sure you connect an ISP programmer, and select the correct one in the "Programmers" menu. For time critical applications an external oscillator is recommended.
 </br></br>
 
-<b>*</b> There might be some issues related to the internal oscillator. It's factory calibrated, but may be a little "off" depending on the calibration, ambient temperature and operating voltage. If uploading failes while using the 8 MHz internal oscillator you have three options:
+<b>*</b> There might be some issues related to the internal oscillator. It's factory calibrated, but may be a little "off" depending on the calibration, ambient temperature and operating voltage. If uploading fails while using the 8 MHz internal oscillator you have three options:
 * Edit the baudrate line in the [boards.txt](https://github.com/MCUdude/MegaCore/blob/25ad60968abd59b3931e75e4d378f0878d2bf716/avr/boards.txt#L123) file, and choose either 115200, 57600, 38400, 19200 or 9600 baud.
 * Upload the code using a programmer (USBasp, USBtinyISP etc.) or skip the bootloader
 * Use the 1 MHz option instead
@@ -161,7 +161,7 @@ I hope you find this useful, because they really are!
 ## Pinout
 
 ### ATmega64/128/1281/2561/CAN32/CAN64/CAN128
-Since there are no standarized Arduino pinout for this chip family, I've created one. I've tried to make it as simple and logical as possible. This pinout makes great sense if you're buying this [cheap breakout boards](http://www.ebay.com/itm/381547311629) at Ebay or AliExpress (just make sure to remove C3 in order to get auto reset working). The standard LED pin is assigned to Arduino pin 13, and will blink twice if you hit the reset button.
+Since there are no standardized Arduino pinout for this chip family, I've created one. I've tried to make it as simple and logical as possible. This pinout makes great sense if you're buying this [cheap breakout boards](http://www.ebay.com/itm/381547311629) at Ebay or AliExpress (just make sure to remove C3 in order to get auto reset working). The standard LED pin is assigned to Arduino pin 13, and will blink twice if you hit the reset button.
 
 ### ATmega640/1280/2560
 Beside including the original Arduino Mega pinout for the ATmega640/1280/2560, I've also added an *AVR style pinout*, which is a more straight forward and logical pinout if you're not working with the Arduino Mega board. For the default Arduino Mega pinout, the standard LED pin is assigned to Arduino pin 13, and for the AVR pin it's assigned to pin 22.
