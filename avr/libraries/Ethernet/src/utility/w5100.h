@@ -22,6 +22,12 @@ typedef uint8_t SOCKET;
 #define IDM_AR0 0x8001
 #define IDM_AR1 0x8002
 #define IDM_DR  0x8003
+
+ // avr-libc workaround. Naming conflict caused by iocanxx.h
+#if defined(__AVR_AT90CAN32__) || defined(__AVR_AT90CAN64__) || defined(__AVR_AT90CAN128__)
+	#undef LISTEN
+#endif
+
 /*
 class MR {
 public:
