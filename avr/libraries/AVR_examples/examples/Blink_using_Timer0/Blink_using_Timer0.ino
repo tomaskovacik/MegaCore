@@ -30,7 +30,7 @@ int main (void)
     OCR0 = 0x00;      // Output compare
     TCNT0 = 0;        // Start to count from zero
     TIMSK = 0x01;     // Enable overflow interrupt
-  
+
   #elif defined(__AVR_AT90CAN32__) || defined(__AVR_AT90CAN64__) || defined(__AVR_AT90CAN128__)
     DDRB |= _BV(PB5); // Set PB5 as output, ignore the rest
     ledPin = _BV(PB5);
