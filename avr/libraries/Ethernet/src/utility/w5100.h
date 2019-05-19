@@ -25,7 +25,7 @@ typedef uint8_t SOCKET;
 
  // avr-libc workaround. Naming conflict caused by iocanxx.h
 #if defined(__AVR_AT90CAN32__) || defined(__AVR_AT90CAN64__) || defined(__AVR_AT90CAN128__)
-	#undef LISTEN
+  #undef LISTEN
 #endif
 
 /*
