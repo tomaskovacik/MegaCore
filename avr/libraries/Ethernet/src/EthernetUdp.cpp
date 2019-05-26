@@ -188,4 +188,3 @@ uint8_t EthernetUDP::beginMulticast(IPAddress ip, uint16_t port)
   _remaining = 0;
   return 1;
 }
-

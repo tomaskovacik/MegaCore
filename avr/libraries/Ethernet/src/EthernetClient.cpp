@@ -211,5 +211,3 @@ uint16_t EthernetClient::remotePort()
   SPI.endTransaction();
   return port;
 }
-
-

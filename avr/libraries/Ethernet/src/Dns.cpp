@@ -351,4 +351,3 @@ uint16_t DNSClient::ProcessResponse(uint16_t aTimeout, IPAddress& aAddress)
   // If we get here then we haven't found an answer
   return -10; //INVALID_RESPONSE;
 }
-

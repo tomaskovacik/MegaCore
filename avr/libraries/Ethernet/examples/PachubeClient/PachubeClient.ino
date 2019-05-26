@@ -168,4 +168,3 @@ int getLength(int someValue) {
   // return the number of digits:
   return digits;
 }
-

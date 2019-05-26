@@ -92,7 +92,7 @@ void setup() {
   // start listening for clients
   server.begin();
 
-  // initalize the data ready and chip select pins:
+  // Initialize the data ready and chip select pins:
   pinMode(dataReadyPin, INPUT);
   pinMode(chipSelectPin, OUTPUT);
 

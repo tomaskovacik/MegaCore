@@ -159,4 +159,3 @@ void sendData(String thisData) {
   // note the time that the connection was made or attempted:
   lastConnectionTime = millis();
 }
-

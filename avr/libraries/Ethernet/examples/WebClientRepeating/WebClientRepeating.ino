@@ -124,7 +124,3 @@ void httpRequest() {
     Serial.println("connection failed");
   }
 }
-
-
-
-
