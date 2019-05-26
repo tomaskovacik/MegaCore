@@ -99,7 +99,7 @@ int DNSClient::getHostByName(const char* aHostname, IPAddress& aResult, uint16_t
   if (iDNSServer == INADDR_NONE) {
     return INVALID_SERVER;
   }
-  
+
   // Find a socket to use
   if (iUdp.begin(1024+(millis() & 0xF)) == 1) {
     // Try up to three times
