@@ -28,8 +28,8 @@
   #define TWI_FREQ 100000L
   #endif
 
-  #ifndef TWI_BUFFER_LENGTH
-  #define TWI_BUFFER_LENGTH 32
+  #ifndef TWI_BUFFER_SIZE
+  #define TWI_BUFFER_SIZE 32
   #endif
 
   #define TWI_READY 0
@@ -37,7 +37,7 @@
   #define TWI_MTX   2
   #define TWI_SRX   3
   #define TWI_STX   4
-
+  
   void twi_init(void);
   void twi_disable(void);
   void twi_setAddress(uint8_t);
@@ -51,3 +51,4 @@
   void twi_releaseBus(void);
 
 #endif
+

@@ -22,10 +22,10 @@
 #ifndef TwoWire_h
 #define TwoWire_h
 
+#include <Arduino.h>
 #include <inttypes.h>
 #include "Stream.h"
 
-#define BUFFER_LENGTH 32
 
 // WIRE_HAS_END means Wire has end()
 #define WIRE_HAS_END 1
@@ -82,3 +82,4 @@ class TwoWire : public Stream
 extern TwoWire Wire;
 
 #endif
+
