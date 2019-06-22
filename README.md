@@ -51,22 +51,29 @@ Can't decide what microcontroller to choose? Have a look at the specification ta
 
 
 ## Supported clock frequencies
-* 16 MHz external oscillator (default)
-* 20 MHz external oscillator
-* 18.432 MHz external oscillator
-* 12 MHz external oscillator
-* 8 MHz external oscillator
-* 8 MHz internal oscillator <b>*</b>
-* 1 MHz internal oscillator
 
-Select your microcontroller in the boards menu, then select the clock frequency. You'll have to hit "Burn bootloader" in order to set the correct fuses and upload the correct bootloader. <br/>
-Make sure you connect an ISP programmer, and select the correct one in the "Programmers" menu. For time critical applications an external oscillator is recommended.
-</br></br>
+MegaCore supports a variety of different clock frequencies. Select the microcontroller in the boards menu, then select the clock frequency. You'll have to hit "Burn bootloader" in order to set the correct fuses and upload the correct bootloader.  
+Make sure you connect an ISP programmer, and select the correct one in the "Programmers" menu. For time critical operations an external crystal/oscillator is recommended.  
 
-<b>*</b> There might be some issues related to the internal oscillator. It's factory calibrated, but may be a little "off" depending on the calibration, ambient temperature and operating voltage. If uploading fails while using the 8 MHz internal oscillator you have three options:
-* Edit the baudrate line in the [boards.txt](https://github.com/MCUdude/MegaCore/blob/25ad60968abd59b3931e75e4d378f0878d2bf716/avr/boards.txt#L123) file, and choose either 115200, 57600, 38400, 19200 or 9600 baud.
-* Upload the code using a programmer (USBasp, USBtinyISP etc.) or skip the bootloader
+You might experience upload issues when using the internal oscillator. It's factory calibrated but may be a little "off" depending on the calibration, ambient temperature and operating voltage. If uploading failes while using the 8 MHz internal oscillator you have these options:
+* Edit the baudrate line in the [boards.txt](https://github.com/MCUdude/MegaCore/blob/6098efe55de668ebb19f538a0b86a2c43e3dec07/avr/boards.txt#L802) file, and choose either 115200, 57600, 38400 or 19200 baud.
+* Upload the code using a programmer (USBasp, USBtinyISP etc.) or skip the bootloader by holding down the shift key while clicking the "Upload" button
 * Use the 1 MHz option instead
+
+| Frequency   | Oscillator type             | Comment                                                       |
+|-------------|-----------------------------|---------------------------------------------------------------|
+| 16 MHz      | External crystal/oscillator | Default clock on most AVR based Arduino boards and MegaCore   |
+| 20 MHz      | External crystal/oscillator |                                                               |
+| 18.4320 MHz | External crystal/oscillator | Great clock for UART communication with no error              |
+| 14.7456 MHz | External crystal/oscillator | Great clock for UART communication with no error              |
+| 12 MHz      | External crystal/oscillator | Useful when working with USB 1.1 (12 Mbit/s)                  |
+| 11.0592 MHz | External crystal/oscillator | Great clock for UART communication with no error              |
+| 8 MHz       | External crystal/oscillator | Common clock when working with 3.3V                           |
+| 7.3728 MHz  | External crystal/oscillator | Great clock for UART communication with no error              |
+| 3.6864 MHz  | External crystal/oscillator | Great clock for UART communication with no error              |
+| 1.8432 MHz  | External crystal/oscillator | Great clock for UART communication with no error              |
+| 8 MHz       | Internal oscillator         | May cause UART upload issues. See comment above this table    |
+| 1 MHz       | Internal oscillator         | Derived from the 8 MHz internal oscillator                    |
 
 
 ## Bootloader option
