@@ -14,7 +14,7 @@ This repository contains a total of 5928 precompiled hex files built for 49 diff
 ## Supported devices
 * [ATmega640, ATmega1280, ATmega2560](https://github.com/MCUdude/MegaCore)
 * [ATmega64, ATmega128, ATmega1281, ATmega2561](https://github.com/MCUdude/MegaCore)
-* AT90CAN32, AT90CAN64, AT90CAN128,
+* [AT90CAN32, AT90CAN64, AT90CAN128](https://github.com/MCUdude/MegaCore)
 * [ATmega8535, ATmega16, ATmega32, ATmega164A/P, ATmega324A/P/PA/PB, ATmega644/P, ATmega1284/P](https://github.com/MCUdude/MightyCore)
 * [ATmega8515, ATmega162](https://github.com/MCUdude/MajorCore)
 * [ATmega8, ATmega88/P/PB, ATmega168/P/PB, ATmega328/P/PB](https://github.com/MCUdude/MiniCore)
@@ -27,22 +27,22 @@ This repository contains a total of 5928 precompiled hex files built for 49 diff
 ## Precompiled binaries
 This repository contains a bunch of precompiled hex file with a variety of clock frequencies and baud rates:
 
-|             | 1000000 | 500000 | 250000 | 230400 | 115200 | 57600 | 38400 | 19200 | 9600 |
-|-------------|---------|--------|--------|--------|--------|-------|-------|-------|------|
-| 24 MHz      |  X      |  X     |  X     |  X     |  X     |  X    |  X    |  X    |      |
-| 20 MHz      |         |  X     |  X     |        |  X     |       |       |  X    |      |
-| 18.4320 MHz |         |        |        |  X     |  X     |  X    |  X    |  X    |  X   |
-| 16 MHz      |  X      |  X     |  X     |        |  X     |       |  X    |  X    |  X   |
-| 14.7456 MHz |         |        |        |  X     |  X     |  X    |  X    |  X    |  X   | 
-| 12 MHz      |         |  X     |  X     |        |        |  X    |       |  X    |  X   |
-| 11.0592 MHz |         |        |        |  X     |  X     |  X    |  X    |  X    |  X   | 
-| 8 MHz       |  X      |  X     |  X     |        |  X     |  X    |  X    |  X    |  X   |
-| 7.3728 MHz  |         |        |        |  X     |  X     |  X    |  X    |  X    |  X   | 
-| 4 MHz       |         |  X     |  X     |        |        |       |       |  X    |  X   |
-| 3.6864 MHz  |         |        |        |  X     |  X     |  X    |  X    |  X    |  X   | 
-| 2 MHz       |         |        |  X     |        |        |       |       |  X    |  X   |
-| 1.8432 MHz  |         |        |        |  X     |  X     |  X    |  X    |  X    |  X   | 
-| 1 MHz       |         |        |        |        |        |       |       |       |  X   | 
+|             | 1000000 | 500000 | 460800 | 250000 | 230400 | 115200 | 57600 | 38400 | 19200 | 9600 |
+|-------------|---------|--------|--------|--------|--------|--------|-------|-------|-------|------|
+| 24 MHz      |  X      |  X     |        |  X     |  X     |  X     |  X    |  X    |  X    |      |
+| 20 MHz      |         |  X     |        |  X     |        |  X     |       |       |  X    |      |
+| 18.4320 MHz |         |        |  X     |        |  X     |  X     |  X    |  X    |  X    |  X   |
+| 16 MHz      |  X      |  X     |        |  X     |        |  X     |       |  X    |  X    |  X   |
+| 14.7456 MHz |         |        |  X     |        |  X     |  X     |  X    |  X    |  X    |  X   | 
+| 12 MHz      |         |  X     |        |  X     |        |        |  X    |       |  X    |  X   |
+| 11.0592 MHz |         |        |  X     |        |  X     |  X     |  X    |  X    |  X    |  X   | 
+| 8 MHz       |  X      |  X     |        |  X     |        |  X     |  X    |  X    |  X    |  X   |
+| 7.3728 MHz  |         |        |  X     |        |  X     |  X     |  X    |  X    |  X    |  X   | 
+| 4 MHz       |         |  X     |        |  X     |        |        |       |       |  X    |  X   |
+| 3.6864 MHz  |         |        |  X     |        |  X     |  X     |  X    |  X    |  X    |  X   | 
+| 2 MHz       |         |        |        |  X     |        |        |       |       |  X    |  X   |
+| 1.8432 MHz  |         |        |        |        |  X     |  X     |  X    |  X    |  X    |  X   | 
+| 1 MHz       |         |        |        |        |        |        |       |       |       |  X   | 
 
 
 ## Using different UARTs
