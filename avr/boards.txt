@@ -208,6 +208,10 @@ menu.bootloader=Bootloader
 # Pinouts
 2560.menu.pinout.mega_pinout=Arduino MEGA pinout
 2560.menu.pinout.mega_pinout.build.variant=100-pin-arduino-mega
+2560.menu.pinout.mega_pinout_all_v1=Arduino MEGA pinout with all pins v1
+2560.menu.pinout.mega_pinout_all_v1.build.variant=100-pin-arduino-mega-all-pins-v1
+#2560.menu.pinout.mega_pinout_all=Arduino MEGA pinout with all pins
+#2560.menu.pinout.mega_pinout_all.build.variant=100-pin-arduino-mega-all-pins
 2560.menu.pinout.avr_pinout=AVR pinout
 2560.menu.pinout.avr_pinout.build.variant=100-pin-avr
 
