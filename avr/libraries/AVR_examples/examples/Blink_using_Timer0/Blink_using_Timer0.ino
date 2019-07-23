@@ -31,6 +31,14 @@ int main (void)
     TCNT0 = 0;        // Start to count from zero
     TIMSK = 0x01;     // Enable overflow interrupt
 
+  #elif defined(__AVR_AT90CAN32__) || defined(__AVR_AT90CAN64__) || defined(__AVR_AT90CAN128__)
+    DDRB |= _BV(PB5); // Set PB5 as output, ignore the rest
+    ledPin = _BV(PB5);
+    TCCR0A = 0x05;    // clock frequency / 1024
+    OCR0A = 0x00;     // Output compare
+    TCNT0 = 0;        // Start to count from zero
+    TIMSK0 = 0x01;    // Enable overflow interrupt
+
   #elif defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
     DDRB |= _BV(PB5); // Set PB5 as output, ignore the rest
     ledPin = _BV(PB5);

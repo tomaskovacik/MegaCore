@@ -22,14 +22,16 @@
 
 
 // Digital pins
-#if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
+#if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__) || defined(__AVR_AT90CAN32__) \
+|| defined(__AVR_AT90CAN64__) || defined(__AVR_AT90CAN128__)
 #define NUM_DIGITAL_PINS           (53)
 #elif defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
 #define NUM_DIGITAL_PINS           (54)
 #endif
 
 // PWM pins
-#if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
+#if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__) || defined(__AVR_AT90CAN32__) \
+|| defined(__AVR_AT90CAN64__) || defined(__AVR_AT90CAN128__)
   #define digitalPinHasPWM(p)      (((p) >= 3 && (p) <= 5) || ((p) >= 12 && (p) <= 15))
 #elif defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
   #define digitalPinHasPWM(p)      (((p) >= 3 && (p) <= 5) || ((p) >= 12 && (p) <= 15) || ((p) == 53))
@@ -257,7 +259,8 @@ const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
   NOT_ON_TIMER, // PB3 ** D11 ** MISO
 #if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
   TIMER0,       // PB4 ** D12 ** PWM
-#elif defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+#elif defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__) || defined(__AVR_AT90CAN32__) \
+|| defined(__AVR_AT90CAN64__) || defined(__AVR_AT90CAN128__)
   TIMER2A,      // PB4 ** D12 ** PWM
 #endif
   TIMER1A,      // PB5 ** D13 ** PWM

@@ -38,8 +38,9 @@ http://arduiniana.org.
 
 
 // Microcontrollers that only make use of INTs
-#if defined(__AVR_ATmega8__)  || defined(__AVR_ATmega16__)  || defined(__AVR_ATmega32__)   || \
-    defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__) || defined(__AVR_ATmega8515__) || \
+#if defined(__AVR_ATmega8__)   || defined(__AVR_ATmega16__)   ||  defined(__AVR_ATmega32__)  || \
+    defined(__AVR_ATmega64__)  || defined(__AVR_ATmega128__)  ||  defined(__AVR_AT90CAN32__) || \
+    defined(__AVR_AT90CAN64__) || defined(__AVR_AT90CAN128__) || defined(__AVR_ATmega8515__) || \
     defined(__AVR_ATmega8535__)
   #define INT_ONLY
 // Microcontrollers that make use of INTs and PCINTs
