@@ -189,10 +189,10 @@ Recommended baud rate for the particular clock speed is `emphasized`.
 Holds the current pinout in use. Alternative pinout is only avaiable for ATmega640/1280/2560, so this parameter isn't really needed if you're not using the 100-pin AVR pinout.
 See [pinout pics](https://github.com/MCUdude/MegaCore#pinout) for more info.
 
-| Target                                                                                                        | Default pinout                  | Alternative pinout     |
-|---------------------------------------------------------------------------------------------------------------|---------------------------------|------------------------|
-| ATmega2560/V <br/>ATmega1280/V <br/>ATmega640/V                                                               | `megacore_100-pin-arduino-mega` | `megacore_100-pin-avr` |
-| ATmega2561/V <br/>ATmega1281/V <br/>ATmega128/A <br/>ATmega64/A <br/>AT90CAN128 <br/>AT90CAN64 <br/>AT90CAN32 | `megacore_64-pin-avr`           |                        |
+| Target                                                                                                        | Default pinout         | Alternative pinout |
+|---------------------------------------------------------------------------------------------------------------|------------------------|--------------------|
+| ATmega2560/V <br/>ATmega1280/V <br/>ATmega640/V                                                               | `100-pin-arduino-mega` | `100-pin-avr`      |
+| ATmega2561/V <br/>ATmega1281/V <br/>ATmega128/A <br/>ATmega64/A <br/>AT90CAN128 <br/>AT90CAN64 <br/>AT90CAN32 | `64-pin-avr`           |                    |
 
 
 ### `build_unflags`
