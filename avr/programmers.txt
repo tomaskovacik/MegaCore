@@ -1,4 +1,3 @@
-
 usbtinyisp.name=USBtinyISP (MegaCore)
 usbtinyisp.protocol=usbtiny
 usbtinyisp.program.tool=avrdude
