@@ -93,6 +93,131 @@ static const uint8_t SDA = PIN_WIRE_SDA;
 
 #ifdef ARDUINO_MAIN
 
+// Data direction register macro
+#if defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+  #define digitalPinToDdrReg(PIN) \
+  (((PIN) <= 7)                ? &DDRE : \
+  ((PIN) >= 8  && (PIN) <= 15) ? &DDRB : \
+  ((PIN) >= 16 && (PIN) <= 17) ? &DDRG : \
+  ((PIN) >= 18 && (PIN) <= 25) ? &DDRD : \
+  ((PIN) >= 26 && (PIN) <= 27) ? &DDRG : \
+  ((PIN) >= 28 && (PIN) <= 35) ? &DDRC : \
+  ((PIN) == 36)                ? &DDRG : \
+  ((PIN) >= 37 && (PIN) <= 44) ? &DDRA : \
+  ((PIN) >= 45 && (PIN) <= 52) ? &DDRF : \
+  ((PIN) == 53)                ? &DDRG : NOT_A_PORT)
+#else
+  #define digitalPinToDdrReg(PIN) \
+  (((PIN) <= 7)                ? &DDRE : \
+  ((PIN) >= 8  && (PIN) <= 15) ? &DDRB : \
+  ((PIN) >= 16 && (PIN) <= 17) ? &DDRG : \
+  ((PIN) >= 18 && (PIN) <= 25) ? &DDRD : \
+  ((PIN) >= 26 && (PIN) <= 27) ? &DDRG : \
+  ((PIN) >= 28 && (PIN) <= 35) ? &DDRC : \
+  ((PIN) == 36)                ? &DDRG : \
+  ((PIN) >= 37 && (PIN) <= 44) ? &DDRA : \
+  ((PIN) >= 45 && (PIN) <= 52) ? &DDRF : NOT_A_PORT)
+#endif
+
+// Port output register macro
+#if defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+#define digitalPinToPortReg(PIN) \
+  (((PIN) <= 7)                ? &PORTE : \
+  ((PIN) >= 8  && (PIN) <= 15) ? &PORTB : \
+  ((PIN) >= 16 && (PIN) <= 17) ? &PORTG : \
+  ((PIN) >= 18 && (PIN) <= 25) ? &PORTD : \
+  ((PIN) >= 26 && (PIN) <= 27) ? &PORTG : \
+  ((PIN) >= 28 && (PIN) <= 35) ? &PORTC : \
+  ((PIN) == 36)                ? &PORTG : \
+  ((PIN) >= 37 && (PIN) <= 44) ? &PORTA : \
+  ((PIN) >= 45 && (PIN) <= 52) ? &PORTF : \
+  ((PIN) == 53)                ? &PORTG : NOT_A_PIN)
+#else
+  #define digitalPinToPortReg(PIN) \
+  (((PIN) <= 7)                ? &PORTE : \
+  ((PIN) >= 8  && (PIN) <= 15) ? &PORTB : \
+  ((PIN) >= 16 && (PIN) <= 17) ? &PORTG : \
+  ((PIN) >= 18 && (PIN) <= 25) ? &PORTD : \
+  ((PIN) >= 26 && (PIN) <= 27) ? &PORTG : \
+  ((PIN) >= 28 && (PIN) <= 35) ? &PORTC : \
+  ((PIN) == 36)                ? &PORTG : \
+  ((PIN) >= 37 && (PIN) <= 44) ? &PORTA : \
+  ((PIN) >= 45 && (PIN) <= 52) ? &PORTF : NOT_A_PIN)
+#endif
+
+// Port input register macro
+#if defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+  #define digitalPinToPinReg(PIN) \
+  (((PIN) <= 7)                ? &PINE : \
+  ((PIN) >= 8  && (PIN) <= 15) ? &PINB : \
+  ((PIN) >= 16 && (PIN) <= 17) ? &PING : \
+  ((PIN) >= 18 && (PIN) <= 25) ? &PIND : \
+  ((PIN) >= 26 && (PIN) <= 27) ? &PING : \
+  ((PIN) >= 28 && (PIN) <= 35) ? &PINC : \
+  ((PIN) == 36)                ? &PING : \
+  ((PIN) >= 37 && (PIN) <= 44) ? &PINA : \
+  ((PIN) >= 45 && (PIN) <= 52) ? &PINF : \
+  ((PIN) == 53)                ? &PING : NOT_A_PIN)
+#else
+  #define digitalPinToPinReg(PIN) \
+  (((PIN) <= 7)                ? &PINE : \
+  ((PIN) >= 8  && (PIN) <= 15) ? &PINB : \
+  ((PIN) >= 16 && (PIN) <= 17) ? &PING : \
+  ((PIN) >= 18 && (PIN) <= 25) ? &PIND : \
+  ((PIN) >= 26 && (PIN) <= 27) ? &PING : \
+  ((PIN) >= 28 && (PIN) <= 35) ? &PINC : \
+  ((PIN) == 36)                ? &PING : \
+  ((PIN) >= 37 && (PIN) <= 44) ? &PINA : \
+  ((PIN) >= 45 && (PIN) <= 52) ? &PINF : NOT_A_PIN)
+#endif
+
+// Timer definition macro
+#if defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+  #define digitalPinToTimerDef(PIN) \
+  (((PIN) >= 3 && (PIN) <= 5)  ? (TIMER3A + PIN - 3)  : \
+  ((PIN) == 12)                ? (TIMER2A)            : \
+  ((PIN) >= 13 && (PIN) <= 15) ? (TIMER1A + PIN - 13) : \
+  ((PIN) == 52)                ? (TIMER0B)            : NOT_ON_TIMER)
+else if defined(__AVR_AT90CAN32__) || defined(__AVR_AT90CAN64__) || defined(__AVR_AT90CAN128__)
+  #define digitalPinToTimerDef(PIN) \
+  (((PIN) >= 3 && (PIN) <= 5)  ? (TIMER3A + PIN - 3)  : \
+  ((PIN) == 12)                ? (TIMER2A)            : \
+  ((PIN) >= 13 && (PIN) <= 15) ? (TIMER1A + PIN - 13) : NOT_ON_TIMER)
+#else
+  #define digitalPinToTimerDef(PIN) \
+  (((PIN) >= 3 && (PIN) <= 5)  ? (TIMER3A + PIN - 3)  : \
+  ((PIN) == 12)                ? (TIMER0)             : \
+  ((PIN) >= 13 && (PIN) <= 15) ? (TIMER1A + PIN - 13) : NOT_ON_TIMER)
+#endif
+
+#if defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+  #define digitalPinToBit(PIN) \
+  (((PIN) <= 7)                ? (PIN)      : \
+  ((PIN) >= 8  && (PIN) <= 15) ? (PIN - 8)  : \
+  ((PIN) >= 16 && (PIN) <= 17) ? (PIN - 13) : \
+  ((PIN) >= 18 && (PIN) <= 25) ? (PIN - 18) : \
+  ((PIN) >= 26 && (PIN) <= 27) ? (PIN - 26) : \
+  ((PIN) >= 28 && (PIN) <= 35) ? (PIN - 28) : \
+  ((PIN) == 36)                ? (PIN - 34) : \
+  ((PIN) >= 37 && (PIN) <= 44) ? (44 - PIN) : \
+  ((PIN) >= 45 && (PIN) <= 52) ? (PIN - 45) : \
+  ((PIN) == 53)                ? (PIN - 48) : NOT_A_PIN)
+#else
+  #define digitalPinToBit(PIN) \
+  (((PIN) <= 7)                ? (PIN)      : \
+  ((PIN) >= 8  && (PIN) <= 15) ? (PIN - 8)  : \
+  ((PIN) >= 16 && (PIN) <= 17) ? (PIN - 13) : \
+  ((PIN) >= 18 && (PIN) <= 25) ? (PIN - 18) : \
+  ((PIN) >= 26 && (PIN) <= 27) ? (PIN - 26) : \
+  ((PIN) >= 28 && (PIN) <= 35) ? (PIN - 28) : \
+  ((PIN) == 36)                ? (PIN - 34) : \
+  ((PIN) >= 37 && (PIN) <= 44) ? (44 - PIN) : \
+  ((PIN) >= 45 && (PIN) <= 52) ? (PIN - 45) : NOT_A_PIN)
+#endif
+
+#define digitalPinToMask(PIN) (_BV(digitalPinToBit(PIN)))
+
+
 const uint16_t PROGMEM port_to_mode_PGM[] = {
   NOT_A_PORT,
   (uint16_t) &DDRA,
@@ -243,6 +368,63 @@ const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
   _BV(5), // PG5 ** D53 ** PWM
 #endif
 };
+
+#define PIN_PE0 0
+#define PIN_PE1 1
+#define PIN_PE2 2
+#define PIN_PE3 3
+#define PIN_PE4 4
+#define PIN_PE5 5
+#define PIN_PE6 6
+#define PIN_PE7 7
+#define PIN_PB0 8
+#define PIN_PB1 9
+#define PIN_PB2 10
+#define PIN_PB3 11
+#define PIN_PB4 12
+#define PIN_PB5 13
+#define PIN_PB6 14
+#define PIN_PB7 15
+#define PIN_PG3 16
+#define PIN_PG4 17
+#define PIN_PD0 18
+#define PIN_PD1 19
+#define PIN_PD2 20
+#define PIN_PD3 21
+#define PIN_PD4 22
+#define PIN_PD5 23
+#define PIN_PD6 24
+#define PIN_PD7 25
+#define PIN_PG0 26
+#define PIN_PG1 27
+#define PIN_PC0 28
+#define PIN_PC1 29
+#define PIN_PC2 30
+#define PIN_PC3 31
+#define PIN_PC4 32
+#define PIN_PC5 33
+#define PIN_PC6 34
+#define PIN_PC7 35
+#define PIN_PG2 36
+#define PIN_PA7 37
+#define PIN_PA6 38
+#define PIN_PA5 39
+#define PIN_PA4 40
+#define PIN_PA3 41
+#define PIN_PA2 42
+#define PIN_PA1 43
+#define PIN_PA0 44
+#define PIN_PF0 45
+#define PIN_PF1 46
+#define PIN_PF2 47
+#define PIN_PF3 48
+#define PIN_PF4 49
+#define PIN_PF5 50
+#define PIN_PF6 51
+#define PIN_PF7 52
+#if defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+  #define PIN_PG5 53
+#endif
 
 const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
   NOT_ON_TIMER, // PE0 ** D0 ** RX0
