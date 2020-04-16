@@ -1482,19 +1482,19 @@ can128.menu.clock.8MHz_internal.build.clkpr=
 can128.menu.clock.8MHz_internal.build.clock_speed={build.f_cpu}
 can128.menu.clock.8MHz_internal.build.f_cpu=8000000L
 
-328.menu.clock.4MHz_internal=Internal 4 MHz
-328.menu.clock.4MHz_internal.upload.speed=9600
-328.menu.clock.4MHz_internal.bootloader.low_fuses=0xe2
-328.menu.clock.4MHz_internal.build.clkpr=-DOSC_PRESCALER=0x01
-328.menu.clock.4MHz_internal.build.clock_speed=8000000L
-328.menu.clock.4MHz_internal.build.f_cpu=4000000L
+can128.menu.clock.4MHz_internal=Internal 4 MHz
+can128.menu.clock.4MHz_internal.upload.speed=9600
+can128.menu.clock.4MHz_internal.bootloader.low_fuses=0xe2
+can128.menu.clock.4MHz_internal.build.clkpr=-DOSC_PRESCALER=0x01
+can128.menu.clock.4MHz_internal.build.clock_speed=8000000L
+can128.menu.clock.4MHz_internal.build.f_cpu=4000000L
 
-328.menu.clock.2MHz_internal=Internal 2 MHz
-328.menu.clock.2MHz_internal.upload.speed=9600
-328.menu.clock.2MHz_internal.bootloader.low_fuses=0xe2
-328.menu.clock.2MHz_internal.build.clkpr=-DOSC_PRESCALER=0x02
-328.menu.clock.2MHz_internal.build.clock_speed=8000000L
-328.menu.clock.2MHz_internal.build.f_cpu=2000000L
+can128.menu.clock.2MHz_internal=Internal 2 MHz
+can128.menu.clock.2MHz_internal.upload.speed=9600
+can128.menu.clock.2MHz_internal.bootloader.low_fuses=0xe2
+can128.menu.clock.2MHz_internal.build.clkpr=-DOSC_PRESCALER=0x02
+can128.menu.clock.2MHz_internal.build.clock_speed=8000000L
+can128.menu.clock.2MHz_internal.build.f_cpu=2000000L
 
 can128.menu.clock.1MHz_internal=Internal 1 MHz
 can128.menu.clock.1MHz_internal.upload.speed=9600
