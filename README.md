@@ -158,7 +158,7 @@ Open Arduino IDE, and a new category in the boards menu called "MegaCore" will s
 #### PlatformIO
 [PlatformIO](http://platformio.org) is an open source ecosystem for IoT development and supports MightyCore.
 
-**See [PlatformIO.md](https://github.com/MCUdude/MightyCore/blob/master/PlatformIO.md) for more information.**
+**See [PlatformIO.md](https://github.com/MCUdude/MegaCore/blob/master/PlatformIO.md) for more information.**
 
 
 ## Getting started with MegaCore
