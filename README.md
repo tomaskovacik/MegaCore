@@ -85,7 +85,7 @@ You might experience upload issues when using the internal oscillator. It's fact
 | 1 MHz       | Internal oscillator         | 9600   | Derived from the 8 MHz internal oscillator        |
 
 ## Bootloader option
-MegaCore lets you select which serial port you want to use for uploading. UART0 is the default port for all targets, but UART1 may also be used for uploading.
+MegaCore lets you select which serial port you want to use for uploading. UART0 is the default port for all targets, but any hardware serial port may be used.
 If your application doesn't need or require a bootloader for uploading code you can also choose to disable this by selecting *No bootloader*. This frees 1024 bytes of flash memory.
 
 Note that you have need to connect a programmer and hit **Burn bootloader** if you want to change any of the *Upload port settings*.
