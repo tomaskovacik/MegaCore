@@ -12,6 +12,8 @@ If you're into "pure" AVR programming, I'm happy to tell you that all relevant k
 * [BOD option](#bod-option)
 * [Link time optimization / LTO](#link-time-optimization--lto)
 * [Printf support](#printf-support)
+* [Pin macros](#pin-macros)
+* [PROGMEM with flash sizes greater than 64kB](#progmem-with-flash-sizes-greater-than-64kb)
 * [Programmers](#programmers)
 * [Write to own flash](#write-to-own-flash)
 * **[How to install](#how-to-install)**
@@ -60,26 +62,30 @@ Make sure you connect an ISP programmer, and select the correct one in the "Prog
 You might experience upload issues when using the internal oscillator. It's factory calibrated but may be a little "off" depending on the calibration, ambient temperature and operating voltage. If uploading failes while using the 8 MHz internal oscillator you have these options:
 * Edit the baudrate line in the [boards.txt](https://github.com/MCUdude/MegaCore/blob/6098efe55de668ebb19f538a0b86a2c43e3dec07/avr/boards.txt#L802) file, and choose either 115200, 57600, 38400 or 19200 baud.
 * Upload the code using a programmer (USBasp, USBtinyISP etc.) or skip the bootloader by holding down the shift key while clicking the "Upload" button
-* Use the 1 MHz option instead
+* Use the 4, 2 or 1 MHz option instead
 
-| Frequency   | Oscillator type             | Comment                                                       |
-|-------------|-----------------------------|---------------------------------------------------------------|
-| 16 MHz      | External crystal/oscillator | Default clock on most AVR based Arduino boards and MegaCore   |
-| 20 MHz      | External crystal/oscillator |                                                               |
-| 18.4320 MHz | External crystal/oscillator | Great clock for UART communication with no error              |
-| 14.7456 MHz | External crystal/oscillator | Great clock for UART communication with no error              |
-| 12 MHz      | External crystal/oscillator | Useful when working with USB 1.1 (12 Mbit/s)                  |
-| 11.0592 MHz | External crystal/oscillator | Great clock for UART communication with no error              |
-| 8 MHz       | External crystal/oscillator | Common clock when working with 3.3V                           |
-| 7.3728 MHz  | External crystal/oscillator | Great clock for UART communication with no error              |
-| 3.6864 MHz  | External crystal/oscillator | Great clock for UART communication with no error              |
-| 1.8432 MHz  | External crystal/oscillator | Great clock for UART communication with no error              |
-| 8 MHz       | Internal oscillator         | May cause UART upload issues. See comment above this table    |
-| 1 MHz       | Internal oscillator         | Derived from the 8 MHz internal oscillator                    |
-
+| Frequency   | Oscillator type             | Speed  | Comment                                           |
+|-------------|-----------------------------|--------|---------------------------------------------------|
+| 16 MHz      | External crystal/oscillator | 115200 | Default clock on most AVR based Arduino boards    |
+| 20 MHz      | External crystal/oscillator | 115200 |                                                   |
+| 18.4320 MHz | External crystal/oscillator | 115200 | Great clock for UART communication with no error  |
+| 14.7456 MHz | External crystal/oscillator | 115200 | Great clock for UART communication with no error  |
+| 12 MHz      | External crystal/oscillator | 57600  | Useful when working with USB 1.1 (12 Mbit/s)      |
+| 11.0592 MHz | External crystal/oscillator | 115200 | Great clock for UART communication with no error  |
+| 8 MHz       | External crystal/oscillator | 57600  | Common clock when working with 3.3V               |
+| 7.3728 MHz  | External crystal/oscillator | 115200 | Great clock for UART communication with no error  |
+| 4 MHz       | External crystal/oscillator | 9600   |                                                   |
+| 3.6864 MHz  | External crystal/oscillator | 115200 | Great clock for UART communication with no error  |
+| 2 MHz       | External crystal/oscillator | 9600   |                                                   |
+| 1.8432 MHz  | External crystal/oscillator | 115200 | Great clock for UART communication with no error  |
+| 1 MHz       | External crystal/oscillator | 9600   |                                                   |
+| 8 MHz       | Internal oscillator         | 38400  | Might cause UART upload issues. See comment above |
+| 4 MHz       | Internal oscillator         | 9600   | Derived from the 8 MHz internal oscillator        |
+| 2 MHz       | Internal oscillator         | 9600   | Derived from the 8 MHz internal oscillator        |
+| 1 MHz       | Internal oscillator         | 9600   | Derived from the 8 MHz internal oscillator        |
 
 ## Bootloader option
-MegaCore lets you select which serial port you want to use for uploading. UART0 is the default port for all targets, but UART1 may also be used for uploading.
+MegaCore lets you select which serial port you want to use for uploading. UART0 is the default port for all targets, but any hardware serial port may be used.
 If your application doesn't need or require a bootloader for uploading code you can also choose to disable this by selecting *No bootloader*. This frees 1024 bytes of flash memory.
 
 Note that you have need to connect a programmer and hit **Burn bootloader** if you want to change any of the *Upload port settings*.
@@ -110,6 +116,56 @@ I encourage you to try the new LTO option and see how much smaller your code get
 Unlike the official Arduino cores, MegaCore has printf support out of the box. If you're not familiar with printf you should probably [read this first](https://www.tutorialspoint.com/c_standard_library/c_function_printf.htm). It's added to the Print class and will work with all libraries that inherit Print. Printf is a standard C function that lets you format text much easier than using Arduino's built-in print and println. Note that this implementation of printf will NOT print floats or doubles. This is a limitation of the avr-libc printf implementation on AVR microcontrollers, and nothing I can easily fix.
 
 If you're using a serial port, simply use `Serial.printf("Milliseconds since start: %ld\n", millis());`. Other libraries that inherit the Print class (and thus supports printf) are the LiquidCrystal LCD library and the U8G2 graphical LCD library.
+
+
+## Pin macros
+Note that you don't have to use the digital pin numbers to refer to the pins. You can also use some predefined macros that maps "Arduino pins" to the port and port number:
+
+```c++
+// Use PIN_PE0 macro to refer to pin PE0 (Arduino pin 0)
+digitalWrite(PIN_PE0, HIGH);
+
+// Results in the exact same compiled code
+digitalWrite(0, HIGH);
+
+```
+
+## PROGMEM with flash sizes greater than 64kB
+The usual `PROGMEM` attribute stores constant data such as string arrays to flash and is great if you want to preserve the precious RAM. However, PROGMEM will only store content in the lower section, from 0 and up to 64kB. If you want to store data in other sections, you can use `PROGMEM1` (64 - 128kB), `PROGMEM2` (128 - 192kB), or `PROGMEM3` (192 - 256kB), depending on the chip you're using.  
+Accessing this data is not as straight forward as with `PROGMEM`, but it's still doable:
+
+```c
+const char far_away[] PROGMEM1 = "Hello from far away!\n"; // (64  - 128kB)
+const char far_far_away[] PROGMEM2 = "Hello from far, far away!\n"; // (128 - 192kB)
+const char far_far_far_away[] PROGMEM3 = "Hello from far, far, far away!\n"; // (192 - 256kB)
+
+void print_progmem()
+{
+  uint8_t i;
+  char c;
+
+  // Print out far_away
+  for(i = 0; i < sizeof(far_away); i++)
+  {
+    c = pgm_read_byte_far(pgm_get_far_address(far_away) + i);
+    Serial.write(c);
+  }
+
+  // Print out far_far_away
+  for(i = 0; i < sizeof(far_far_away); i++)
+  {
+    c = pgm_read_byte_far(pgm_get_far_address(far_far_away) + i);
+    Serial.write(c);
+  }
+  // Print out far_far_far_away
+  for(i = 0; i < sizeof(far_far_far_away); i++)
+  {
+    c = pgm_read_byte_far(pgm_get_far_address(far_far_far_away) + i);
+    Serial.write(c);
+  }
+}
+
+```
 
 
 ## Programmers
@@ -144,7 +200,7 @@ Open Arduino IDE, and a new category in the boards menu called "MegaCore" will s
 #### PlatformIO
 [PlatformIO](http://platformio.org) is an open source ecosystem for IoT development and supports MightyCore.
 
-**See [PlatformIO.md](https://github.com/MCUdude/MightyCore/blob/master/PlatformIO.md) for more information.**
+**See [PlatformIO.md](https://github.com/MCUdude/MegaCore/blob/master/PlatformIO.md) for more information.**
 
 
 ## Getting started with MegaCore

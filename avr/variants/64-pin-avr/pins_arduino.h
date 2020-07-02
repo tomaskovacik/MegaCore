@@ -90,6 +90,62 @@ static const uint8_t SDA = PIN_WIRE_SDA;
 #define digitalPinToPCMSKbit(p) ((((p) >= 8) && ((p) <= 15)) ? ((p) - 8) : (((p) ==  0) ? 1 : 0))
 #endif
 
+#define PIN_PE0 0
+#define PIN_PE1 1
+#define PIN_PE2 2
+#define PIN_PE3 3
+#define PIN_PE4 4
+#define PIN_PE5 5
+#define PIN_PE6 6
+#define PIN_PE7 7
+#define PIN_PB0 8
+#define PIN_PB1 9
+#define PIN_PB2 10
+#define PIN_PB3 11
+#define PIN_PB4 12
+#define PIN_PB5 13
+#define PIN_PB6 14
+#define PIN_PB7 15
+#define PIN_PG3 16
+#define PIN_PG4 17
+#define PIN_PD0 18
+#define PIN_PD1 19
+#define PIN_PD2 20
+#define PIN_PD3 21
+#define PIN_PD4 22
+#define PIN_PD5 23
+#define PIN_PD6 24
+#define PIN_PD7 25
+#define PIN_PG0 26
+#define PIN_PG1 27
+#define PIN_PC0 28
+#define PIN_PC1 29
+#define PIN_PC2 30
+#define PIN_PC3 31
+#define PIN_PC4 32
+#define PIN_PC5 33
+#define PIN_PC6 34
+#define PIN_PC7 35
+#define PIN_PG2 36
+#define PIN_PA7 37
+#define PIN_PA6 38
+#define PIN_PA5 39
+#define PIN_PA4 40
+#define PIN_PA3 41
+#define PIN_PA2 42
+#define PIN_PA1 43
+#define PIN_PA0 44
+#define PIN_PF0 45
+#define PIN_PF1 46
+#define PIN_PF2 47
+#define PIN_PF3 48
+#define PIN_PF4 49
+#define PIN_PF5 50
+#define PIN_PF6 51
+#define PIN_PF7 52
+#if defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+  #define PIN_PG5 53
+#endif
 
 #ifdef ARDUINO_MAIN
 

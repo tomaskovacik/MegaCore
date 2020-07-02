@@ -461,7 +461,7 @@ void pre_main(void) {
   asm volatile (
     " rjmp 1f\n"
     " rjmp do_spm\n"
-#ifdef COPY_FLASH_PAGES_FNC
+#ifdef COPY_FLASH_PAGES
     " rjmp copy_flash_pages\n"
 #endif
     "1:\n"
@@ -512,6 +512,12 @@ int main(void) {
 	ch = MCUCSR;
 #else
 	ch = MCUSR;
+#endif
+
+// This is necessary on targets that where the CLKPR has been set in user application
+#if defined(CLKPR) && F_CPU != 1000000L
+  CLKPR = 0x80; // Enable the clock prescaler
+  CLKPR = 0x00; // Set prescaler to 1
 #endif
 
   // Skip all logic and run bootloader if MCUSR is cleared (application request)
