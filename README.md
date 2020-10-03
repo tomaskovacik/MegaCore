@@ -10,6 +10,7 @@ If you're into "pure" AVR programming, I'm happy to tell you that all relevant k
 * [Supported clock frequencies](#supported-clock-frequencies)
 * [Bootloader option](#bootloader-option)
 * [BOD option](#bod-option)
+* [EEPROM retain option](#eeprom-option)
 * [Link time optimization / LTO](#link-time-optimization--lto)
 * [Printf support](#printf-support)
 * [Pin macros](#pin-macros)
@@ -105,6 +106,10 @@ Brown out detection, or BOD for short lets the microcontroller sense the input v
 |                     |                 |               | 2.6V             |
 |                     |                 |               | 2.5V             |
 | Disabled            | Disabled        | Disabled      | Disabled         |
+
+
+## EEPROM option
+If you want the EEPROM to be erased every time you burn the bootloader or upload using a programmer, you can turn off this option. You'll have to connect an ISP programmer and hit "Burn bootloader" to enable or disable EEPROM retain. Note that when uploading using a bootloader, the EEPROM will always be retained.
 
 
 ## Link time optimization / LTO
