@@ -190,19 +190,6 @@ matrix:
     - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries/EEPROM" BOARD_ID="MegaCore:avr:128:bootloader=uart0,BOD=2v7,eeprom=keep,LTO=Os,clock=1MHz_internal" ALLOW_FAILURE="false" IDE_VERSION_LIST="$FULL_IDE_VERSION_LIST"
 
     # BOD=2v7, LTO=Os, clock=16MHz_external
-    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries/Ethernet" BOARD_ID="MegaCore:avr:128:bootloader=uart0,BOD=2v7,eeprom=keep,LTO=Os,clock=16MHz_external" ALLOW_FAILURE="false" IDE_VERSION_LIST="$FULL_IDE_VERSION_LIST"
-    # BOD=4v0, LTO=Os_flto, clock=20MHz_external
-    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries/Ethernet" BOARD_ID="MegaCore:avr:128:bootloader=uart0,BOD=4v0,eeprom=keep,LTO=Os_flto,clock=20MHz_external" ALLOW_FAILURE="false" IDE_VERSION_LIST="$LTO_IDE_VERSION_LIST"
-    # BOD=disabled, clock=18_432MHz_external
-    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries/Ethernet" BOARD_ID="MegaCore:avr:128:bootloader=uart0,BOD=disabled,eeprom=keep,LTO=Os,clock=18_432MHz_external" ALLOW_FAILURE="false" IDE_VERSION_LIST="$FULL_IDE_VERSION_LIST"
-    # clock=12MHz_external
-    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries/Ethernet" BOARD_ID="MegaCore:avr:128:bootloader=uart0,BOD=2v7,eeprom=keep,LTO=Os,clock=12MHz_external" ALLOW_FAILURE="false" IDE_VERSION_LIST="$FULL_IDE_VERSION_LIST"
-    # clock=8MHz_external
-    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries/Ethernet" BOARD_ID="MegaCore:avr:128:bootloader=uart0,BOD=2v7,eeprom=keep,LTO=Os,clock=8MHz_external" ALLOW_FAILURE="false" IDE_VERSION_LIST="$FULL_IDE_VERSION_LIST"
-    # clock=1MHz_internal
-    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries/Ethernet" BOARD_ID="MegaCore:avr:128:bootloader=uart0,BOD=2v7,eeprom=keep,LTO=Os,clock=1MHz_internal" ALLOW_FAILURE="false" IDE_VERSION_LIST="$FULL_IDE_VERSION_LIST"
-
-    # BOD=2v7, LTO=Os, clock=16MHz_external
     - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries/Optiboot_flasher" BOARD_ID="MegaCore:avr:128:bootloader=uart0,BOD=2v7,eeprom=keep,LTO=Os,clock=16MHz_external" ALLOW_FAILURE="false" IDE_VERSION_LIST="$FULL_IDE_VERSION_LIST"
     # BOD=4v0, LTO=Os_flto, clock=20MHz_external
     - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries/Optiboot_flasher" BOARD_ID="MegaCore:avr:128:bootloader=uart0,BOD=4v0,eeprom=keep,LTO=Os_flto,clock=20MHz_external" ALLOW_FAILURE="false" IDE_VERSION_LIST="$LTO_IDE_VERSION_LIST"
@@ -309,19 +296,6 @@ matrix:
     - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries/EEPROM" BOARD_ID="MegaCore:avr:64:bootloader=uart0,BOD=2v7,eeprom=keep,LTO=Os,clock=8MHz_external" ALLOW_FAILURE="false" IDE_VERSION_LIST="$FULL_IDE_VERSION_LIST"
     # clock=1MHz_internal
     - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries/EEPROM" BOARD_ID="MegaCore:avr:64:bootloader=uart0,BOD=2v7,eeprom=keep,LTO=Os,clock=1MHz_internal" ALLOW_FAILURE="false" IDE_VERSION_LIST="$FULL_IDE_VERSION_LIST"
-
-    # BOD=2v7, LTO=Os, clock=16MHz_external
-    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries/Ethernet" BOARD_ID="MegaCore:avr:64:bootloader=uart0,BOD=2v7,eeprom=keep,LTO=Os,clock=16MHz_external" ALLOW_FAILURE="false" IDE_VERSION_LIST="$FULL_IDE_VERSION_LIST"
-    # BOD=4v0, LTO=Os_flto, clock=20MHz_external
-    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries/Ethernet" BOARD_ID="MegaCore:avr:64:bootloader=uart0,BOD=4v0,eeprom=keep,LTO=Os_flto,clock=20MHz_external" ALLOW_FAILURE="false" IDE_VERSION_LIST="$LTO_IDE_VERSION_LIST"
-    # BOD=disabled, clock=18_432MHz_external
-    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries/Ethernet" BOARD_ID="MegaCore:avr:64:bootloader=uart0,BOD=disabled,eeprom=keep,LTO=Os,clock=18_432MHz_external" ALLOW_FAILURE="false" IDE_VERSION_LIST="$FULL_IDE_VERSION_LIST"
-    # clock=12MHz_external
-    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries/Ethernet" BOARD_ID="MegaCore:avr:64:bootloader=uart0,BOD=2v7,eeprom=keep,LTO=Os,clock=12MHz_external" ALLOW_FAILURE="false" IDE_VERSION_LIST="$FULL_IDE_VERSION_LIST"
-    # clock=8MHz_external
-    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries/Ethernet" BOARD_ID="MegaCore:avr:64:bootloader=uart0,BOD=2v7,eeprom=keep,LTO=Os,clock=8MHz_external" ALLOW_FAILURE="false" IDE_VERSION_LIST="$FULL_IDE_VERSION_LIST"
-    # clock=1MHz_internal
-    - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries/Ethernet" BOARD_ID="MegaCore:avr:64:bootloader=uart0,BOD=2v7,eeprom=keep,LTO=Os,clock=1MHz_internal" ALLOW_FAILURE="false" IDE_VERSION_LIST="$FULL_IDE_VERSION_LIST"
 
     # BOD=2v7, LTO=Os, clock=16MHz_external
     - env: SKETCH_PATH="${SKETCHBOOK_FOLDER}/hardware/MegaCore/avr/libraries/Optiboot_flasher" BOARD_ID="MegaCore:avr:64:bootloader=uart0,BOD=2v7,eeprom=keep,LTO=Os,clock=16MHz_external" ALLOW_FAILURE="false" IDE_VERSION_LIST="$FULL_IDE_VERSION_LIST"
